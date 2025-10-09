@@ -110,6 +110,22 @@ footer a {color:#1e90ff;}
   .hero h1 {font-size:2rem;}
   .hero p {font-size:1.1rem;}
   .hero {height:100vh; min-height:100vh;}
+
+  /* Ícones sociais MOBILE */
+  .social-icons {display:flex; flex-direction:column; gap:15px; margin-top:20px;}
+  .social-icons a {
+    display:flex; align-items:center; justify-content:center;
+    padding:12px; background:linear-gradient(135deg,#1e90ff,#00bfff);
+    color:#fff; border-radius:8px; font-weight:bold;
+    transition:0.3s; box-shadow:0 5px 15px rgba(0,191,255,0.4);
+    text-align:center;
+  }
+  .social-icons a img {width:20px; height:20px; margin-right:10px;}
+  .social-icons a:hover {transform:translateY(-3px) scale(1.05); box-shadow:0 8px 20px rgba(0,191,255,0.6);}
+}
+@media(min-width:769px){
+  /* Esconde ícones sociais no desktop */
+  .social-icons {display:none !important;}
 }
 @media(max-width:480px){
   .hero {padding:0 15px;}
@@ -123,7 +139,6 @@ footer a {color:#1e90ff;}
 
 /* Animações */
 @keyframes fadeIn {0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);}}
-
 </style>
 </head>
 <body>
@@ -139,9 +154,25 @@ footer a {color:#1e90ff;}
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#depoimentos">Depoimentos</a></li>
             <li><a href="#suporte">Suporte</a></li>
-            <li><a href="https://wa.me/5511999999999" target="_blank" class="menu-whatsapp">
-                <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" width="25">
-            </a></li>
+
+            <!-- Ícones sociais MOBILE -->
+            <li class="social-icons">
+                <a href="https://wa.me/5511999999999" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp"> WhatsApp
+                </a>
+                <a href="https://t.me/seuusuario" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram"> Telegram
+                </a>
+                <a href="https://youtube.com/seucanal" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"> YouTube
+                </a>
+                <a href="https://instagram.com/seuperfil" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"> Instagram
+                </a>
+                <a href="https://facebook.com/seuperfil" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"> Facebook
+                </a>
+            </li>
         </ul>
     </nav>
     <div class="menu-toggle" id="menu-toggle">
