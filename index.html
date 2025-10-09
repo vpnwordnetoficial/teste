@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VPN Turbo Brasil — Internet Ilimitada & VPN Premium</title>
+  <meta name="description" content="VPN Turbo Brasil — Internet ilimitada via VPN, suporte a chips e apps, planos flexíveis e instalação passo a passo." />
+  <meta name="keywords" content="VPN, internet ilimitada, chip ilimitado, VPN Brasil, conectar VPN, planos VPN" />
+  <meta name="author" content="VPN Turbo Brasil" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-family:'Inter',system-ui,Arial;background:#0b0f14;color:#e6eef8}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* ---------- HEADER ---------- */
+    header{
+      position:fixed;left:0;top:0;width:100%;z-index:1200;
+      background:linear-gradient(180deg, rgba(3,7,12,0.55), rgba(3,7,12,0.7));
+      backdrop-filter:blur(8px);
+      padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      box-shadow:0 6px 30px rgba(0,136,255,0.05)
+    }
+    .logo{display:flex;gap:10px;align-items:center;font-weight:800;color:#ffcf3b;font-size:1.35rem;letter-spacing:0.08em}
+    .logo i{font-size:1.55rem;color:#00aaff;text-shadow:0 0 8px rgba(0,170,255,0.12)}
+    nav{display:flex;align-items:center;gap:20px}
+    nav ul{display:flex;gap:18px;list-style:none;align-items:center}
+    nav a{color:#e8f6ff;font-weight:600;padding:6px 8px;border-radius:6px}
+    nav a.active, nav a:hover{color:#00aaff}
+    .cta{background:linear-gradient(90deg,#00afff,#0066ff);color:white;padding:8px 14px;border-radius:40px;font-weight:800;box-shadow:0 6px 30px rgba(0,136,255,0.12)}
+    .menu-toggle{display:none;font-size:1.6rem;color:#00aaff;background:transparent;border:none}
+
+    /* ---------- HERO ---------- */
+    .hero{
+      height:86vh;min-height:540px;
+      background:radial-gradient(1200px 400px at 10% 10%, rgba(0,170,255,0.08), transparent),
+                 url('https://images.unsplash.com/photo-1556826158-1b2b9e8ce2a9?q=80&w=1900&auto=format&fit=crop&ixlib=rb-4.0.3&s=2f4d2b8b7b2e2e29a1f3a6c6e4c7c2c3') center/cover no-repeat;
+      display:flex;align-items:center;justify-content:center;padding:120px 20px 40px;position:relative;color:#fff;text-align:center;
+    }
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,12,0.5), rgba(0,0,0,0.4));}
+    .hero-inner{position:relative;z-index:3;max-width:1100px}
+    .hero h1{font-size:3.2rem;line-height:1.02;margin-bottom:12px;color:#fff;text-shadow:0 6px 28px rgba(0,0,0,0.6)}
+    .hero p{font-size:1.15rem;color:#cfeeff;margin-bottom:20px}
+    .hero .actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .btn{padding:12px 20px;border-radius:999px;font-weight:800;display:inline-block}
+    .btn-primary{background:linear-gradient(90deg,#00afff,#0066ff);color:white;box-shadow:0 10px 40px rgba(0,136,255,0.16)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);color:#e6f6ff}
+
+    /* ---------- MAIN CARD ---------- */
+    main{max-width:1150px;margin: -80px auto 80px;padding:36px;border-radius:18px;background:linear-gradient(180deg, rgba(12,16,22,0.9), rgba(8,10,14,0.95));box-shadow:0 20px 60px rgba(0,0,0,0.6);position:relative;z-index:2}
+
+    h2.section-title{font-size:2rem;color:#ffcf3b;text-align:center;margin-bottom:20px;font-weight:800}
+
+    /* ---------- PLANS GRID ---------- */
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:22px 0}
+    .plan{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 30px rgba(0,170,255,0.04);display:flex;flex-direction:column;gap:12px;transition:transform .32s,box-shadow .32s}
+    .plan:hover{transform:translateY(-12px);box-shadow:0 30px 80px rgba(0,136,255,0.12)}
+    .plan .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,207,59,0.12);color:#ffcf3b;font-weight:700;font-size:.9rem}
+    .plan h3{font-size:1.25rem;margin-top:6px}
+    .price{font-size:1.9rem;font-weight:900;color:#00d2ff}
+    .features{list-style:none;padding-left:0;margin-top:6px;line-height:1.6;color:#cfeeff}
+    .plan .buy{margin-top:auto}
+
+    /* ---------- INSTALL / TUTORIAL ---------- */
+    .install{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;margin-top:18px}
+    .install-left{flex:1 1 420px;background:linear-gradient(180deg,rgba(0,170,255,0.02),rgba(255,255,255,0.02));padding:20px;border-radius:12px}
+    .install-right{flex:1 1 320px;padding:18px}
+    .steps{list-style:none;padding:0}
+    .steps li{display:flex;gap:12px;padding:12px 8px;border-radius:8px;margin-bottom:10px;background:rgba(255,255,255,0.02);align-items:flex-start}
+    .steps li .num{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffcf3b;color:#081016;font-weight:900}
+
+    /* ---------- FAQ ---------- */
+    .faq{max-width:1000px;margin:26px auto}
+    .faq-item{background:linear-gradient(180deg,rgba(255,255,255,0.015),transparent);border-radius:12px;padding:12px;margin-bottom:10px;border:1px solid rgba(255,255,255,0.02)}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:8px 6px}
+    .faq-q h4{font-size:1rem;color:#ffcf3b}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease;padding:0 6px;color:#d9f0ff}
+
+    /* ---------- GALLERY ---------- */
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:20px}
+    .gallery .card{border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#07101a, #08101a);padding:0;display:flex}
+    .gallery .card img{width:140px;height:120px;object-fit:cover}
+    .gallery .card .txt{padding:12px}
+
+    /* ---------- TESTIMONIALS ---------- */
+    .testimonials{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:20px}
+    .testimonials .arrow{background:linear-gradient(90deg,#00afff,#0066ff);border:none;color:white;padding:12px;border-radius:10px;cursor:pointer}
+    .testimonials .wrap{max-width:760px;overflow:hidden}
+    .testimonial{display:none;padding:16px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);text-align:center}
+    .testimonial.active{display:block}
+
+    /* ---------- TERMS & CONTACT ---------- */
+    .termos{margin-top:26px;background:linear-gradient(180deg,rgb(5 7 10 / 60%), rgb(5 7 10 / 50%));padding:18px;border-radius:12px}
+    .contact{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-top:18px}
+    .contact .box{flex:1 1 320px;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:10px}
+    .whatsapp-button{display:inline-block;background:linear-gradient(90deg,#25d366,#128c7e);color:#fff;padding:10px 14px;border-radius:999px;font-weight:800}
+
+    /* ---------- ASSISTANT ---------- */
+    #assist-icon{position:fixed;bottom:20px;right:20px;background:linear-gradient(90deg,#00afff,#0066ff);color:white;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;z-index:1400;cursor:pointer;box-shadow:0 10px 40px rgba(0,136,255,0.14)}
+    #assist-box{position:fixed;right:20px;bottom:96px;width:340px;background:#fff;border-radius:12px;box-shadow:0 18px 60px rgba(0,0,0,0.45);overflow:hidden;display:flex;flex-direction:column;z-index:1401}
+    #assist-box.hidden{display:none}
+    .assist-header{background:linear-gradient(90deg,#00afff,#0066ff);color:white;padding:12px;display:flex;align-items:center;justify-content:space-between}
+    .assist-body{padding:12px;height:320px;overflow:auto;background:#f4f9ff}
+    .msg{padding:10px;border-radius:10px;margin-bottom:8px;max-width:85%}
+    .msg.bot{background:#e8f6ff;color:#033a5a;align-self:flex-start}
+    .msg.user{background:#0066ff;color:white;align-self:flex-end}
+    .assist-footer{display:flex;gap:8px;padding:8px;border-top:1px solid #eee;background:white}
+
+    /* RESPONSIVO */
+    @media (max-width:1024px){.plans{grid-template-columns:repeat(2,1fr)} .hero h1{font-size:2.4rem}}
+    @media (max-width:720px){nav ul{display:none}.menu-toggle{display:block}.plans{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.hero{padding:100px 16px 36px}.hero h1{font-size:1.9rem}}
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo"><i class="fa-solid fa-shield-halved"></i>VPN Turbo Brasil</div>
+    <nav id="main-nav" aria-label="Menu principal">
+      <ul>
+        <li><a href="#planos" class="active">Planos</a></li>
+        <li><a href="#instalacao">Instalação</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <div style="display:flex;gap:12px;align-items:center">
+      <a class="cta" id="cta-join" href="#planos">Assinar Agora</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu"><i class="fa fa-bars"></i></button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" role="banner">
+    <div class="hero-inner">
+      <h1>Internet Ilimitada + VPN Premium<br/><span style="color:#00d2ff">Navegue seguro, mude de IP e aproveite sem limites.</span></h1>
+      <p>Planos fáceis, configuração rápida e suporte via WhatsApp. Conecte em celulares, TV Box e Smart TVs. Sem limite de dados — controle total da sua conexão.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#planos">Ver Planos</a>
+        <a class="btn btn-ghost" href="#instalacao">Como Funciona</a>
+        <a class="btn whatsapp" href="#" id="whatsappHero" style="background:#25d366;color:white;border-radius:999px;padding:10px 14px;font-weight:800"><i class="fa fa-whatsapp"></i> Falar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main>
+    <!-- PLANS -->
+    <section id="planos" aria-labelledby="planos-title">
+      <h2 class="section-title" id="planos-title">Planos — Escolha seu acesso ilimitado</h2>
+      <div class="plans" role="list">
+        <article class="plan" role="listitem" aria-label="Plano Individual">
+          <span class="tag">Mais Popular</span>
+          <h3>Plano Individual</h3>
+          <div class="price">R$ 30 <small>/mês</small></div>
+          <p class="desc" style="color:#cfeeff">1 chip ou 1 dispositivo • VPN + Proxy dedicado • Conexão estável para streaming</p>
+          <ul class="features">
+            <li>Velocidade otimizada</li>
+            <li>Suporte via WhatsApp 24/7</li>
+            <li>Configuração em 5 minutos</li>
+          </ul>
+          <div class="buy">
+            <a class="btn btn-primary" href="#contato" data-plan="Individual">Assinar</a>
+          </div>
+        </article>
+
+        <article class="plan" role="listitem" aria-label="Plano Duplo">
+          <span class="tag" style="background:rgba(0,170,255,0.08);color:#00d2ff">Melhor custo</span>
+          <h3>Plano Duplo</h3>
+          <div class="price">R$ 50 <small>/mês</small></div>
+          <p class="desc" style="color:#cfeeff">2 chips ou 2 dispositivos • Ideal para família ou revenda pequena</p>
+          <ul class="features">
+            <li>2 conexões simultâneas</li>
+            <li>IPs alternados para estabilidade</li>
+            <li>Suporte prioritário</li>
+          </ul>
+          <div class="buy">
+            <a class="btn btn-primary" href="#contato" data-plan="Duplo">Assinar</a>
+          </div>
+        </article>
+
+        <article class="plan" role="listitem" aria-label="Plano Revendedor">
+          <span class="tag" style="background:linear-gradient(90deg,#ff9a00,#ffcf3b);color:#081016">Revenda</span>
+          <h3>Plano Revendedor</h3>
+          <div class="price">R$ 80 <small>/mês</small></div>
+          <p class="desc" style="color:#cfeeff">Até 10 conexões • Painel de gerenciamento • Suporte dedicado</p>
+          <ul class="features">
+            <li>Gerenciamento de usuários</li>
+            <li>API de integração (opcional)</li>
+            <li>Relatórios de uso</li>
+          </ul>
+          <div class="buy">
+            <a class="btn btn-primary" href="#contato" data-plan="Revendedor">Assinar</a>
+          </div>
+        </article>
+      </div>
+      <p style="text-align:center;color:#bfe7ff;margin-top:8px">Todos os planos incluem: troca de IP, suporte para chips Claro/Tim/Vivo/Oi, e garantia de funcionamento (assistência remota).</p>
+    </section>
+
+    <!-- INSTALLATION / TUTORIAL -->
+    <section id="instalacao" style="margin-top:26px" aria-labelledby="insta-title">
+      <h2 class="section-title" id="insta-title">Como configurar — Tutorial rápido</h2>
+      <div class="install">
+        <div class="install-left">
+          <h3 style="color:#ffcf3b">Passo a passo (chip / app / VPN)</h3>
+          <ol class="steps">
+            <li><div class="num">1</div><div><strong>Comprar e receber as credenciais</strong><p style="color:#cfeeff">Você recebe usuário, senha e arquivo de configuração (se necessário).</p></div></li>
+            <li><div class="num">2</div><div><strong>Instalar o app VPN</strong><p style="color:#cfeeff">Baixe o app (OpenVPN / WireGuard / nosso app). Dê permissões quando solicitado.</p></div></li>
+            <li><div class="num">3</div><div><strong>Importar o perfil</strong><p style="color:#cfeeff">Importe o arquivo .ovpn ou cole os dados no app — em minutos estará conectado.</p></div></li>
+            <li><div class="num">4</div><div><strong>Configurar o chip (se usar mobile)</strong><p style="color:#cfeeff">Ative APN sugerida e configure proxy se o plano indicar — nosso suporte orienta por WhatsApp.</p></div></li>
+            <li><div class="num">5</div><div><strong>Testar velocidade e estabilidade</strong><p style="color:#cfeeff">Abra um streaming e verifique a estabilidade. Caso precise, trocamos IP ou servidor.</p></div></li>
+          </ol>
+        </div>
+
+        <aside class="install-right">
+          <h4 style="color:#00d2ff">Dicas rápidas</h4>
+          <ul style="color:#dff6ff;line-height:1.6">
+            <li><strong>Use WireGuard</strong> para conexões móveis mais rápidas.</li>
+            <li><strong>Prefira servidores próximos</strong> para menor latência.</li>
+            <li><strong>Ative kill-switch</strong> no app para evitar vazamento de IP.</li>
+            <li><strong>Tem dúvidas?</strong> Abra o chat no WhatsApp e envie prints — ajudamos remoto.</li>
+          </ul>
+          <div style="margin-top:14px">
+            <a class="btn btn-primary" href="#contato">Precisa de ajuda? Falar com Suporte</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq" aria-labelledby="faq-title">
+      <h2 class="section-title" id="faq-title">Perguntas Frequentes</h2>
+
+      <div class="faq-item">
+        <div class="faq-q" data-open="false"><h4>O serviço é realmente ilimitado?</h4><i class="fa fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Sim — nossos planos não possuem contagem de dados para uso normal. Mantemos políticas de uso justo para evitar abuso extremo.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-open="false"><h4>Funciona em Smart TV e TV Box?</h4><i class="fa fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Sim — oferecemos tutoriais para Fire TV, Android TV e Box. Normalmente basta instalar um app de VPN compatível ou configurar via roteador.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-open="false"><h4>Qual a diferença entre VPN e internet ilimitada por chip?</h4><i class="fa fa-chevron-down"></i></div>
+        <div class="faq-a"><p>O chip fornece dados e a VPN ajuda a redirecionar tráfego, alterar rota e IP. Nossos planos combinam ajustes para garantir a ilimitação e estabilidade.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-open="false"><h4>Como recebo suporte?</h4><i class="fa fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Pelo WhatsApp do suporte, com atendimento 24/7 para clientes ativos. Também oferecemos assistência remota quando necessário.</p></div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" aria-label="Galeria de recursos">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=b8b0b1c9f6efb1a2a6af2443b3a3f6e7" alt="Conexão segura">
+        <div class="txt">
+          <h4 style="color:#ffcf3b">Conexão Segura</h4>
+          <p style="color:#dff6ff">Criptografia de ponta a ponta para sua privacidade.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3c8a2a8a4f2b5a6f6a7a1c1e1c1a2b3c" alt="Compatível com dispositivos">
+        <div class="txt">
+          <h4 style="color:#00d2ff">Vários Dispositivos</h4>
+          <p style="color:#dff6ff">Roteador, celular, TV Box e PC — suporte completo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section id="depoimentos" style="margin-top:26px">
+      <h2 class="section-title">Depoimentos</h2>
+      <div class="testimonials">
+        <button class="arrow" id="tprev" aria-label="Anterior"><i class="fa fa-chevron-left"></i></button>
+        <div class="wrap">
+          <div class="testimonial active" data-id="1">
+            <p style="color:#dff6ff;font-style:italic">"Rápido para configurar e estável para streaming. Atendimento excelente no WhatsApp."</p>
+            <div style="margin-top:10px;color:#00d2ff;font-weight:800">— Rafael, SP</div>
+          </div>
+
+          <div class="testimonial" data-id="2">
+            <p style="color:#dff6ff;font-style:italic">"Usei em 2 chips e funcionou perfeitamente — recomendo para quem revende também."</p>
+            <div style="margin-top:10px;color:#00d2ff;font-weight:800">— Marina, RJ</div>
+          </div>
+
+          <div class="testimonial" data-id="3">
+            <p style="color:#dff6ff;font-style:italic">"Consegui configurar na minha Smart TV com ajuda remota — hoje assino há meses."</p>
+            <div style="margin-top:10px;color:#00d2ff;font-weight:800">— João, MG</div>
+          </div>
+        </div>
+        <button class="arrow" id="tnext" aria-label="Próximo"><i class="fa fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <!-- TERMOS -->
+    <section class="termos" aria-labelledby="termos-title" style="margin-top:28px">
+      <h2 id="termos-title" class="section-title">Termos de Uso & Política</h2>
+      <div style="color:#cfeeff;line-height:1.6">
+        <p><strong>Uso aceitável:</strong> O serviço é fornecido para uso legítimo. Conteúdo ilegal, ataques, ou tentativas de burlar redes não são permitidos.</p>
+        <p><strong>Privacidade:</strong> Respeitamos a privacidade e não compartilhamos dados de clientes com terceiros, salvo obrigações legais.</p>
+        <p><strong>Garantia:</strong> Fornecemos suporte para configuração e manutenção. Em caso de interrupção comprovada, oferecemos suporte e possíveis ajustes comerciais.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contato" style="margin-top:22px">
+      <h2 class="section-title">Contato & Suporte</h2>
+      <div class="contact">
+        <div class="box">
+          <h3 style="color:#ffcf3b">Suporte via WhatsApp</h3>
+          <p style="color:#dff6ff">Fale com nossa equipe para dúvidas, configuração remota e compra de planos. Atendimento rápido e direto.</p>
+          <p style="margin-top:8px"><strong>WhatsApp:</strong> <a class="whatsapp-button" id="whatsappLink" href="#" target="_blank"><i class="fa fa-whatsapp"></i> (11) 99999-9999</a></p>
+        </div>
+
+        <div class="box">
+          <h3 style="color:#00d2ff">Formas de pagamento</h3>
+          <p style="color:#dff6ff">PIX, Transferência, cartão (via link) — escolha durante o atendimento.</p>
+          <p style="margin-top:8px"><strong>Horário de atendimento:</strong> 24/7 (clientes ativos)</p>
+        </div>
+      </div>
+      <div style="margin-top:12px;text-align:center;color:#bfe7ff">
+        <a class="btn btn-primary" href="#planos">Assinar Agora</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="padding:26px;text-align:center;background:linear-gradient(180deg,#03060a,#06111a);color:#9fcfff">
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap">
+        <div>© <strong>VPN Turbo Brasil</strong> — Todos os direitos reservados.</div>
+        <div><a href="#termos" style="color:#ffcf3b">Termos</a></div>
+        <div><a href="#contato">Contato</a></div>
+      </div>
+      <div style="margin-top:12px;color:#8fd7ff">Desenvolvido com foco em performance e suporte</div>
+    </div>
+  </footer>
+
+  <!-- ASSISTANT -->
+  <div id="assist-icon" title="Ajuda">
+    <i class="fa fa-comments"></i>
+  </div>
+
+  <div id="assist-box" class="hidden" aria-hidden="true" role="dialog" aria-label="Assistente de suporte">
+    <div class="assist-header">
+      <div style="display:flex;gap:10px;align-items:center"><i class="fa fa-headset" style="font-size:18px"></i><strong>Suporte VPN Turbo</strong></div>
+      <button id="assist-close" aria-label="Fechar" style="background:transparent;border:none;color:white;font-size:18px"><i class="fa fa-times"></i></button>
+    </div>
+
+    <div class="assist-body" id="assistBody" role="log" aria-live="polite">
+      <div class="msg bot">Olá! Precisa de ajuda com planos, instalação ou suporte técnico?</div>
+      <div class="assist-options" style="display:flex;gap:8px;margin-top:8px">
+        <button class="assist-yes btn" data-action="planos">Ver Planos</button>
+        <button class="assist-no btn" data-action="instalacao" style="background:#ff7676">Preciso de ajuda</button>
+      </div>
+    </div>
+
+    <div class="assist-footer">
+      <input id="assist-input" placeholder="Escreva sua dúvida..." aria-label="Mensagem" />
+      <button id="assist-send" class="btn btn-primary">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    /***********************
+     * CONFIGURAÇÕES FÁCEIS *
+     ***********************/
+    // Substitua pelo seu número no formato sem símbolos: 5511999999999
+    const WHATSAPP_NUMBER = "5511999999999"; // <-- troque aqui pelo seu real
+    const WHATSAPP_DISPLAY = "(11) 99999-9999"; // texto exibido (troque se quiser)
+
+    // Atualiza botões de WhatsApp na página
+    document.addEventListener('DOMContentLoaded', () => {
+      const waLink = document.getElementById('whatsappLink');
+      const waHero = document.getElementById('whatsappHero');
+      const phone = WHATSAPP_NUMBER;
+      const text = encodeURIComponent("Olá, tenho interesse nos planos de Internet Ilimitada e VPN.");
+      const href = "https://wa.me/" + phone + "?text=" + text;
+      if (waLink) { waLink.setAttribute('href', href); waLink.innerHTML = '<i class=\"fa fa-whatsapp\"></i> ' + WHATSAPP_DISPLAY; }
+      if (waHero) { waHero.setAttribute('href', href); }
+    });
+
+    /***************
+     * NAV MOBILE  *
+     ***************/
+    (function(){
+      const menuBtn = document.getElementById('menuToggle');
+      const nav = document.getElementById('main-nav');
+      if(!menuBtn) return;
+      let open = false;
+      menuBtn.addEventListener('click', () => {
+        open = !open;
+        if(open){
+          nav.style.position = 'fixed';
+          nav.style.right = '0';
+          nav.style.top = '64px';
+          nav.style.background = '#0b0f14';
+          nav.style.padding = '18px';
+          nav.style.boxShadow = '0 12px 40px rgba(0,0,0,0.6)';
+          nav.querySelector('ul').style.flexDirection = 'column';
+          nav.querySelector('ul').style.gap = '12px';
+        } else {
+          nav.style = '';
+          nav.querySelector('ul').style.flexDirection = '';
+          nav.querySelector('ul').style.gap = '';
+        }
+      });
+
+      // Highlight links on scroll
+      const links = document.querySelectorAll('nav a');
+      const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href')));
+      window.addEventListener('scroll', () => {
+        let fromTop = window.scrollY + 120;
+        links.forEach((link,i) => {
+          const sec = sections[i];
+          if(!sec) return;
+          if(sec.offsetTop <= fromTop && (sec.offsetTop + sec.offsetHeight) > fromTop){
+            link.classList.add('active');
+          } else link.classList.remove('active');
+        });
+      });
+    })();
+
+    /****************
+     * FAQ TOGGLE   *
+     ****************/
+    (function(){
+      const items = document.querySelectorAll('.faq-item');
+      items.forEach(it => {
+        const q = it.querySelector('.faq-q');
+        const a = it.querySelector('.faq-a');
+        q.addEventListener('click', () => {
+          const open = q.getAttribute('data-open') === 'true';
+          if(open){
+            a.style.maxHeight = null;
+            q.setAttribute('data-open','false');
+            q.querySelector('i').classList.remove('rotated');
+          } else {
+            // close others
+            document.querySelectorAll('.faq-a').forEach(x=>{x.style.maxHeight=null; x.previousElementSibling && x.previousElementSibling.setAttribute('data-open','false')});
+            a.style.maxHeight = a.scrollHeight + "px";
+            q.setAttribute('data-open','true');
+            q.querySelector('i').classList.add('rotated');
+          }
+        });
+      });
+    })();
+
+    /************************
+     * TESTIMONIALS CONTROL *
+     ************************/
+    (function(){
+      const prev = document.getElementById('tprev');
+      const next = document.getElementById('tnext');
+      const items = document.querySelectorAll('.testimonial');
+      let idx = 0;
+      function show(i){
+        items.forEach((it, n) => it.classList.toggle('active', n===i));
+      }
+      prev.addEventListener('click', ()=> { idx = (idx-1+items.length)%items.length; show(idx);});
+      next.addEventListener('click', ()=> { idx = (idx+1)%items.length; show(idx);});
+      // auto rotate
+      setInterval(()=>{ idx=(idx+1)%items.length; show(idx); }, 8000);
+    })();
+
+    /***********************
+     * ASSISTANT INTERFACE *
+     ***********************/
+    (function(){
+      const icon = document.getElementById('assist-icon');
+      const box = document.getElementById('assist-box');
+      const closeBtn = document.getElementById('assist-close');
+      const body = document.getElementById('assistBody');
+      const input = document.getElementById('assist-input');
+      const send = document.getElementById('assist-send');
+
+      function appendMsg(text, who='bot'){
+        const el = document.createElement('div');
+        el.className = 'msg ' + (who==='bot' ? 'bot' : 'user');
+        el.textContent = text;
+        body.appendChild(el);
+        body.scrollTop = body.scrollHeight;
+      }
+
+      // open/close
+      icon.addEventListener('click', () => {
+        box.classList.toggle('hidden');
+        box.setAttribute('aria-hidden', box.classList.contains('hidden') ? 'true' : 'false');
+      });
+      closeBtn.addEventListener('click', ()=>{ box.classList.add('hidden'); box.setAttribute('aria-hidden','true'); });
+
+      // quick option buttons (delegation)
+      body.addEventListener('click', (e) => {
+        if(e.target.matches('.assist-yes')) {
+          appendMsg('Quero ver os planos', 'user');
+          showPlans();
+        }
+        if(e.target.matches('.assist-no')) {
+          appendMsg('Preciso de instalação / suporte', 'user');
+          appendMsg('Claro! Deseja que eu envie instruções passo a passo ou falar com o suporte via WhatsApp?', 'bot');
+          showOptionsYesNo();
+        }
+      });
+
+      // send input
+      send.addEventListener('click', () => {
+        const txt = input.value.trim();
+        if(!txt) return;
+        appendMsg(txt, 'user');
+        input.value = '';
+        handleMessage(txt);
+      });
+      input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ send.click(); }});
+
+      function showOptionsYesNo(){
+        const div = document.createElement('div');
+        div.className = 'assist-options';
+        div.innerHTML = '<button class="assist-yes btn" data-action="instalacao">Enviar instruções</button><button class="assist-no btn assist-no" data-action="whatsapp">Falar com suporte</button>';
+        body.appendChild(div);
+        body.scrollTop = body.scrollHeight;
+      }
+
+      function showPlans(){
+        appendMsg('Temos 3 planos: Individual R$30/mês, Duplo R$50/mês e Revendedor R$80/mês. Quer que eu gere o link de pagamento ou falar com o suporte?', 'bot');
+        showOptionsYesNo();
+      }
+
+      function handleMessage(msg){
+        const text = msg.toLowerCase();
+        if(text.includes('plano') || text.includes('assinar') || text.includes('preço')){
+          appendMsg('Ótimo! Posso enviar as opções de pagamento ou conectar você ao suporte. Deseja o link de pagamento?', 'bot');
+          showOptionsYesNo();
+        } else if(text.includes('instal') || text.includes('configur')){
+          appendMsg('Vou enviar as instruções resumidas: 1) Instale OpenVPN/WireGuard 2) Importe o perfil 3) Ative kill-switch se disponível. Quer que eu envie o passo a passo por WhatsApp?', 'bot');
+          showOptionsYesNo();
+        } else if(text.includes('whatsapp') || text.includes('suporte')){
+          openWhatsAppChat();
+        } else {
+          appendMsg('Desculpe, não entendi 100%. Quer que eu conecte você com o suporte no WhatsApp?', 'bot');
+          showOptionsYesNo();
+        }
+      }
+
+      // Quick action: open whatsapp with message
+      function openWhatsAppChat() {
+        const base = 'https://wa.me/' + (typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : '');
+        const msg = encodeURIComponent('Olá, preciso de suporte para VPN Turbo (quero ajuda).');
+        const url = base + '?text=' + msg;
+        appendMsg('Abrindo WhatsApp...', 'bot');
+        window.open(url, '_blank');
+      }
+
+      // Listen for assist-footer buttons for "Sim/Não" actions added dynamically
+      document.body.addEventListener('click', (e) => {
+        if(e.target.matches('.assist-yes') && e.target.dataset.action === 'planos'){ showPlans(); }
+        if(e.target.matches('.assist-yes') && e.target.dataset.action === 'instalacao'){
+          appendMsg('Vou enviar o passo a passo para seu WhatsApp. Abra o chat para continuar.', 'bot'); openWhatsAppChat();
+        }
+        if(e.target.matches('.assist-no') && e.target.dataset.action === 'whatsapp'){ openWhatsAppChat(); }
+      });
+
+    })();
+
+    /**********************
+     * LINKS 'ASSINAR'    *
+     **********************/
+    (function(){
+      document.querySelectorAll('[data-plan]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const plan = e.currentTarget.getAttribute('data-plan');
+          // enviar mensagem pronta no whatsapp com o plano
+          const msg = encodeURIComponent("Olá, quero assinar o plano: " + plan + ". Como procedo?");
+          const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg;
+          window.open(url,'_blank');
+        });
+      });
+      // CTA principal
+      document.getElementById('cta-join').addEventListener('click', (e)=> {
+        // scroll to planos (natural)
+      });
+    })();
+
+    /***********************
+     * PEQUENAS MELHORIAS   *
+     ***********************/
+    // Close mobile nav when clicking link
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('click', ()=> {
+        const nav = document.getElementById('main-nav');
+        if(window.innerWidth <= 720){
+          nav.style = '';
+        }
+      });
+    });
+
+    // Smooth reveal for some cards on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.gallery .card').forEach((el,i)=>{
+        el.style.opacity = 0; el.style.transform = 'translateY(20px)';
+        setTimeout(()=>{ el.style.transition = 'opacity .6s,transform .6s'; el.style.opacity = 1; el.style.transform = 'none'; }, 200 + i*160);
+      });
+    });
+
+  </script>
+</body>
+</html>
