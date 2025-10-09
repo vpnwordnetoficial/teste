@@ -110,10 +110,36 @@ footer a {color:#1e90ff;}
 
 /* Animações */
 @keyframes fadeIn {0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);}}
+  
+  
+  
+  /* Hero padrão (PC / Desktop) */
+.hero {
+  background: url('https://i.ibb.co/B5FJ09FT/what-is-a-vpn.jpg') no-repeat center center/cover;
+  min-height:95vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  padding:0 20px;
+}
+
+/* Hero para dispositivos móveis */
+@media (max-width:768px) {
+  .hero {
+    background: url('https://i.ibb.co/hJKD1RRM/vpn-no-celular.png') no-repeat center center/cover;
+    min-height:75vh;
+  }
+}
+
+  
+  
+  
 </style>
 </head>
 <body>
-
 <!-- Header -->
 <header>
     <div class="logo">VPN Word Net</div>
@@ -144,6 +170,7 @@ footer a {color:#1e90ff;}
         </div>
     </div>
 </section>
+
 
 <!-- Planos -->
 <section id="planos">
