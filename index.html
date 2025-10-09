@@ -5,79 +5,107 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VPN Word Net — Internet Ilimitada & VPN Premium</title>
 <style>
-/* Reset e básico */
-* {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-body {background-color:#0d0d0d; color:#fff; line-height:1.6; scroll-behavior:smooth;}
+/* Reset */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+body {background:#0d0d0d; color:#fff; scroll-behavior:smooth; line-height:1.6;}
 a {text-decoration:none; color:inherit;}
 
 /* Header */
-header {position:fixed; top:0; left:0; width:100%; background:rgba(0,0,0,0.95); z-index:1000; padding:15px 30px; display:flex; justify-content:space-between; align-items:center;}
-header .logo {font-size:1.5rem; font-weight:bold; color:#1e90ff;}
-header nav ul {list-style:none; display:flex; gap:20px;}
+header {
+  position:fixed; top:0; left:0; width:100%;
+  background:rgba(0,0,0,0.9); z-index:1000;
+  padding:15px 30px; display:flex; justify-content:space-between; align-items:center;
+  transition:0.3s;
+}
+header.scrolled {background:rgba(30,30,30,0.95); box-shadow:0 2px 15px rgba(0,0,0,0.3);}
+header .logo {font-size:1.7rem; font-weight:bold; color:#1e90ff; letter-spacing:1px;}
+header nav ul {list-style:none; display:flex; gap:25px;}
 header nav ul li a {color:#fff; transition:0.3s;}
-header nav ul li a:hover {color:#1e90ff;}
+header nav ul li a:hover, header nav ul li a.active {color:#1e90ff; font-weight:bold;}
 .menu-toggle {display:none; flex-direction:column; cursor:pointer;}
-.menu-toggle span {height:3px; width:25px; background:#fff; margin-bottom:5px; border-radius:3px;}
+.menu-toggle span {height:3px; width:28px; background:#fff; margin-bottom:5px; border-radius:3px;}
 
 /* Hero */
-.hero {background:url('https://source.unsplash.com/1600x900/?technology,vpn') no-repeat center center/cover; min-height:90vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; position:relative; padding:0 20px;}
-.hero::after {content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:0;}
+.hero {
+  background:url('https://source.unsplash.com/1600x900/?vpn,technology') no-repeat center center/cover;
+  min-height:95vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; position:relative; padding:0 20px;
+}
+.hero::after {content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.65); z-index:0;}
 .hero-content {position:relative; z-index:1; animation:fadeIn 1.5s ease-in-out;}
-.hero h1 {font-size:2.8rem; margin-bottom:15px;}
-.hero p {font-size:1.2rem; margin-bottom:25px;}
+.hero h1 {font-size:3rem; margin-bottom:15px; color:#00bfff; text-shadow:0 0 15px rgba(0,191,255,0.6);}
+.hero p {font-size:1.3rem; margin-bottom:30px; max-width:700px;}
 .hero-buttons {display:flex; gap:15px; flex-wrap:wrap; justify-content:center;}
-.hero-buttons a {color:#fff; background-color:#1e90ff; padding:12px 25px; border-radius:8px; transition:0.3s;}
-.hero-buttons a:hover {background-color:#0b65c2;}
+.hero-buttons a {
+  padding:14px 28px; border-radius:8px; font-weight:bold;
+  transition:0.3s; box-shadow:0 5px 15px rgba(0,191,255,0.4);
+}
+.hero-buttons a.ver-planos {background:linear-gradient(135deg,#1e90ff,#00bfff); color:#fff;}
+.hero-buttons a.ver-planos:hover {transform:translateY(-3px) scale(1.05); box-shadow:0 8px 20px rgba(0,191,255,0.6);}
+.hero-buttons a.whatsapp {background:#25D366; color:#fff;}
+.hero-buttons a.whatsapp:hover {transform:translateY(-3px) scale(1.05); box-shadow:0 8px 20px rgba(37,211,102,0.5);}
 
-/* Seções */
-section {padding:80px 20px;}
-h2 {text-align:center; font-size:2rem; margin-bottom:40px;}
+/* Sections */
+section {padding:100px 20px;}
+h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text-shadow:0 0 10px rgba(0,191,255,0.4);}
 
 /* Planos */
-.plan-cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
-.plan-card {background:#1a1a1a; border-radius:10px; padding:20px; transition:transform 0.3s, box-shadow 0.3s;}
-.plan-card:hover {transform:translateY(-5px); box-shadow:0 5px 15px rgba(30,144,255,0.5);}
-.plan-card h3 {margin-bottom:15px; font-size:1.5rem;}
-.plan-card p {margin-bottom:20px;}
-.plan-card a {display:inline-block; background:#1e90ff; color:#fff; padding:10px 20px; border-radius:6px; transition:0.3s;}
-.plan-card a:hover {background:#0b65c2;}
+.plan-cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px;}
+.plan-card {background:linear-gradient(145deg,#1a1a1a,#222); border-radius:15px; padding:30px; text-align:center; transition:0.4s; box-shadow:0 8px 20px rgba(0,0,0,0.4);}
+.plan-card:hover {transform:translateY(-8px) scale(1.03); box-shadow:0 15px 30px rgba(0,191,255,0.6);}
+.plan-card h3 {margin-bottom:15px; font-size:1.7rem; color:#1e90ff;}
+.plan-card p {margin-bottom:20px; font-size:1.1rem;}
+.plan-card a {display:inline-block; background:#1e90ff; color:#fff; padding:12px 25px; border-radius:8px; font-weight:bold; transition:0.3s;}
+.plan-card a:hover {background:#00bfff; transform:scale(1.05);}
 
 /* Galeria */
 .gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
-.gallery img {width:100%; border-radius:10px; transition:transform 0.3s;}
-.gallery img:hover {transform:scale(1.05);}
+.gallery img {width:100%; border-radius:15px; transition:0.4s; box-shadow:0 5px 15px rgba(0,0,0,0.4);}
+.gallery img:hover {transform:scale(1.08) rotate(1deg); box-shadow:0 10px 25px rgba(0,191,255,0.5);}
 
 /* FAQ */
-.faq-item {margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:15px;}
-.faq-item h3 {cursor:pointer; position:relative; padding-right:25px;}
-.faq-item h3::after {content:'+'; position:absolute; right:0; top:0;}
-.faq-item.active h3::after {content:'-';}
-.faq-item p {max-height:0; overflow:hidden; transition:max-height 0.3s ease;}
-.faq-item.active p {max-height:200px; margin-top:10px;}
+.faq-item {margin-bottom:20px; border-bottom:1px solid #333; padding-bottom:20px;}
+.faq-item h3 {cursor:pointer; position:relative; padding-right:25px; transition:0.3s;}
+.faq-item h3::after {content:'+'; position:absolute; right:0; top:0; color:#1e90ff; font-size:1.2rem;}
+.faq-item.active h3::after {content:'-'; color:#00bfff;}
+.faq-item p {max-height:0; overflow:hidden; transition:max-height 0.4s ease, margin-top 0.4s;}
+.faq-item.active p {max-height:300px; margin-top:10px;}
 
 /* Depoimentos */
-.testimonials {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
-.testimonial-card {background:#1a1a1a; padding:20px; border-radius:10px; transition:transform 0.3s;}
-.testimonial-card:hover {transform:translateY(-5px);}
-.testimonial-card p {font-style:italic; margin-bottom:10px;}
-.testimonial-card h4 {text-align:right; font-weight:bold;}
+.testimonials {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px;}
+.testimonial-card {background:#1a1a1a; padding:25px; border-radius:15px; transition:0.4s; box-shadow:0 8px 20px rgba(0,0,0,0.4);}
+.testimonial-card:hover {transform:translateY(-5px); background:#222; box-shadow:0 12px 25px rgba(0,191,255,0.5);}
+.testimonial-card p {font-style:italic; margin-bottom:15px;}
+.testimonial-card h4 {text-align:right; font-weight:bold; color:#1e90ff;}
+
+/* Suporte */
+#suporte a {display:inline-block; margin:5px 15px; padding:12px 25px; background:#1e90ff; border-radius:10px; font-weight:bold; transition:0.3s;}
+#suporte a:hover {background:#00bfff; transform:scale(1.05);}
 
 /* Footer */
-footer {text-align:center; padding:25px 20px; background:#000; color:#aaa; font-size:0.9rem;}
+footer {text-align:center; padding:30px 20px; background:#000; color:#aaa; font-size:0.95rem;}
 footer a {color:#1e90ff;}
 
 /* Responsividade */
 @media(max-width:1024px){
-    .hero h1 {font-size:2.5rem;}
-    .hero p {font-size:1.1rem;}
+  .hero h1 {font-size:2.5rem;}
+  .hero p {font-size:1.2rem;}
 }
-
 @media(max-width:768px){
-    header nav ul {display:none; flex-direction:column; background:#111; position:absolute; top:60px; right:30px; width:200px; padding:10px; border-radius:8px;}
-    header nav ul.active {display:flex;}
-    .menu-toggle {display:flex;}
-    .hero h1 {font-size:2rem;}
-    .hero p {font-size:1rem;}
+  header nav ul {display:none; flex-direction:column; background:#111; position:absolute; top:60px; right:30px; width:220px; padding:15px; border-radius:10px;}
+  header nav ul.active {display:flex;}
+  .menu-toggle {display:flex;}
+  .hero h1 {font-size:2rem;}
+  .hero p {font-size:1.1rem;}
+}
+@media(max-width:480px){
+  .hero {padding:0 15px; min-height:75vh;}
+  .hero h1 {font-size:1.8rem;}
+  .hero p {font-size:1rem;}
+  .hero-buttons {flex-direction:column; gap:12px;}
+  .gallery {grid-template-columns:1fr;}
+  .testimonials {grid-template-columns:1fr;}
+  .plan-card a {padding:12px 25px; font-size:1rem;}
 }
 
 /* Animações */
@@ -101,9 +129,7 @@ footer a {color:#1e90ff;}
         </ul>
     </nav>
     <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </div>
 </header>
 
@@ -113,9 +139,8 @@ footer a {color:#1e90ff;}
         <h1>VPN Word Net — Internet Ilimitada & VPN Premium</h1>
         <p>Conexões estáveis para streaming, jogos e revenda. Compatível com celulares, TV Box, roteadores e mais. Configuração rápida com suporte remoto.</p>
         <div class="hero-buttons">
-            <a href="#planos">Ver Planos</a>
-            <a href="#configurar">Como Configurar</a>
-            <a href="#suporte">Suporte</a>
+            <a href="#planos" class="ver-planos">Ver Planos</a>
+            <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp">WhatsApp</a>
         </div>
     </div>
 </section>
@@ -229,6 +254,28 @@ faqItems.forEach(item => {
     item.addEventListener('click', () => {
         item.parentElement.classList.toggle('active');
     });
+});
+
+// Scroll Header
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if(window.scrollY > 50) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+});
+
+// ScrollSpy Menu
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('header nav ul li a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if(window.scrollY >= sectionTop) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if(link.getAttribute('href') === `#${current}`) link.classList.add('active');
+  });
 });
 </script>
 
