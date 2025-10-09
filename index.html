@@ -63,7 +63,7 @@ header nav ul li a:hover, header nav ul li a.active {color:#1e90ff; font-weight:
 section {padding:100px 20px;}
 h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text-shadow:0 0 10px rgba(0,191,255,0.4);}
 
-/* ---------- PLANS GRID MODERNO ---------- */
+/* ---------- PLANS GRID MODERNO E CENTRALIZADO ---------- */
 .plans {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -79,6 +79,8 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   box-shadow: 0 12px 40px rgba(0,170,255,0.06);
   display: flex;
   flex-direction: column;
+  align-items: center; /* centraliza horizontalmente todos os elementos */
+  text-align: center;  /* centraliza o texto */
   gap: 14px;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   position: relative;
@@ -97,7 +99,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 .plan:hover::before {
-  opacity:0.12;
+  opacity:0.30;
   animation: rotateBG 8s linear infinite;
 }
 
@@ -108,7 +110,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 
 .plan .tag {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 6px 250px;
   border-radius: 999px;
   background: rgba(255,207,59,0.15);
   color: #ffcf3b;
@@ -139,6 +141,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   display: flex;
   flex-direction: column;
   gap: 8px;
+  align-items: center; /* centraliza os itens da lista */
 }
 
 .features li {
@@ -149,7 +152,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .features li::before {
   content:"\2713";
   position:absolute;
-  left:0;
+  left:-18px; /* ajusta o checkmark para ficar alinhado centralmente */
   top:0;
   color:#00d2ff;
   font-size: 0.95rem;
@@ -182,6 +185,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 /* Responsividade */
 @media(max-width:1024px){ .plans {grid-template-columns: repeat(2,1fr);} }
 @media(max-width:768px){ .plans {grid-template-columns: 1fr;} }
+
 
 /* Resto do CSS permanece igual */
 
