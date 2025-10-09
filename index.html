@@ -86,6 +86,66 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .testimonial-card:hover {transform:translateY(-5px); background:#222; box-shadow:0 12px 25px rgba(0,191,255,0.5);}
 .testimonial-card p {font-style:italic; margin-bottom:15px;}
 .testimonial-card h4 {text-align:right; font-weight:bold; color:#1e90ff;}
+  
+  /* TUTORIAIS */
+.tutorial-section {
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #0b132b, #1c2541);
+  color: #fff;
+  text-align: center;
+}
+
+.tutorial-section h2 {
+  font-size: 2.2em;
+  color: #00b4d8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.tutorial-desc {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.tutorial-videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+.video-card {
+  background: #1b263b;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 180, 216, 0.4);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0,180,216,0.7);
+}
+
+.video-card iframe {
+  width: 100%;
+  height: 220px;
+  border: none;
+  border-bottom: 3px solid #00b4d8;
+}
+
+.video-card h4 {
+  padding: 15px;
+  margin: 0;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(0,180,216,0.1);
+}
 
 /* Suporte */
 #suporte a {display:inline-block; margin:5px 15px; padding:12px 25px; background:#1e90ff; border-radius:10px; font-weight:bold; transition:0.3s;}
@@ -157,12 +217,13 @@ footer a {color:#1e90ff;}
     <div class="logo">VPN Word Net</div>
     <nav>
         <ul id="nav-menu">
-            <li><a href="#hero" class="active">Início</a></li>
-            <li><a href="#planos">Planos</a></li>
-            <li><a href="#galeria">Galeria</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#depoimentos">Depoimentos</a></li>
-            <li><a href="#suporte">Suporte</a></li>
+    <li><a href="#hero" class="active">Início</a></li>
+    <li><a href="#planos">Planos</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#tutoriais">Tutoriais</a></li>
+    <li><a href="#suporte">Suporte</a></li>
 
             <!-- Ícones sociais MOBILE -->
 <li class="social-icons mobile-only">
@@ -270,6 +331,54 @@ footer a {color:#1e90ff;}
             <h4>— Carlos P.</h4>
         </div>
     </div>
+</section>
+  
+  <!-- Tutoriais em Vídeo -->
+<section id="tutoriais" class="tutorial-section">
+  <h2>Tutoriais em Vídeo</h2>
+  <p class="tutorial-desc">
+    Assista aos tutoriais e aprenda como instalar, configurar e aproveitar ao máximo sua VPN Word Net em diferentes dispositivos.
+  </p>
+
+  <div class="tutorial-videos">
+  <!-- Tutorial 1 -->
+  <div class="video-card">
+    <iframe 
+      src="https://www.youtube.com/embed/S14lM1VnLAU"
+      title="Tutorial de Instalação no Celular"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+    <h4>Tutorial de Instalação no Celular</h4>
+  </div>
+</div>
+
+
+    <!-- Tutorial 2 -->
+    <div class="video-card">
+      <iframe 
+        src="https://www.youtube.com/watch?v=ZN6ez2nMxdQ" 
+        title="Configuração em TV Box" 
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      <h4>Configuração em TV Box</h4>
+    </div>
+
+    <!-- Tutorial 3 -->
+    <div class="video-card">
+      <iframe 
+        src="https://www.youtube.com/watch?v=7Hva85G7RL4" 
+        title="Como usar em PC e Notebook" 
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      <h4>Como usar em PC e Notebook</h4>
+    </div>
+  </div>
 </section>
 
 <!-- Suporte -->
