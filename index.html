@@ -101,9 +101,12 @@ footer a {color:#1e90ff;}
   .hero p {font-size:1.2rem;}
 }
 @media(max-width:768px){
-  header nav ul {display:none; flex-direction:column; background:#111; position:absolute; top:60px; right:30px; width:220px; padding:15px; border-radius:10px;}
-  header nav ul.active {display:flex;}
   .menu-toggle {display:flex;}
+  header nav ul {
+    position:fixed; top:0; left:-250px; width:250px; height:100%; flex-direction:column; background:#111;
+    padding:60px 20px; gap:20px; transition:0.4s; z-index:999; box-shadow:5px 0 20px rgba(0,0,0,0.5);
+  }
+  header nav ul.active {left:0;}
   .hero h1 {font-size:2rem;}
   .hero p {font-size:1.1rem;}
   .hero {height:100vh; min-height:100vh;}
@@ -136,6 +139,9 @@ footer a {color:#1e90ff;}
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#depoimentos">Depoimentos</a></li>
             <li><a href="#suporte">Suporte</a></li>
+            <li><a href="https://wa.me/5511999999999" target="_blank" class="menu-whatsapp">
+                <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" width="25">
+            </a></li>
         </ul>
     </nav>
     <div class="menu-toggle" id="menu-toggle">
@@ -242,6 +248,11 @@ footer a {color:#1e90ff;}
 const toggle = document.getElementById('menu-toggle');
 const menu = document.getElementById('nav-menu');
 toggle.addEventListener('click', () => { menu.classList.toggle('active'); });
+
+// Fecha menu ao clicar em link
+document.querySelectorAll('#nav-menu li a').forEach(link => {
+  link.addEventListener('click', () => { menu.classList.remove('active'); });
+});
 
 // FAQ Toggle
 const faqItems = document.querySelectorAll('.faq-item h3');
