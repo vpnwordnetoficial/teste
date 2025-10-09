@@ -111,21 +111,20 @@ footer a {color:#1e90ff;}
   .hero p {font-size:1.1rem;}
   .hero {height:100vh; min-height:100vh;}
 
-  /* Ícones sociais MOBILE */
+  /* Ícones sociais como botões dentro do menu móvel */
   .social-icons {display:flex; flex-direction:column; gap:15px; margin-top:20px;}
   .social-icons a {
     display:flex; align-items:center; justify-content:center;
-    padding:12px; background:linear-gradient(135deg,#1e90ff,#00bfff);
-    color:#fff; border-radius:8px; font-weight:bold;
-    transition:0.3s; box-shadow:0 5px 15px rgba(0,191,255,0.4);
-    text-align:center;
+    padding:12px; color:#fff; border-radius:8px; font-weight:bold;
+    transition:0.3s; text-align:center;
   }
   .social-icons a img {width:20px; height:20px; margin-right:10px;}
+  .social-icons a.whatsapp {background:#25D366;}
+  .social-icons a.telegram {background:#0088cc;}
+  .social-icons a.youtube {background:#FF0000;}
+  .social-icons a.instagram {background:linear-gradient(45deg,#feda75,#d62976,#8134af,#515bd4);}
+  .social-icons a.facebook {background:#1877F2;}
   .social-icons a:hover {transform:translateY(-3px) scale(1.05); box-shadow:0 8px 20px rgba(0,191,255,0.6);}
-}
-@media(min-width:769px){
-  /* Esconde ícones sociais no desktop */
-  .social-icons {display:none !important;}
 }
 @media(max-width:480px){
   .hero {padding:0 15px;}
@@ -139,6 +138,16 @@ footer a {color:#1e90ff;}
 
 /* Animações */
 @keyframes fadeIn {0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);}}
+
+  
+  /* Esconde ícones sociais no desktop */
+.mobile-only {display:none;}
+
+@media(max-width:768px){
+  .mobile-only {display:flex; flex-direction:column; gap:15px; margin-top:20px;}
+}
+  
+
 </style>
 </head>
 <body>
@@ -156,23 +165,23 @@ footer a {color:#1e90ff;}
             <li><a href="#suporte">Suporte</a></li>
 
             <!-- Ícones sociais MOBILE -->
-            <li class="social-icons">
-                <a href="https://wa.me/5511999999999" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp"> WhatsApp
-                </a>
-                <a href="https://t.me/seuusuario" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram"> Telegram
-                </a>
-                <a href="https://youtube.com/seucanal" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"> YouTube
-                </a>
-                <a href="https://instagram.com/seuperfil" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"> Instagram
-                </a>
-                <a href="https://facebook.com/seuperfil" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"> Facebook
-                </a>
-            </li>
+<li class="social-icons mobile-only">
+    <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp"> WhatsApp
+    </a>
+    <a href="https://t.me/seuusuario" target="_blank" class="telegram">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram"> Telegram
+    </a>
+    <a href="https://youtube.com/seucanal" target="_blank" class="youtube">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"> YouTube
+    </a>
+    <a href="https://instagram.com/seuperfil" target="_blank" class="instagram">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"> Instagram
+    </a>
+    <a href="https://facebook.com/seuperfil" target="_blank" class="facebook">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"> Facebook
+    </a>
+</li>
         </ul>
     </nav>
     <div class="menu-toggle" id="menu-toggle">
@@ -275,23 +284,20 @@ footer a {color:#1e90ff;}
 </footer>
 
 <script>
-// Menu Toggle
-const toggle = document.getElementById('menu-toggle');
-const menu = document.getElementById('nav-menu');
-toggle.addEventListener('click', () => { menu.classList.toggle('active'); });
+// Menu toggle
+const menuToggle = document.getElementById('menu-toggle');
+const navMenu = document.getElementById('nav-menu');
 
-// Fecha menu ao clicar em link
-document.querySelectorAll('#nav-menu li a').forEach(link => {
-  link.addEventListener('click', () => { menu.classList.remove('active'); });
+menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
 });
-  
-  // Fechar menu clicando fora
+
+// Fechar menu clicando fora
 document.addEventListener('click', (e) => {
     if(!navMenu.contains(e.target) && !menuToggle.contains(e.target)){
         navMenu.classList.remove('active');
     }
 });
-  
 
 // FAQ Toggle
 const faqItems = document.querySelectorAll('.faq-item h3');
