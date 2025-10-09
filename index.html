@@ -284,6 +284,14 @@ toggle.addEventListener('click', () => { menu.classList.toggle('active'); });
 document.querySelectorAll('#nav-menu li a').forEach(link => {
   link.addEventListener('click', () => { menu.classList.remove('active'); });
 });
+  
+  // Fechar menu clicando fora
+document.addEventListener('click', (e) => {
+    if(!navMenu.contains(e.target) && !menuToggle.contains(e.target)){
+        navMenu.classList.remove('active');
+    }
+});
+  
 
 // FAQ Toggle
 const faqItems = document.querySelectorAll('.faq-item h3');
@@ -303,3 +311,4 @@ window.addEventListener('scroll', () => {
 
 </body>
 </html>
+
