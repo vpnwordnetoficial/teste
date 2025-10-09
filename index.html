@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VPN Word Net — Internet Ilimitada & VPN Premium</title>
+<meta name="description" content="VPN Word Net — Internet ilimitada e estável para streaming, jogos e revenda. Conecte-se com segurança em celular, TV Box, PC e roteadores. Suporte rápido e fácil.">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3208/3208707.png">
+
 <style>
 /* Reset */
 * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
@@ -29,13 +32,8 @@ header nav ul li a:hover, header nav ul li a.active {color:#1e90ff; font-weight:
 .hero {
   background: url('https://i.ibb.co/B5FJ09FT/what-is-a-vpn.jpg') no-repeat center center/cover;
   min-height:95vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position:relative;
-  padding:0 20px;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; position:relative; padding:0 20px;
 }
 .hero::after {
   content:""; position:absolute; top:0; left:0; width:100%; height:100%;
@@ -51,7 +49,11 @@ header nav ul li a:hover, header nav ul li a.active {color:#1e90ff; font-weight:
 }
 .hero-buttons a.ver-planos {background:linear-gradient(135deg,#1e90ff,#00bfff); color:#fff;}
 .hero-buttons a.ver-planos:hover {transform:translateY(-3px) scale(1.05); box-shadow:0 8px 20px rgba(0,191,255,0.6);}
-.hero-buttons a.whatsapp {background:#25D366; color:#fff;}
+.hero-buttons a.whatsapp {background:#25D366; color:#fff; display:inline-flex; align-items:center; gap:8px;}
+.hero-buttons a.whatsapp::before {
+  content: url('https://cdn-icons-png.flaticon.com/512/124/124034.png');
+  width: 20px; height: 20px; transform: scale(0.9);
+}
 .hero-buttons a.whatsapp:hover {transform:translateY(-3px) scale(1.05); box-shadow:0 8px 20px rgba(37,211,102,0.5);}
 
 /* Sections */
@@ -86,80 +88,41 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .testimonial-card:hover {transform:translateY(-5px); background:#222; box-shadow:0 12px 25px rgba(0,191,255,0.5);}
 .testimonial-card p {font-style:italic; margin-bottom:15px;}
 .testimonial-card h4 {text-align:right; font-weight:bold; color:#1e90ff;}
-  
-  /* TUTORIAIS */
+
+/* TUTORIAIS */
 .tutorial-section {
   padding: 80px 20px;
   background: linear-gradient(180deg, #0b132b, #1c2541);
   color: #fff;
   text-align: center;
 }
-
-.tutorial-section h2 {
-  font-size: 2.2em;
-  color: #00b4d8;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
-}
-
-.tutorial-desc {
-  max-width: 700px;
-  margin: 0 auto 40px;
-  font-size: 1.1em;
-  line-height: 1.6;
-  color: #ccc;
-}
-
-.tutorial-videos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
-  justify-content: center;
-}
-
-.video-card {
-  background: #1b263b;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0, 180, 216, 0.4);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.video-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(0,180,216,0.7);
-}
-
-.video-card iframe {
-  width: 100%;
-  height: 220px;
-  border: none;
-  border-bottom: 3px solid #00b4d8;
-}
-
-.video-card h4 {
-  padding: 15px;
-  margin: 0;
-  font-size: 1.05em;
-  font-weight: 500;
-  color: #fff;
-  background: rgba(0,180,216,0.1);
-}
+.tutorial-section h2 {font-size: 2.2em; color: #00b4d8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;}
+.tutorial-desc {max-width: 700px; margin: 0 auto 40px; font-size: 1.1em; line-height: 1.6; color: #ccc;}
+.tutorial-videos {display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; justify-content: center;}
+.video-card {background: #1b263b; border-radius: 20px; box-shadow: 0 0 15px rgba(0, 180, 216, 0.4); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;}
+.video-card:hover {transform: translateY(-5px); box-shadow: 0 0 25px rgba(0,180,216,0.7);}
+.video-card iframe {width: 100%; height: 220px; border: none; border-bottom: 3px solid #00b4d8;}
+.video-card h4 {padding: 15px; margin: 0; font-size: 1.05em; font-weight: 500; color: #fff; background: rgba(0,180,216,0.1);}
 
 /* Suporte */
 #suporte a {display:inline-block; margin:5px 15px; padding:12px 25px; background:#1e90ff; border-radius:10px; font-weight:bold; transition:0.3s;}
 #suporte a:hover {background:#00bfff; transform:scale(1.05);}
+
+/* WhatsApp flutuante */
+.whatsapp-float {
+  position: fixed; bottom: 25px; right: 25px;
+  background: #25D366; padding: 15px;
+  border-radius: 50%; box-shadow: 0 0 20px rgba(37,211,102,0.6);
+  transition: 0.3s; z-index: 9999;
+}
+.whatsapp-float:hover {transform: scale(1.1); box-shadow: 0 0 30px rgba(37,211,102,0.8);}
+.whatsapp-float img {width: 28px; height: 28px;}
 
 /* Footer */
 footer {text-align:center; padding:30px 20px; background:#000; color:#aaa; font-size:0.95rem;}
 footer a {color:#1e90ff;}
 
 /* Responsividade */
-@media(max-width:1024px){
-  .hero h1 {font-size:2.5rem;}
-  .hero p {font-size:1.2rem;}
-}
 @media(max-width:768px){
   .menu-toggle {display:flex;}
   header nav ul {
@@ -170,212 +133,137 @@ footer a {color:#1e90ff;}
   .hero h1 {font-size:2rem;}
   .hero p {font-size:1.1rem;}
   .hero {height:100vh; min-height:100vh;}
-
-  /* Ícones sociais como botões dentro do menu móvel */
-  .social-icons {display:flex; flex-direction:column; gap:15px; margin-top:20px;}
-  .social-icons a {
-    display:flex; align-items:center; justify-content:center;
-    padding:12px; color:#fff; border-radius:8px; font-weight:bold;
-    transition:0.3s; text-align:center;
-  }
-  .social-icons a img {width:20px; height:20px; margin-right:10px;}
-  .social-icons a.whatsapp {background:#25D366;}
-  .social-icons a.telegram {background:#0088cc;}
-  .social-icons a.youtube {background:#FF0000;}
-  .social-icons a.instagram {background:linear-gradient(45deg,#feda75,#d62976,#8134af,#515bd4);}
-  .social-icons a.facebook {background:#1877F2;}
-  .social-icons a:hover {transform:translateY(-3px) scale(1.05); box-shadow:0 8px 20px rgba(0,191,255,0.6);}
 }
 @media(max-width:480px){
   .hero {padding:0 15px;}
   .hero h1 {font-size:1.8rem;}
   .hero p {font-size:1rem;}
   .hero-buttons {flex-direction:column; gap:12px;}
-  .gallery {grid-template-columns:1fr;}
-  .testimonials {grid-template-columns:1fr;}
-  .plan-card a {padding:12px 25px; font-size:1rem;}
 }
 
-/* Animações */
+/* Animação */
 @keyframes fadeIn {0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);}}
-
-  
-  /* Esconde ícones sociais no desktop */
-.mobile-only {display:none;}
-
-@media(max-width:768px){
-  .mobile-only {display:flex; flex-direction:column; gap:15px; margin-top:20px;}
-}
-  
-
 </style>
 </head>
 <body>
 
 <!-- Header -->
 <header>
-    <div class="logo">VPN Word Net</div>
-    <nav>
-        <ul id="nav-menu">
-    <li><a href="#hero" class="active">Início</a></li>
-    <li><a href="#planos">Planos</a></li>
-    <li><a href="#galeria">Galeria</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#depoimentos">Depoimentos</a></li>
-    <li><a href="#tutoriais">Tutoriais</a></li>
-    <li><a href="#suporte">Suporte</a></li>
-
-            <!-- Ícones sociais MOBILE -->
-<li class="social-icons mobile-only">
-    <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp">
-        <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp"> WhatsApp
-    </a>
-    <a href="https://t.me/seuusuario" target="_blank" class="telegram">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram"> Telegram
-    </a>
-    <a href="https://youtube.com/seucanal" target="_blank" class="youtube">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"> YouTube
-    </a>
-    <a href="https://instagram.com/seuperfil" target="_blank" class="instagram">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"> Instagram
-    </a>
-    <a href="https://facebook.com/seuperfil" target="_blank" class="facebook">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"> Facebook
-    </a>
-</li>
-        </ul>
-    </nav>
-    <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+  <div class="logo">VPN Word Net</div>
+  <nav>
+    <ul id="nav-menu">
+      <li><a href="#hero" class="active">Início</a></li>
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#tutoriais">Tutoriais</a></li>
+      <li><a href="#suporte">Suporte</a></li>
+    </ul>
+  </nav>
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span><span></span><span></span>
+  </div>
 </header>
 
 <!-- Hero -->
 <section id="hero" class="hero">
-    <div class="hero-content">
-        <h1>VPN Word Net — Internet Ilimitada & VPN Premium</h1>
-        <p>Conexões estáveis para streaming, jogos e revenda. Compatível com celulares, TV Box, roteadores e mais. Configuração rápida com suporte remoto.</p>
-        <div class="hero-buttons">
-            <a href="#planos" class="ver-planos">Ver Planos</a>
-            <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp">WhatsApp</a>
-        </div>
+  <div class="hero-content">
+    <h1>VPN Word Net — Internet Ilimitada & VPN Premium</h1>
+    <p>Conexões estáveis para streaming, jogos e revenda. Compatível com celulares, TV Box, roteadores e mais. Configuração rápida com suporte remoto.</p>
+    <div class="hero-buttons">
+      <a href="#planos" class="ver-planos">Ver Planos</a>
+      <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp">WhatsApp</a>
     </div>
+  </div>
 </section>
 
 <!-- Planos -->
 <section id="planos">
-    <h2>Planos & Dispositivos</h2>
-    <div class="plan-cards">
-        <div class="plan-card">
-            <h3>Plano Básico</h3>
-            <p>1 Tela - Celular / PC</p>
-            <a href="#">Assinar</a>
-        </div>
-        <div class="plan-card">
-            <h3>Plano Avançado</h3>
-            <p>2 Telas - TV Box / PC</p>
-            <a href="#">Assinar</a>
-        </div>
-        <div class="plan-card">
-            <h3>Plano Premium</h3>
-            <p>4 Telas - Todos os Dispositivos</p>
-            <a href="#">Assinar</a>
-        </div>
+  <h2>Planos & Dispositivos</h2>
+  <div class="plan-cards">
+    <div class="plan-card">
+      <h3>Plano Básico</h3>
+      <p>1 Tela - Celular / PC</p>
+      <a href="#">Assinar</a>
     </div>
+    <div class="plan-card">
+      <h3>Plano Avançado</h3>
+      <p>2 Telas - TV Box / PC</p>
+      <a href="#">Assinar</a>
+    </div>
+    <div class="plan-card">
+      <h3>Plano Premium</h3>
+      <p>4 Telas - Todos os Dispositivos</p>
+      <a href="#">Assinar</a>
+    </div>
+  </div>
 </section>
 
 <!-- Galeria -->
 <section id="galeria">
-    <h2>Galeria</h2>
-    <div class="gallery">
-        <img src="https://source.unsplash.com/400x300/?vpn,technology" alt="Screenshot 1">
-        <img src="https://source.unsplash.com/400x300/?internet,connection" alt="Screenshot 2">
-        <img src="https://source.unsplash.com/400x300/?network,security" alt="Screenshot 3">
-        <img src="https://source.unsplash.com/400x300/?streaming,tv" alt="Screenshot 4">
-    </div>
+  <h2>Galeria</h2>
+  <div class="gallery">
+    <img src="https://source.unsplash.com/400x300/?vpn,technology" alt="Tela de VPN ativa">
+    <img src="https://source.unsplash.com/400x300/?internet,connection" alt="Conexão de internet segura">
+    <img src="https://source.unsplash.com/400x300/?network,security" alt="Rede privada virtual protegida">
+    <img src="https://source.unsplash.com/400x300/?streaming,tv" alt="Streaming rápido e estável">
+  </div>
 </section>
 
 <!-- FAQ -->
 <section id="faq">
-    <h2>FAQ</h2>
-    <div class="faq-item">
-        <h3>Como instalo no celular?</h3>
-        <p>Baixe o aplicativo Word Net, insira seu login e conecte-se.</p>
-    </div>
-    <div class="faq-item">
-        <h3>Como configurar TV Box?</h3>
-        <p>Instale via APK, configure o servidor VPN e conecte-se.</p>
-    </div>
-    <div class="faq-item">
-        <h3>Roteadores compatíveis?</h3>
-        <p>OpenVPN ou PPTP funcionam perfeitamente.</p>
-    </div>
+  <h2>FAQ</h2>
+  <div class="faq-item">
+    <h3>Como instalo no celular?</h3>
+    <p>Baixe o aplicativo Word Net, insira seu login e conecte-se.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Como configurar TV Box?</h3>
+    <p>Instale via APK, configure o servidor VPN e conecte-se.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Roteadores compatíveis?</h3>
+    <p>OpenVPN ou PPTP funcionam perfeitamente.</p>
+  </div>
 </section>
 
 <!-- Depoimentos -->
 <section id="depoimentos">
-    <h2>Depoimentos</h2>
-    <div class="testimonials">
-        <div class="testimonial-card">
-            <p>"A melhor VPN que já usei, estável e rápida!"</p>
-            <h4>— João S.</h4>
-        </div>
-        <div class="testimonial-card">
-            <p>"Perfeita para streaming sem travar em TV Box."</p>
-            <h4>— Maria F.</h4>
-        </div>
-        <div class="testimonial-card">
-            <p>"Suporte rápido e eficiente. Recomendo!"</p>
-            <h4>— Carlos P.</h4>
-        </div>
+  <h2>Depoimentos</h2>
+  <div class="testimonials">
+    <div class="testimonial-card">
+      <p>"A melhor VPN que já usei, estável e rápida!"</p>
+      <h4>— João S.</h4>
     </div>
+    <div class="testimonial-card">
+      <p>"Perfeita para streaming sem travar em TV Box."</p>
+      <h4>— Maria F.</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>"Suporte rápido e eficiente. Recomendo!"</p>
+      <h4>— Carlos P.</h4>
+    </div>
+  </div>
 </section>
-  
-  <!-- Tutoriais em Vídeo -->
+
+<!-- Tutoriais -->
 <section id="tutoriais" class="tutorial-section">
   <h2>Tutoriais em Vídeo</h2>
   <p class="tutorial-desc">
     Assista aos tutoriais e aprenda como instalar, configurar e aproveitar ao máximo sua VPN Word Net em diferentes dispositivos.
   </p>
-
   <div class="tutorial-videos">
-  <!-- Tutorial 1 -->
-  <div class="video-card">
-    <iframe 
-      src="https://www.youtube.com/embed/S14lM1VnLAU"
-      title="Tutorial de Instalação no Celular"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-    <h4>Tutorial de Instalação no Celular</h4>
-  </div>
-</div>
-
-
-    <!-- Tutorial 2 -->
     <div class="video-card">
-      <iframe 
-        src="https://www.youtube.com/watch?v=ZN6ez2nMxdQ" 
-        title="Configuração em TV Box" 
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://www.youtube.com/embed/S14lM1VnLAU" title="Tutorial de Instalação no Celular" allowfullscreen></iframe>
+      <h4>Tutorial de Instalação no Celular</h4>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/ZN6ez2nMxdQ" title="Configuração em TV Box" allowfullscreen></iframe>
       <h4>Configuração em TV Box</h4>
     </div>
-
-    <!-- Tutorial 3 -->
     <div class="video-card">
-      <iframe 
-        src="https://www.youtube.com/watch?v=7Hva85G7RL4" 
-        title="Como usar em PC e Notebook" 
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://www.youtube.com/embed/7Hva85G7RL4" title="Como usar em PC e Notebook" allowfullscreen></iframe>
       <h4>Como usar em PC e Notebook</h4>
     </div>
   </div>
@@ -383,52 +271,35 @@ footer a {color:#1e90ff;}
 
 <!-- Suporte -->
 <section id="suporte">
-    <h2>Suporte</h2>
-    <p style="text-align:center;">Entre em contato via <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a> ou <a href="mailto:support@vpnwordnet.com">email</a>. Nosso time ajuda a configurar todos os dispositivos.</p>
+  <h2>Suporte</h2>
+  <p style="text-align:center;">Entre em contato via <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a> ou <a href="mailto:support@vpnwordnet.com">email</a>. Nosso time ajuda a configurar todos os dispositivos.</p>
 </section>
 
 <!-- Footer -->
 <footer>
-    &copy; 2025 VPN Word Net. Todos os direitos reservados. | <a href="#hero">Voltar ao topo</a>
+  &copy; 2025 VPN Word Net. Todos os direitos reservados. | <a href="#hero">Voltar ao topo</a>
 </footer>
 
+<!-- Botão flutuante WhatsApp -->
+<a href="https://wa.me/5511999999999" target="_blank" class="whatsapp-float">
+  <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp">
+</a>
+
+<!-- Script -->
 <script>
-// Menu toggle
 const menuToggle = document.getElementById('menu-toggle');
 const navMenu = document.getElementById('nav-menu');
-
-menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+document.addEventListener('click', e => {
+  if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) navMenu.classList.remove('active');
 });
-
-// Fechar menu clicando fora
-document.addEventListener('click', (e) => {
-    if(!navMenu.contains(e.target) && !menuToggle.contains(e.target)){
-        navMenu.classList.remove('active');
-    }
-});
-  
-  // Fecha menu ao clicar em link
-document.querySelectorAll('#nav-menu li a').forEach(link => {
-  link.addEventListener('click', () => { menu.classList.remove('active'); });
-});
-
-// FAQ Toggle
-const faqItems = document.querySelectorAll('.faq-item h3');
-faqItems.forEach(item => {
-    item.addEventListener('click', () => {
-        item.parentElement.classList.toggle('active');
-    });
-});
-
-// Scroll Header
 window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if(window.scrollY > 50) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
+  document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50);
+});
+document.querySelectorAll('.faq-item h3').forEach(item => {
+  item.addEventListener('click', () => item.parentElement.classList.toggle('active'));
 });
 </script>
 
 </body>
 </html>
-
