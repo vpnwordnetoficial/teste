@@ -113,7 +113,7 @@ footer a {color:#1e90ff;}
   
   
   
-  /* Hero padrão (PC / Desktop) */
+/* Hero padrão (PC / Desktop) */
 .hero {
   background: url('https://i.ibb.co/B5FJ09FT/what-is-a-vpn.jpg') no-repeat center center/cover;
   min-height:95vh;
@@ -130,12 +130,17 @@ footer a {color:#1e90ff;}
 @media (max-width:768px) {
   .hero {
     background: url('https://i.ibb.co/hJKD1RRM/vpn-no-celular.png') no-repeat center center/cover;
-    min-height:75vh;
+    height:100vh;       /* ocupa 100% da altura da tela */
+    min-height:100vh;   /* garante que a tela esteja completa */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:0 15px;
   }
+  .hero h1 {font-size:1.9rem;} /* ajusta título para caber */
+  .hero p {font-size:1rem;}   /* ajusta texto */
 }
 
-  
-  
   
 </style>
 </head>
