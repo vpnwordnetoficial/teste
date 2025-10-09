@@ -363,7 +363,7 @@ footer a {color:#1e90ff;}
 </footer>
 
 <script>
-// Seletores
+// Menu Toggle
 const toggle = document.getElementById('menu-toggle');
 const menu = document.getElementById('nav-menu');
 
@@ -406,6 +406,27 @@ window.addEventListener('scroll', () => {
   if (window.scrollY > 50) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
 });
+
+// Fullscreen vídeo (Tutoriais) - mantém scroll ao sair do fullscreen
+let scrollPosition = 0;
+const videoIframes = document.querySelectorAll('.video-card iframe');
+
+videoIframes.forEach(iframe => {
+  // Armazena a posição antes do fullscreen
+  iframe.addEventListener('click', () => {
+    scrollPosition = window.scrollY;
+  });
+
+  // Detecta saída do fullscreen
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+      window.scrollTo({ top: scrollPosition, behavior: 'auto' });
+    }
+  });
+});
 </script>
+
+</body>
+</html>
 
 
