@@ -63,7 +63,7 @@ header nav ul li a:hover, header nav ul li a.active {color:#1e90ff; font-weight:
 section {padding:100px 20px;}
 h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text-shadow:0 0 10px rgba(0,191,255,0.4);}
 
-/* ---------- PLANS GRID MODERNO E CENTRALIZADO ---------- */
+/* ---------- PLANS GRID ---------- */
 .plans {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -87,41 +87,16 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   overflow: hidden;
 }
 
-/* 🔹 Efeito de brilho suave nas bordas (removido do Premium) */
-.plan::before {
-  content: "";
-  position: absolute;
-  top: -60%;
-  left: -60%;
-  width: 220%;
-  height: 220%;
-  background: linear-gradient(60deg, #00d2ff, #0066ff, #ff6ec7, #ffb347);
-  opacity: 0.06;
-  transform: rotate(0deg);
-  transition: opacity 0.35s;
-  z-index: 0;
-}
-
-/* 💡 Hover suave */
-.plan:hover::before {
-  opacity: 0.1;
-}
-
-/* 💡 Corrige plano Premium sem brilho de fundo */
-.plan.premium::before {
-  display: none !important; /* REMOVE totalmente o quadrado azul translúcido */
-}
-
-/* Hover geral */
+/* Hover */
 .plan:hover {
   transform: scale(1.05) translateY(-3px);
   box-shadow: 0 12px 35px rgba(0,191,255,0.7);
 }
 
-/* TAG “Mais Popular” */
+/* TAG */
 .plan .tag {
   display: inline-block;
-  padding: 6px 250px;
+  padding: 6px 20px;
   border-radius: 999px;
   background: rgba(255,207,59,0.15);
   color: #ffcf3b;
@@ -132,82 +107,78 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   z-index: 2;
 }
 
-/* Título do plano */
+/* Title & Price */
 .plan h3 {
-  font-size: 1.45rem;
-  margin-top: 8px;
-  color: #fff;
-  text-shadow: 0 2px 10px rgba(0,191,255,0.5);
-  position: relative;
-  z-index: 2;
+  font-size:1.45rem; margin-top:8px;
+  color:#fff; text-shadow:0 2px 10px rgba(0,191,255,0.5);
+  position: relative; z-index:2;
 }
+.price {font-size:2rem; font-weight:900; color:#00d2ff; position: relative; z-index:2;}
 
-/* Preço */
-.price {
-  font-size: 2rem;
-  font-weight: 900;
-  color: #00d2ff;
-  position: relative;
-  z-index: 2;
-}
-
-/* Lista de features */
+/* Features */
 .features {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 10px;
-  line-height: 1.7;
-  color: #cfeeff;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: center;
-  position: relative;
-  z-index: 2;
+  list-style:none; padding-left:0; margin-top:10px; line-height:1.7;
+  color:#cfeeff; display:flex; flex-direction:column; gap:8px; align-items:center;
+  position: relative; z-index:2;
 }
-
 .features li {
-  position: relative;
-  padding-left: 22px;
+  position: relative; padding-left:22px;
 }
-
 .features li::before {
-  content: "\2713";
-  position: absolute;
-  left: -18px;
-  top: 0;
-  color: #00d2ff;
-  font-size: 0.95rem;
+  content:"\2713";
+  position:absolute;
+  left:-18px; top:0;
+  color:#00d2ff;
+  font-size:0.95rem;
 }
 
-/* Botão de compra */
-.plan .buy {
-  margin-top: auto;
-  position: relative;
-  z-index: 2;
-}
-
+/* Buy button */
+.plan .buy {margin-top:auto; position:relative; z-index:2;}
 .plan .buy a {
-  display: inline-block;
-  padding: 14px 28px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  background: linear-gradient(135deg, #00d2ff, #0066ff);
-  color: #fff;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  box-shadow: 0 6px 25px rgba(0,191,255,0.5);
+  display:inline-block; padding:14px 28px; border-radius:50px; font-weight:700;
+  text-transform:uppercase; letter-spacing:1px;
+  background:linear-gradient(135deg, #00d2ff, #0066ff);
+  color:#fff; text-align:center;
+  transition:transform 0.3s, box-shadow 0.3s, background 0.3s;
+  box-shadow:0 6px 25px rgba(0,191,255,0.5);
 }
-
 .plan .buy a:hover {
-  transform: scale(1.05) translateY(-3px);
-  box-shadow: 0 12px 35px rgba(0,191,255,0.7);
-  background: linear-gradient(135deg, #0066ff, #00d2ff);
+  transform:scale(1.05) translateY(-3px);
+  box-shadow:0 12px 35px rgba(0,191,255,0.7);
+  background:linear-gradient(135deg, #0066ff, #00d2ff);
 }
 
-/* 🎀 Fita realista maior na borda do plano Premium */
+/* 🔹 Premium Ribbon */
+.plan.premium {position: relative; overflow: visible;}
+.plan.premium .ribbon {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  width: 180px;
+  height: auto;
+  z-index: 15;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+  pointer-events: none;
+  transform: rotate(5deg);
+  animation: ribbonFloat 3s ease-in-out infinite;
+}
+@keyframes ribbonFloat {
+  0%, 100% {transform: rotate(5deg) translateY(0);}
+  50% {transform: rotate(2deg) translateY(-2px);}
+}
+
+/* Remove brilho azul do Premium */
+.plan.premium::before {display:none !important;}
+
+/* Responsividade planos */
+@media(max-width:1024px) {.plans {grid-template-columns: repeat(2,1fr);}}
+@media(max-width:768px) {.plans {grid-template-columns: 1fr;}}
+
+/* Hero Responsivo */
+@media(max-width:1024px){.hero h1 {font-size:2.5rem;} .hero p {font-size:1.2rem;}}
+@media(max-width:768px){.hero h1 {font-size:2rem;} .hero p {font-size:1.1rem;} .hero {height:100vh; min-height:100vh;}}
+
+/* 🎀 Fita realista e animada no plano Premium */
 .plan.premium {
   position: relative;
   overflow: visible; /* permite que a fita ultrapasse o limite do card */
@@ -215,24 +186,18 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 
 .plan.premium .ribbon {
   position: absolute;
-  top: -10px;          /* ajusta para encostar na borda superior */
-  right: 90px;        /* encosta na borda lateral */
-  width: 250px;       /* maior tamanho */
+  top: -10px;      /* altura que a fita “entra” no topo */
+  right: 10%;      /* centraliza horizontalmente */
+  transform: translateX(50%) rotate(2deg);
+  width: 220px;    /* tamanho realista da fita */
   height: auto;
   z-index: 15;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); /* sombra para profundidade */
-  pointer-events: none; /* impede cliques */
-  transform: rotate(5deg); /* leve inclinação natural */
-  animation: ribbonFloat 3s ease-in-out infinite; /* leve movimento */
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+  pointer-events: none;
+  animation: ribbonFloat 3s ease-in-out infinite;
 }
 
-@keyframes ribbonFloat {
-  0%, 100% { transform: rotate(5deg) translateY(0); }
-  50% { transform: rotate(2deg) translateY(-2px); }
-}
-
-
-/* 💫 Animação leve da fita */
+/* 💫 Animação leve de balanço da fita */
 @keyframes ribbonFloat {
   0%, 100% { transform: translateX(50%) rotate(2deg) translateY(0); }
   50% { transform: translateX(50%) rotate(-1.5deg) translateY(-2px); }
@@ -246,7 +211,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 @media(max-width:768px) {
   .plans { grid-template-columns: 1fr; }
 }
-
+  
 /* Galeria */
 .gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
 .gallery img {width:100%; border-radius:15px; transition:0.4s; box-shadow:0 5px 15px rgba(0,0,0,0.4);}
@@ -382,7 +347,7 @@ footer a {color:#1e90ff;}
 
     <!-- Plano Básico -->
     <div class="plan">
-      <span class="tag">Popular</span>
+      <span class="tag">Mais Popular</span>
       <h3>Básico</h3>
       <div class="price">$5/mês</div>
       <ul class="features">
@@ -425,6 +390,8 @@ footer a {color:#1e90ff;}
   </ul>
   <div class="buy"><a href="#">Assinar</a></div>
 </div>
+
+  </div>
 </section>
 
 <!-- Galeria -->
@@ -562,3 +529,7 @@ window.addEventListener('scroll', () => {
   else header.classList.remove('scrolled');
 });
 </script>
+
+
+
+
