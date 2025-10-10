@@ -80,13 +80,13 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   box-shadow: 0 12px 40px rgba(0,170,255,0.06);
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* centraliza verticalmente e mantém botão no fundo */
-  align-items: center; /* centraliza horizontalmente */
-  text-align: center; /* centraliza textos */
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   position: relative;
   overflow: hidden;
-  height: 100%; /* garante altura completa para centralização */
+  height: 100%;
 }
 
 .plan::before {
@@ -110,28 +110,32 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   100% { transform: rotate(360deg);}
 }
 
-.plan .tag {
-  display: inline-block;
-  padding: 6px 400px;
-  border-radius: 999px;
+/* ---------- TAGS COLORIDAS ---------- */
+.plan.plan-popular .tag {
+  background: rgba(255,0,0,0.15);
+  color: #ff4d4d;
+}
+
+.plan.plan-premium .tag {
   background: rgba(255,207,59,0.15);
   color: #ffcf3b;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-transform: uppercase;
 }
+
+.plan.plan-empreendedor .tag {
+  background: rgba(0,200,0,0.15);
+  color: #4dff4d;
+}
+
+/* ---------- PREÇO COLORIDO ---------- */
+.plan.plan-popular .price { color: #ff4d4d; }
+.plan.plan-premium .price { color: #ffcf3b; }
+.plan.plan-empreendedor .price { color: #4dff4d; }
 
 .plan h3 {
   font-size: 1.45rem;
   margin-top: 8px;
   color: #fff;
   text-shadow: 0 2px 10px rgba(0,191,255,0.5);
-}
-
-.price {
-  font-size: 2rem;
-  font-weight: 900;
-  color: #00d2ff;
 }
 
 .features {
@@ -160,8 +164,8 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 .plan .buy {
-  margin-top: 20px; /* deixa um pequeno espaço do conteúdo acima */
-  width: 100%; /* botão ocupa toda a largura */
+  margin-top: 20px;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -190,13 +194,26 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 @media(max-width:1024px){ .plans {grid-template-columns: repeat(2,1fr);} }
 @media(max-width:768px){ .plans {grid-template-columns: 1fr;} }
 
-/* Faixa Recomendado */
-.plan.plan-recomendado::after {
+/* ---------- FAIXAS PNG (RIBBONS) ---------- */
+.plan.plan-popular::after {
   content: "";
   position: absolute;
   top: 0;
   right: 0;
-  width: 180px; /* ajuste conforme a imagem */
+  width: 180px;
+  height: 180px;
+  background: url('https://s14.gifyu.com/images/bwa9D.png') no-repeat center/contain;
+  z-index: 10;
+  pointer-events: none;
+  animation: float 2s ease-in-out infinite alternate;
+}
+
+.plan.plan-premium::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
   height: 180px;
   background: url('https://s14.gifyu.com/images/bwaHx.png') no-repeat center/contain;
   z-index: 10;
@@ -204,34 +221,26 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   animation: float 2s ease-in-out infinite alternate;
 }
 
-/* Faixa Premium */
-.plan.plan-premium::after {
+.plan.plan-empreendedor::after {
   content: "";
   position: absolute;
   top: 0;
   right: 0;
-  width: 180px; /* desktop */
+  width: 180px;
   height: 180px;
-  background: url('https://s14.gifyu.com/images/bwaKl.png') no-repeat center/contain;
+  background: url('https://s14.gifyu.com/images/bwaKl.png') no-repeat center/contain; /* pode trocar imagem se quiser */
   z-index: 10;
   pointer-events: none;
   animation: float 2s ease-in-out infinite alternate;
 }
 
-/* Ajuste das faixas para Mobile */
+/* ---------- Ajuste das faixas para Mobile ---------- */
 @media(max-width:768px){
-  /* Faixa Premium */
-  .plan.plan-premium::after {
-    width: 110px;   /* largura menor */
-    height: 110px;  /* altura menor */
-    top: 5px;
-    right: 0;
-  }
-
-  /* Faixa Recomendado */
-  .plan.plan-recomendado::after {
-    width: 110px;   /* largura menor */
-    height: 110px;  /* altura menor */
+  .plan.plan-popular::after,
+  .plan.plan-premium::after,
+  .plan.plan-empreendedor::after {
+    width: 100px;
+    height: 100px;
     top: 5px;
     right: 0;
   }
@@ -243,6 +252,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   50% { transform: translateY(-5px) rotate(3deg); }
   100% { transform: translateY(0) rotate(-3deg); }
 }
+
 
 /* Galeria */
 .gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
@@ -376,55 +386,50 @@ footer a {color:#1e90ff;}
   <h2 class="section-title">Nossos Planos</h2>
   <div class="plans">
 
-    <!-- Plano Básico -->
-    <div class="plan">
-      <span class="tag">Popular</span>
-      <h3>Básico</h3>
-      <div class="price">$15/mês</div>
-      <ul class="features">
-        <li>Acesso a todos os servidores</li>
-        <li>Velocidade até 50Mbps</li>
-        <li>1 dispositivo simultâneo</li>
-        <li>Suporte 24/7</li>
-      </ul>
-      <div class="buy">
-        <a href="#">Assinar Agora</a>
-      </div>
-    </div>
-
-    <!-- Plano Intermediário -->
-    <div class="plan plan-recomendado">
-  <span class="tag">Premium</span>
-      <h3>Intermediário</h3>
-      <div class="price">$20/mês</div>
-      <ul class="features">
-        <li>Acesso a todos os servidores</li>
-        <li>Velocidade até 150Mbps</li>
-        <li>3 dispositivos simultâneos</li>
-        <li>Suporte 24/7 prioritário</li>
-      </ul>
-      <div class="buy">
-        <a href="#">Assinar Agora</a>
-      </div>
-    </div>
-
-    <!-- Plano Premium -->
-    <div class="plan plan-premium">
-  <span class="tag">Empreendedor</span>
-      <h3>Avançado</h3>
-      <div class="price">$30/mês</div>
-      <ul class="features">
-        <li>Acesso a todos os servidores</li>
-        <li>Velocidade ilimitada</li>
-        <li>5 dispositivos simultâneos</li>
-        <li>Suporte VIP 24/7</li>
-      </ul>
-      <div class="buy">
-        <a href="#">Assinar Agora</a>
-      </div>
-    </div>
-
+<div class="plans">
+  <!-- Plano Popular -->
+  <div class="plan plan-popular">
+    <span class="tag">Popular</span>
+    <h3>Básico</h3>
+    <div class="price">$5/mês</div>
+    <ul class="features">
+      <li>Acesso a todos os servidores</li>
+      <li>Velocidade até 50Mbps</li>
+      <li>1 dispositivo simultâneo</li>
+      <li>Suporte 24/7</li>
+    </ul>
+    <div class="buy"><a href="#">Assinar Agora</a></div>
   </div>
+
+  <!-- Plano Premium -->
+  <div class="plan plan-premium">
+    <span class="tag">Premium</span>
+    <h3>Avançado</h3>
+    <div class="price">$19,99/mês</div>
+    <ul class="features">
+      <li>Acesso a todos os servidores</li>
+      <li>Velocidade até 500Mbps</li>
+      <li>5 dispositivos simultâneos</li>
+      <li>Suporte 24/7 prioritário</li>
+    </ul>
+    <div class="buy"><a href="#">Assinar Agora</a></div>
+  </div>
+
+  <!-- Plano Empreendedor -->
+  <div class="plan plan-empreendedor">
+    <span class="tag">Empreendedor</span>
+    <h3>Business</h3>
+    <div class="price">$29,99/mês</div>
+    <ul class="features">
+      <li>Acesso a todos os servidores</li>
+      <li>Velocidade ilimitada</li>
+      <li>10 dispositivos simultâneos</li>
+      <li>Suporte VIP 24/7</li>
+    </ul>
+    <div class="buy"><a href="#">Assinar Agora</a></div>
+  </div>
+</div>
+
 </section>
 
 <!-- Galeria -->
