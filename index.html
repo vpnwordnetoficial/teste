@@ -509,13 +509,16 @@ toggle.addEventListener('click', (e) => {
   menu.classList.toggle('active');
 });
 
-// Fecha o menu ao clicar em qualquer link
+// Scroll suave e fechamento do menu ao clicar nos links
 document.querySelectorAll('#nav-menu li a').forEach(link => {
   link.addEventListener('click', (e) => {
-    // aguarda um pequeno tempo antes de fechar (para o scroll suave funcionar)
-    setTimeout(() => {
-      menu.classList.remove('active');
-    }, 200);
+    e.preventDefault(); // evita jump instantâneo
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Fecha o menu no mobile
+    menu.classList.remove('active');
   });
 });
 
