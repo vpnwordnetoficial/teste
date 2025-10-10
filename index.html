@@ -218,11 +218,20 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   animation: float 2s ease-in-out infinite alternate;
 }
 
-/* Ajuste da Ribbon Premium para Mobile */
+/* Ajuste das faixas para Mobile */
 @media(max-width:768px){
+  /* Faixa Premium */
   .plan.plan-premium::after {
-    width: 120px; /* menor no celular */
-    height: 120px;
+    width: 80px;   /* largura menor */
+    height: 80px;  /* altura menor */
+    top: 5px;
+    right: 0;
+  }
+
+  /* Faixa Recomendado */
+  .plan.plan-recomendado::after {
+    width: 80px;   /* largura menor */
+    height: 80px;  /* altura menor */
     top: 5px;
     right: 0;
   }
