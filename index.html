@@ -113,40 +113,20 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 /* ---------- TAGS COLORIDAS (Faixa atrás do nome) ---------- */
 .plan .tag {
   display: inline-block;
-  padding: 8px 400px; /* largura da faixa no desktop */
+  padding: 8px 400px;
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.95rem;
   text-transform: uppercase;
 }
 
-/* Cores dos planos */
-.plan.plan-popular .tag {
-  background: rgba(255,0,0,0.15); /* vermelho */
-  color: #ff4d4d;
-}
+.plan.plan-popular .tag { background: rgba(255,0,0,0.15); color: #ff4d4d; }
+.plan.plan-premium .tag { background: rgba(255,207,59,0.15); color: #ffcf3b; }
+.plan.plan-familia .tag { background: rgba(0,150,255,0.15); color: #4db8ff; }
+.plan.plan-empreendedor .tag { background: rgba(0,200,0,0.15); color: #4dff4d; }
 
-.plan.plan-premium .tag {
-  background: rgba(255,207,59,0.15); /* amarelo */
-  color: #ffcf3b;
-}
-
-.plan.plan-familia .tag {
-  background: rgba(0,150,255,0.15); /* azul */
-  color: #4db8ff;
-}
-
-.plan.plan-empreendedor .tag {
-  background: rgba(0,200,0,0.15); /* verde */
-  color: #4dff4d;
-}
-
-/* Ajuste da faixa para Mobile */
 @media(max-width:768px){
-  .plan .tag {
-    padding: 6px 200px; /* faixa mais estreita no celular */
-    font-size: 0.85rem;
-  }
+  .plan .tag { padding: 6px 200px; font-size: 0.85rem; }
 }
 
 /* ---------- PREÇOS COLORIDOS ---------- */
@@ -194,24 +174,64 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   justify-content: center;
 }
 
-.plan .buy a {
+/* ---------- BOTÕES COLORIDOS E ARREDONDADOS POR PLANO ---------- */
+.plan-popular .buy a,
+.plan-premium .buy a,
+.plan-familia .buy a,
+.plan-empreendedor .buy a {
   display: inline-block;
   padding: 14px 28px;
   border-radius: 50px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: linear-gradient(135deg, #00d2ff, #0066ff);
-  color: #fff;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  box-shadow: 0 6px 25px rgba(0,191,255,0.5);
+  color: #fff;
 }
 
-.plan .buy a:hover {
+/* Popular */
+.plan-popular .buy a {
+  background: linear-gradient(135deg, #ff4d4d, #ff0000);
+  box-shadow: 0 6px 25px rgba(255,77,77,0.5);
+}
+.plan-popular .buy a:hover {
+  background: linear-gradient(135deg, #ff0000, #ff4d4d);
+  box-shadow: 0 12px 35px rgba(255,77,77,0.7);
   transform: scale(1.05) translateY(-3px);
-  box-shadow: 0 12px 35px rgba(0,191,255,0.7);
-  background: linear-gradient(135deg, #0066ff, #00d2ff);
+}
+
+/* Premium */
+.plan-premium .buy a {
+  background: linear-gradient(135deg, #ffcf3b, #ffb347);
+  box-shadow: 0 6px 25px rgba(255,207,59,0.5);
+}
+.plan-premium .buy a:hover {
+  background: linear-gradient(135deg, #ffb347, #ffcf3b);
+  box-shadow: 0 12px 35px rgba(255,207,59,0.7);
+  transform: scale(1.05) translateY(-3px);
+}
+
+/* Família */
+.plan-familia .buy a {
+  background: linear-gradient(135deg, #4db8ff, #0099ff);
+  box-shadow: 0 6px 25px rgba(77,184,255,0.5);
+}
+.plan-familia .buy a:hover {
+  background: linear-gradient(135deg, #0099ff, #4db8ff);
+  box-shadow: 0 12px 35px rgba(77,184,255,0.7);
+  transform: scale(1.05) translateY(-3px);
+}
+
+/* Empreendedor */
+.plan-empreendedor .buy a {
+  background: linear-gradient(135deg, #4dff4d, #00c200);
+  box-shadow: 0 6px 25px rgba(77,255,77,0.5);
+}
+.plan-empreendedor .buy a:hover {
+  background: linear-gradient(135deg, #00c200, #4dff4d);
+  box-shadow: 0 12px 35px rgba(77,255,77,0.7);
+  transform: scale(1.05) translateY(-3px);
 }
 
 /* ---------- Responsividade ---------- */
@@ -252,7 +272,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   right: 0;
   width: 180px;
   height: 180px;
-  background: url('https://s14.gifyu.com/images/bwrzU.png') no-repeat center/contain; /* usei o azul como base */
+  background: url('https://s14.gifyu.com/images/bwrzU.png') no-repeat center/contain;
   z-index: 10;
   pointer-events: none;
   animation: float 2s ease-in-out infinite alternate;
@@ -271,7 +291,6 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   animation: float 2s ease-in-out infinite alternate;
 }
 
-/* ---------- Ajuste das faixas PNG para Mobile ---------- */
 @media(max-width:768px){
   .plan.plan-popular::after,
   .plan.plan-premium::after,
@@ -290,6 +309,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   50% { transform: translateY(-5px) rotate(3deg); }
   100% { transform: translateY(0) rotate(-3deg); }
 }
+
 
 
 /* Galeria */
@@ -621,6 +641,7 @@ window.addEventListener('scroll', () => {
   else header.classList.remove('scrolled');
 });
 </script>
+
 
 
 
