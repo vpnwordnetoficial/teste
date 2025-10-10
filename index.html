@@ -69,7 +69,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 22px;
   margin: 30px 0;
-  align-items: stretch; /* garante que todos os cards tenham mesma altura */
+  align-items: stretch;
 }
 
 .plan {
@@ -120,6 +120,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   text-transform: uppercase;
 }
 
+/* Cores dos planos */
 .plan.plan-popular .tag {
   background: rgba(255,0,0,0.15); /* vermelho */
   color: #ff4d4d;
@@ -130,6 +131,11 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   color: #ffcf3b;
 }
 
+.plan.plan-familia .tag {
+  background: rgba(0,150,255,0.15); /* azul */
+  color: #4db8ff;
+}
+
 .plan.plan-empreendedor .tag {
   background: rgba(0,200,0,0.15); /* verde */
   color: #4dff4d;
@@ -138,14 +144,15 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 /* Ajuste da faixa para Mobile */
 @media(max-width:768px){
   .plan .tag {
-    padding: 6px 200px; /* menor largura no celular */
-    font-size: 0.85rem; /* opcional, deixa texto proporcional */
+    padding: 6px 200px; /* faixa mais estreita no celular */
+    font-size: 0.85rem;
   }
 }
 
-/* ---------- PREÇO COLORIDO ---------- */
+/* ---------- PREÇOS COLORIDOS ---------- */
 .plan.plan-popular .price { color: #ff4d4d; }
 .plan.plan-premium .price { color: #ffcf3b; }
+.plan.plan-familia .price { color: #4db8ff; }
 .plan.plan-empreendedor .price { color: #4dff4d; }
 
 .plan h3 {
@@ -207,7 +214,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   background: linear-gradient(135deg, #0066ff, #00d2ff);
 }
 
-/* Responsividade */
+/* ---------- Responsividade ---------- */
 @media(max-width:1024px){ .plans {grid-template-columns: repeat(2,1fr);} }
 @media(max-width:768px){ .plans {grid-template-columns: 1fr;} }
 
@@ -238,6 +245,19 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   animation: float 2s ease-in-out infinite alternate;
 }
 
+.plan.plan-familia::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background: url('https://s14.gifyu.com/images/bwrzU.png') no-repeat center/contain; /* usei o azul como base */
+  z-index: 10;
+  pointer-events: none;
+  animation: float 2s ease-in-out infinite alternate;
+}
+
 .plan.plan-empreendedor::after {
   content: "";
   position: absolute;
@@ -251,10 +271,11 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   animation: float 2s ease-in-out infinite alternate;
 }
 
-/* Ajuste das faixas PNG para Mobile */
+/* ---------- Ajuste das faixas PNG para Mobile ---------- */
 @media(max-width:768px){
   .plan.plan-popular::after,
   .plan.plan-premium::after,
+  .plan.plan-familia::after,
   .plan.plan-empreendedor::after {
     width: 100px;
     height: 100px;
@@ -263,7 +284,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   }
 }
 
-/* Animação leve para efeito de “movimento” */
+/* ---------- Animação leve ---------- */
 @keyframes float {
   0% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-5px) rotate(3deg); }
@@ -404,7 +425,7 @@ footer a {color:#1e90ff;}
   <div class="plans">
 
 <div class="plans">
-  <!-- Plano Popular -->
+ <!-- Plano Popular -->
   <div class="plan plan-popular">
     <span class="tag">Popular</span>
     <h3>Básico</h3>
@@ -431,6 +452,20 @@ footer a {color:#1e90ff;}
     </ul>
     <div class="buy"><a href="#">Assinar Agora</a></div>
   </div>
+  
+  <div class="plan plan-familia">
+  <span class="tag">Família</span>
+  <h3>Plano Família</h3>
+  <p class="price">R$ 49,90/mês</p>
+  <ul class="features">
+    <li>4 telas simultâneas</li>
+    <li>Suporte prioritário</li>
+    <li>Acesso total a canais e filmes</li>
+  </ul>
+  <div class="buy">
+    <a href="#">Assinar Agora</a>
+  </div>
+</div>
 
   <!-- Plano Empreendedor -->
   <div class="plan plan-empreendedor">
@@ -446,7 +481,6 @@ footer a {color:#1e90ff;}
     <div class="buy"><a href="#">Assinar Agora</a></div>
   </div>
 </div>
-
 </section>
 
 <!-- Galeria -->
