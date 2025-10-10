@@ -190,7 +190,40 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 @media(max-width:1024px){ .plans {grid-template-columns: repeat(2,1fr);} }
 @media(max-width:768px){ .plans {grid-template-columns: 1fr;} }
 
-/* Resto do CSS permanece igual */
+/* Faixa Recomendado */
+.plan.plan-recomendado::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px; /* ajuste conforme a imagem */
+  height: 180px;
+  background: url('https://s14.gifyu.com/images/bwaHx.png') no-repeat center/contain;
+  z-index: 10;
+  pointer-events: none;
+  animation: float 2s ease-in-out infinite alternate;
+}
+
+/* Faixa Premium */
+.plan.plan-premium::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background: url('https://s14.gifyu.com/images/bwaKl.png') no-repeat center/contain;
+  z-index: 10;
+  pointer-events: none;
+  animation: float 2s ease-in-out infinite alternate;
+}
+
+/* Animação leve para efeito de “movimento” */
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(-3deg); }
+}
 
 /* Galeria */
 .gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
@@ -319,7 +352,6 @@ footer a {color:#1e90ff;}
     </div>
 </section>
 
-<!-- Planos -->
 <!-- =================== PLANOS =================== -->
 <section id="planos">
   <h2 class="section-title">Nossos Planos</h2>
@@ -329,7 +361,7 @@ footer a {color:#1e90ff;}
     <div class="plan">
       <span class="tag">Popular</span>
       <h3>Básico</h3>
-      <div class="price">$5/mês</div>
+      <div class="price">$15/mês</div>
       <ul class="features">
         <li>Acesso a todos os servidores</li>
         <li>Velocidade até 50Mbps</li>
@@ -342,10 +374,10 @@ footer a {color:#1e90ff;}
     </div>
 
     <!-- Plano Intermediário -->
-    <div class="plan">
-      <span class="tag">Recomendado</span>
+    <div class="plan plan-recomendado">
+  <span class="tag">Premium</span>
       <h3>Intermediário</h3>
-      <div class="price">$10/mês</div>
+      <div class="price">$20/mês</div>
       <ul class="features">
         <li>Acesso a todos os servidores</li>
         <li>Velocidade até 150Mbps</li>
@@ -358,10 +390,10 @@ footer a {color:#1e90ff;}
     </div>
 
     <!-- Plano Premium -->
-    <div class="plan">
-      <span class="tag">Premium</span>
+    <div class="plan plan-premium">
+  <span class="tag">Empreendedor</span>
       <h3>Avançado</h3>
-      <div class="price">$15/mês</div>
+      <div class="price">$30/mês</div>
       <ul class="features">
         <li>Acesso a todos os servidores</li>
         <li>Velocidade ilimitada</li>
