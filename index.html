@@ -113,7 +113,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 /* ---------- TAGS COLORIDAS (Faixa atrás do nome) ---------- */
 .plan .tag {
   display: inline-block;
-  padding: 8px 400px; /* largura e altura da faixa */
+  padding: 8px 400px; /* largura da faixa no desktop */
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.95rem;
@@ -133,6 +133,14 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .plan.plan-empreendedor .tag {
   background: rgba(0,200,0,0.15); /* verde */
   color: #4dff4d;
+}
+
+/* Ajuste da faixa para Mobile */
+@media(max-width:768px){
+  .plan .tag {
+    padding: 6px 200px; /* menor largura no celular */
+    font-size: 0.85rem; /* opcional, deixa texto proporcional */
+  }
 }
 
 /* ---------- PREÇO COLORIDO ---------- */
@@ -201,10 +209,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 
 /* Responsividade */
 @media(max-width:1024px){ .plans {grid-template-columns: repeat(2,1fr);} }
-@media(max-width:768px){ 
-  .plans {grid-template-columns: 1fr;}
-  .plan .tag { padding: 6px 50px; } /* faixa menor no mobile */
-}
+@media(max-width:768px){ .plans {grid-template-columns: 1fr;} }
 
 /* ---------- FAIXAS PNG (RIBBONS) ---------- */
 .plan.plan-popular::after {
@@ -246,7 +251,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   animation: float 2s ease-in-out infinite alternate;
 }
 
-/* ---------- Ajuste das faixas para Mobile ---------- */
+/* Ajuste das faixas PNG para Mobile */
 @media(max-width:768px){
   .plan.plan-popular::after,
   .plan.plan-premium::after,
@@ -264,6 +269,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   50% { transform: translateY(-5px) rotate(3deg); }
   100% { transform: translateY(0) rotate(-3deg); }
 }
+
 
 /* Galeria */
 .gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
