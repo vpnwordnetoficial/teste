@@ -69,6 +69,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 22px;
   margin: 30px 0;
+  align-items: stretch; /* garante que todos os cards tenham mesma altura */
 }
 
 .plan {
@@ -79,10 +80,13 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   box-shadow: 0 12px 40px rgba(0,170,255,0.06);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  justify-content: space-between; /* centraliza verticalmente e mantém botão no fundo */
+  align-items: center; /* centraliza horizontalmente */
+  text-align: center; /* centraliza textos */
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   position: relative;
   overflow: hidden;
+  height: 100%; /* garante altura completa para centralização */
 }
 
 .plan::before {
@@ -156,7 +160,10 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 .plan .buy {
-  margin-top: auto;
+  margin-top: 20px; /* deixa um pequeno espaço do conteúdo acima */
+  width: 100%; /* botão ocupa toda a largura */
+  display: flex;
+  justify-content: center;
 }
 
 .plan .buy a {
