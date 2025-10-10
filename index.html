@@ -79,35 +79,46 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   box-shadow: 0 12px 40px rgba(0,170,255,0.06);
   display: flex;
   flex-direction: column;
-  align-items: center; /* centraliza horizontalmente todos os elementos */
-  text-align: center;  /* centraliza o texto */
+  align-items: center;
+  text-align: center;
   gap: 14px;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   position: relative;
   overflow: hidden;
 }
 
+/* 🔹 Efeito de brilho suave nas bordas (removido do Premium) */
 .plan::before {
-  content:"";
-  position:absolute;
-  top:-60%; left:-60%;
-  width:220%; height:220%;
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
   background: linear-gradient(60deg, #00d2ff, #0066ff, #ff6ec7, #ffb347);
-  opacity:0.06;
+  opacity: 0.06;
   transform: rotate(0deg);
   transition: opacity 0.35s;
+  z-index: 0;
 }
 
+/* 💡 Hover suave */
 .plan:hover::before {
-  opacity:0.30;
-  animation: rotateBG 8s linear infinite;
+  opacity: 0.1;
 }
 
-@keyframes rotateBG {
-  0% { transform: rotate(0deg);}
-  100% { transform: rotate(360deg);}
+/* 💡 Corrige plano Premium sem brilho de fundo */
+.plan.premium::before {
+  display: none !important; /* REMOVE totalmente o quadrado azul translúcido */
 }
 
+/* Hover geral */
+.plan:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0,191,255,0.7);
+}
+
+/* TAG “Mais Popular” */
 .plan .tag {
   display: inline-block;
   padding: 6px 250px;
@@ -117,21 +128,30 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   font-weight: 700;
   font-size: 0.9rem;
   text-transform: uppercase;
+  position: relative;
+  z-index: 2;
 }
 
+/* Título do plano */
 .plan h3 {
   font-size: 1.45rem;
   margin-top: 8px;
   color: #fff;
   text-shadow: 0 2px 10px rgba(0,191,255,0.5);
+  position: relative;
+  z-index: 2;
 }
 
+/* Preço */
 .price {
   font-size: 2rem;
   font-weight: 900;
   color: #00d2ff;
+  position: relative;
+  z-index: 2;
 }
 
+/* Lista de features */
 .features {
   list-style: none;
   padding-left: 0;
@@ -141,7 +161,9 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   display: flex;
   flex-direction: column;
   gap: 8px;
-  align-items: center; /* centraliza os itens da lista */
+  align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 .features li {
@@ -150,16 +172,19 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 .features li::before {
-  content:"\2713";
-  position:absolute;
-  left:-18px; /* ajusta o checkmark para ficar alinhado centralmente */
-  top:0;
-  color:#00d2ff;
+  content: "\2713";
+  position: absolute;
+  left: -18px;
+  top: 0;
+  color: #00d2ff;
   font-size: 0.95rem;
 }
 
+/* Botão de compra */
 .plan .buy {
   margin-top: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .plan .buy a {
@@ -182,12 +207,45 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   background: linear-gradient(135deg, #0066ff, #00d2ff);
 }
 
+/* 🎀 Fita realista maior na borda do plano Premium */
+.plan.premium {
+  position: relative;
+  overflow: visible; /* permite que a fita ultrapasse o limite do card */
+}
+
+.plan.premium .ribbon {
+  position: absolute;
+  top: -10px;          /* ajusta para encostar na borda superior */
+  right: 90px;        /* encosta na borda lateral */
+  width: 250px;       /* maior tamanho */
+  height: auto;
+  z-index: 15;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); /* sombra para profundidade */
+  pointer-events: none; /* impede cliques */
+  transform: rotate(5deg); /* leve inclinação natural */
+  animation: ribbonFloat 3s ease-in-out infinite; /* leve movimento */
+}
+
+@keyframes ribbonFloat {
+  0%, 100% { transform: rotate(5deg) translateY(0); }
+  50% { transform: rotate(2deg) translateY(-2px); }
+}
+
+
+/* 💫 Animação leve da fita */
+@keyframes ribbonFloat {
+  0%, 100% { transform: translateX(50%) rotate(2deg) translateY(0); }
+  50% { transform: translateX(50%) rotate(-1.5deg) translateY(-2px); }
+}
+
 /* Responsividade */
-@media(max-width:1024px){ .plans {grid-template-columns: repeat(2,1fr);} }
-@media(max-width:768px){ .plans {grid-template-columns: 1fr;} }
+@media(max-width:1024px) {
+  .plans { grid-template-columns: repeat(2, 1fr); }
+}
 
-
-/* Resto do CSS permanece igual */
+@media(max-width:768px) {
+  .plans { grid-template-columns: 1fr; }
+}
 
 /* Galeria */
 .gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
@@ -355,22 +413,18 @@ footer a {color:#1e90ff;}
     </div>
 
     <!-- Plano Premium -->
-    <div class="plan">
-      <span class="tag">Premium</span>
-      <h3>Avançado</h3>
-      <div class="price">$15/mês</div>
-      <ul class="features">
-        <li>Acesso a todos os servidores</li>
-        <li>Velocidade ilimitada</li>
-        <li>5 dispositivos simultâneos</li>
-        <li>Suporte VIP 24/7</li>
-      </ul>
-      <div class="buy">
-        <a href="#">Assinar Agora</a>
-      </div>
-    </div>
-
-  </div>
+    <div class="plan premium">
+  <img src="https://s14.gifyu.com/images/bwaz2.png" alt="Fita Premium" class="ribbon">
+  <span class="tag">Mais Popular</span>
+  <h3>Plano Premium</h3>
+  <div class="price">$19,99</div>
+  <ul class="features">
+    <li>Feature 1</li>
+    <li>Feature 2</li>
+    <li>Feature 3</li>
+  </ul>
+  <div class="buy"><a href="#">Assinar</a></div>
+</div>
 </section>
 
 <!-- Galeria -->
@@ -508,7 +562,3 @@ window.addEventListener('scroll', () => {
   else header.classList.remove('scrolled');
 });
 </script>
-
-
-
-
