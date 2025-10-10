@@ -62,11 +62,6 @@ header nav ul li a:hover, header nav ul li a.active {color:#1e90ff; font-weight:
 /* Sections */
 section {padding:100px 20px;}
 h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text-shadow:0 0 10px rgba(0,191,255,0.4);}
-  
-.mobile-menu {
-  max-height: 100vh;   /* limita à altura da tela */
-  overflow-y: auto;    /* adiciona rolagem vertical se necessário */
-}
 
 /* ---------- PLANS GRID MODERNO ---------- */
 .plans {
@@ -325,9 +320,83 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 
 
 /* Galeria */
-.gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
-.gallery img {width:100%; border-radius:15px; transition:0.4s; box-shadow:0 5px 15px rgba(0,0,0,0.4);}
-.gallery img:hover {transform:scale(1.08) rotate(1deg); box-shadow:0 10px 25px rgba(0,191,255,0.5);}
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 2.0s ease-out; /* efeito mais lento */
+}
+
+.gallery-item.reverse { flex-direction: row-reverse; }
+
+.gallery-item img {
+  width: 50%;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* Texto da galeria - novo efeito */
+.gallery-text {
+  width: 50%;
+  opacity: 0;
+  transform: translateX(-50px); /* vem da esquerda */
+  transition: all 2.0s ease-out; /* efeito mais lento */
+}
+
+/* Se for reverse, o texto aparece da direita */
+.gallery-item.reverse .gallery-text {
+  transform: translateX(50px);
+}
+
+.gallery-text h3 {
+  font-size: 1.8rem;
+  color: #00bfff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(0,191,255,0.4);
+}
+
+.gallery-text p {
+  font-size: 1rem;
+  color: #cfeeff;
+  line-height: 1.6;
+}
+
+/* Classe ativa para animação quando aparece */
+.gallery-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Quando visível, anima também o texto */
+.gallery-item.visible .gallery-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsividade */
+@media(max-width:768px){
+  .gallery-item,
+  .gallery-item.reverse {
+    flex-direction: column;
+  }
+  .gallery-item img,
+  .gallery-text {
+    width: 100%;
+  }
+}
+
+
+
 
 /* FAQ */
 .faq-item {margin-bottom:20px; border-bottom:1px solid #333; padding-bottom:20px;}
@@ -524,14 +593,36 @@ footer a {color:#1e90ff;}
 
 <!-- Galeria -->
 <section id="galeria">
-    <h2>Galeria</h2>
-    <div class="gallery">
-        <img src="https://source.unsplash.com/400x300/?vpn,technology" alt="Screenshot 1">
-        <img src="https://source.unsplash.com/400x300/?internet,connection" alt="Screenshot 2">
-        <img src="https://source.unsplash.com/400x300/?network,security" alt="Screenshot 3">
-        <img src="https://source.unsplash.com/400x300/?streaming,tv" alt="Screenshot 4">
+  <h2>Galeria</h2>
+  <div class="gallery-container">
+    
+    <div class="gallery-item">
+      <img src="https://s14.gifyu.com/images/bwrND.png" alt="VPN Technology">
+      <div class="gallery-text">
+        <h3>Conexão Rápida</h3>
+        <p>Streaming e jogos sem interrupções. Conecte-se a servidores de alta velocidade em todo o mundo.</p>
+      </div>
     </div>
+
+    <div class="gallery-item reverse">
+      <img src="https://s14.gifyu.com/images/bwrND.png" alt="Internet Connection">
+      <div class="gallery-text">
+        <h3>Segurança Total</h3>
+        <p>Proteja seus dados em qualquer rede Wi-Fi pública ou privada.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://s14.gifyu.com/images/bwrND.png" alt="Network Security">
+      <div class="gallery-text">
+        <h3>Compatível com Todos Dispositivos</h3>
+        <p>Celulares, TV Box, Smart TV e roteadores — conecte todos simultaneamente.</p>
+      </div>
+    </div>
+
+  </div>
 </section>
+
 
 <!-- FAQ -->
 <section id="faq">
@@ -659,7 +750,30 @@ window.addEventListener('scroll', () => {
   if (window.scrollY > 50) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
 });
+
+// Galeria animada sempre que rolar
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+function checkVisibility() {
+  galleryItems.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    const itemTop = rect.top;
+    const itemBottom = rect.bottom;
+    
+    // Se o item está visível na tela
+    if (itemTop < window.innerHeight && itemBottom > 0) {
+      item.classList.add('visible');
+    } else {
+      item.classList.remove('visible'); // remove quando sai da tela
+    }
+  });
+}
+
+window.addEventListener('scroll', checkVisibility);
+window.addEventListener('load', checkVisibility);
 </script>
+
+
 
 
 
