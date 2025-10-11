@@ -169,37 +169,39 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   100% { transform: rotate(360deg);}
 }
 
-/* ---------- TAGS COLORIDAS (Faixa atrás do nome) ---------- */
+.plan {
+  position: relative; /* Necessário para a faixa absoluta */
+  overflow: hidden;   /* Mantém a faixa dentro do cartão */
+  border-radius: 15px; /* Bordas do cartão */
+}
+
 .plan .tag {
-  display: inline-block;
-  padding: 8px 400px;
-  border-radius: 999px;
+  position: absolute;   /* Faz a faixa “flutuar” sobre o cartão */
+  top: 0;               /* Coloca no topo do cartão */
+  left: 0;
+  width: 100%;          /* Ocupa 100% do cartão */
+  padding: 12px 0;      /* Altura da faixa */
+  text-align: center;   /* Centraliza o texto */
   font-weight: 700;
   font-size: 0.95rem;
   text-transform: uppercase;
+  border-radius: 15px 15px 0 0; /* Só arredonda topo do cartão */
+  box-sizing: border-box;
 }
 
-/* Cores específicas de cada plano */
 .plan.plan-popular .tag { background: rgba(255,0,0,0.15); color: #ff4d4d; }
 .plan.plan-premium .tag { background: rgba(255,207,59,0.15); color: #ffcf3b; }
 .plan.plan-familia .tag { background: rgba(0,150,255,0.15); color: #4db8ff; }
 .plan.plan-empreendedor .tag { background: rgba(0,200,0,0.15); color: #4dff4d; }
 
-/* Ajuste para tablets e celulares médios */
+/* Ajustes para celular */
 @media(max-width:768px){
-  .plan .tag {
-    padding: 6px 200px;
-    font-size: 0.85rem;
-  }
+  .plan .tag { font-size: 0.85rem; padding: 10px 0; }
+}
+@media(max-width:480px){
+  .plan .tag { font-size: 0.8rem; padding: 8px 0; }
 }
 
-/* 🔧 Correção extra para celulares pequenos (evita listra preta) */
-@media(max-width:480px){
-  .plan .tag {
-    padding: 6px 60px;
-    font-size: 0.8rem;
-  }
-}
 
 
 /* ---------- PREÇOS COLORIDOS ---------- */
@@ -1004,3 +1006,4 @@ testimonialCards.forEach(card => {
     });
 });
 </script>
+
