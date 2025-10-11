@@ -110,23 +110,24 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   100% { transform: rotate(360deg);}
 }
 
-/* ---------- PLANOS ---------- */
-.plan {
-  position: relative; /* essencial para ribbons e tags */
-  background: #111; 
-  padding: 20px;
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-/* ---------- TAGS COLORIDAS ---------- */
+/* ---------- TAGS COLORIDAS (Faixa atrás do nome) ---------- */
 .plan .tag {
   display: inline-block;
-  padding: 6px 20px; /* corrigido para não extrapolar tela */
+  padding: 8px 1.5em; /* em vez de 400px */
+  max-width: 100%;     /* garante que não ultrapasse a tela */
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.95rem;
   text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@media(max-width:768px){
+  .plan .tag {
+      padding: 6px 1em; /* em vez de 200px no mobile */
+  }
 }
 
 .plan.plan-popular .tag { background: rgba(255,0,0,0.15); color: #ff4d4d; }
@@ -135,17 +136,15 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .plan.plan-empreendedor .tag { background: rgba(0,200,0,0.15); color: #4dff4d; }
 
 @media(max-width:768px){
-  .plan .tag { padding: 5px 15px; font-size: 0.85rem; max-width: 90%; }
+  .plan .tag { padding: 6px 200px; font-size: 0.85rem; }
 }
 
-/* ---------- PREÇOS ---------- */
-.plan .price { font-size: 1.8rem; font-weight: 700; }
+/* ---------- PREÇOS COLORIDOS ---------- */
 .plan.plan-popular .price { color: #ff4d4d; }
 .plan.plan-premium .price { color: #ffcf3b; }
 .plan.plan-familia .price { color: #4db8ff; }
 .plan.plan-empreendedor .price { color: #4dff4d; }
 
-/* ---------- TÍTULO ---------- */
 .plan h3 {
   font-size: 1.45rem;
   margin-top: 8px;
@@ -153,7 +152,6 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   text-shadow: 0 2px 10px rgba(0,191,255,0.5);
 }
 
-/* ---------- FEATURES ---------- */
 .features {
   list-style: none;
   padding-left: 0;
@@ -179,7 +177,6 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   font-size: 0.95rem;
 }
 
-/* ---------- BOTÕES ---------- */
 .plan .buy {
   margin-top: 20px;
   width: 100%;
@@ -187,6 +184,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   justify-content: center;
 }
 
+/* ---------- BOTÕES COLORIDOS E ARREDONDADOS POR PLANO ---------- */
 .plan-popular .buy a,
 .plan-premium .buy a,
 .plan-familia .buy a,
@@ -202,11 +200,13 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   color: #fff;
   position: relative;
   z-index: 20;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
+
+  outline: none;      /* REMOVE o contorno padrão do navegador */
+  -webkit-tap-highlight-color: transparent; /* REMOVE o destaque de toque em celulares */
 }
 
-/* ---------- BOTÕES COLORIDOS ---------- */
+
+
 /* Popular */
 .plan-popular .buy a {
   background: linear-gradient(135deg, #ff4d4d, #ff0000);
@@ -255,10 +255,46 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 @media(max-width:1024px){ .plans {grid-template-columns: repeat(2,1fr);} }
 @media(max-width:768px){ .plans {grid-template-columns: 1fr;} }
 
-/* ---------- RIBBONS ---------- */
-.plan.plan-popular::after,
-.plan.plan-premium::after,
-.plan.plan-familia::after,
+/* ---------- FAIXAS PNG (RIBBONS) ---------- */
+.plan.plan-popular::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background: url('https://s14.gifyu.com/images/bwa9D.png') no-repeat center/contain;
+  z-index: 10;
+  pointer-events: none;
+  animation: float 2s ease-in-out infinite alternate;
+}
+
+.plan.plan-premium::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background: url('https://s14.gifyu.com/images/bwaHx.png') no-repeat center/contain;
+  z-index: 10;
+  pointer-events: none;
+  animation: float 2s ease-in-out infinite alternate;
+}
+
+.plan.plan-familia::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background: url('https://s14.gifyu.com/images/bwrzU.png') no-repeat center/contain;
+  z-index: 10;
+  pointer-events: none;
+  animation: float 2s ease-in-out infinite alternate;
+}
+
 .plan.plan-empreendedor::after {
   content: "";
   position: absolute;
@@ -266,15 +302,11 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   right: 0;
   width: 180px;
   height: 180px;
+  background: url('https://s14.gifyu.com/images/bwaKl.png') no-repeat center/contain;
   z-index: 10;
   pointer-events: none;
   animation: float 2s ease-in-out infinite alternate;
 }
-
-.plan.plan-popular::after { background: url('https://s14.gifyu.com/images/bwa9D.png') no-repeat center/contain; }
-.plan.plan-premium::after { background: url('https://s14.gifyu.com/images/bwaHx.png') no-repeat center/contain; }
-.plan.plan-familia::after { background: url('https://s14.gifyu.com/images/bwrzU.png') no-repeat center/contain; }
-.plan.plan-empreendedor::after { background: url('https://s14.gifyu.com/images/bwaKl.png') no-repeat center/contain; }
 
 @media(max-width:768px){
   .plan.plan-popular::after,
@@ -284,7 +316,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
     width: 100px;
     height: 100px;
     top: 5px;
-    right: 5px;
+    right: 0;
   }
 }
 
@@ -294,6 +326,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   50% { transform: translateY(-5px) rotate(3deg); }
   100% { transform: translateY(0) rotate(-3deg); }
 }
+
 
 
 /* Galeria */
