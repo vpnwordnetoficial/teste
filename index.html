@@ -979,25 +979,33 @@ testimonialCards.forEach(card => {
   });
 });
 
-// ---------- DESTAQUE AUTOMÁTICO DOS PLANOS ----------
+// Seleciona todos os planos
 const plans = document.querySelectorAll('.plan');
 
+// Função para destacar planos visíveis
 function highlightPlansOnScroll() {
-  plans.forEach(plan => {
-    const rect = plan.getBoundingClientRect();
-    // se o plano estiver visível na tela, aplica a classe active-plan
-    if(rect.top < window.innerHeight && rect.bottom > 0){
-      plan.classList.add('active-plan');
-    } else {
-      plan.classList.remove('active-plan');
-    }
-  });
+  // Só aplica no celular (max-width 768px)
+  if(window.innerWidth <= 768){
+    plans.forEach(plan => {
+      const rect = plan.getBoundingClientRect();
+      if(rect.top < window.innerHeight && rect.bottom > 0){
+        plan.classList.add('active-plan'); // acende o plano
+      } else {
+        plan.classList.remove('active-plan'); // desliga quando sai da tela
+      }
+    });
+  } else {
+    // Remove destaque se for desktop/tablet
+    plans.forEach(plan => plan.classList.remove('active-plan'));
+  }
 }
 
+// Dispara ao rolar, carregar e redimensionar
 window.addEventListener('scroll', highlightPlansOnScroll);
 window.addEventListener('load', highlightPlansOnScroll);
 window.addEventListener('resize', highlightPlansOnScroll);
 </script>
+
 
 
 
