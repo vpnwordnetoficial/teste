@@ -250,11 +250,9 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   position: relative;
   z-index: 20;
 
-  outline: none;      /* REMOVE o contorno padrão do navegador */
-  -webkit-tap-highlight-color: transparent; /* REMOVE o destaque de toque em celulares */
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
-
-
 
 /* Popular */
 .plan-popular .buy a {
@@ -376,6 +374,14 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   100% { transform: translateY(0) rotate(-3deg); }
 }
 
+/* ---------- DESTAQUE AUTOMÁTICO DO PLANO NO CELULAR ---------- */
+@media(max-width:768px){
+  .plan.active-plan {
+      transform: scale(1.05);
+      box-shadow: 0 15px 45px rgba(0,191,255,0.5);
+      border: 1px solid rgba(0,191,255,0.4);
+  }
+}
 
 
 /* Galeria */
@@ -866,13 +872,12 @@ footer a {color:#1e90ff;}
 </footer>
 
 <script>
-// Seletores
+// ---------- MENU HAMBÚRGUER ----------
 const toggle = document.getElementById('menu-toggle');
 const menu = document.getElementById('nav-menu');
 
-// Alterna o menu ao clicar no botão hambúrguer
 toggle.addEventListener('click', (e) => {
-  e.stopPropagation(); // impede fechamento imediato
+  e.stopPropagation(); 
   menu.classList.toggle('active');
 });
 
@@ -897,7 +902,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// FAQ Toggle
+// ---------- FAQ TOGGLE ----------
 const faqItems = document.querySelectorAll('.faq-item h3');
 faqItems.forEach(item => {
   item.addEventListener('click', () => {
@@ -905,22 +910,19 @@ faqItems.forEach(item => {
   });
 });
 
-// Scroll Header
+// ---------- SCROLL HEADER ----------
 window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
   if (window.scrollY > 50) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
 });
 
-// Galeria animada sempre que rolar
+// ---------- GALERIA ANIMADA ----------
 const galleryItems = document.querySelectorAll('.gallery-item');
 function checkVisibility() {
   galleryItems.forEach(item => {
     const rect = item.getBoundingClientRect();
-    const itemTop = rect.top;
-    const itemBottom = rect.bottom;
-    
-    if (itemTop < window.innerHeight && itemBottom > 0) {
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
       item.classList.add('visible');
     } else {
       item.classList.remove('visible'); 
@@ -930,64 +932,66 @@ function checkVisibility() {
 window.addEventListener('scroll', checkVisibility);
 window.addEventListener('load', checkVisibility);
 
-// ===== Scroll animado para os cards com delay =====
+// ---------- DEPOIMENTOS COM DELAY ----------
 const testimonialCards = document.querySelectorAll('.testimonial-card');
 function checkVisibilityTestimonials() {
-    testimonialCards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 50 && rect.bottom > 0){
-            setTimeout(() => {
-                card.classList.add('visible');
-            }, index * 200); // delay progressivo
-        } else {
-            card.classList.remove('visible'); // remove ao sair da tela
-        }
-    });
+  testimonialCards.forEach((card, index) => {
+    const rect = card.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 50 && rect.bottom > 0){
+      setTimeout(() => {
+        card.classList.add('visible');
+      }, index * 200);
+    } else {
+      card.classList.remove('visible');
+    }
+  });
 }
 window.addEventListener('scroll', checkVisibilityTestimonials);
 window.addEventListener('load', checkVisibilityTestimonials);
 
-// ===== Typewriter ao clicar na foto com múltiplas mensagens =====
+// ---------- TYPEWRITER AO CLICAR NA FOTO ----------
 let typingIntervals = new Map();
 let messageIndexes = new Map();
 
 testimonialCards.forEach(card => {
-    const img = card.querySelector('img');
-    const paragraph = card.querySelector('p');
-    const messages = JSON.parse(img.dataset.text);
+  const img = card.querySelector('img');
+  const paragraph = card.querySelector('p');
+  const messages = JSON.parse(img.dataset.text);
 
-    messageIndexes.set(img, 0);
+  messageIndexes.set(img, 0);
 
-    img.addEventListener('click', () => {
-        let idx = messageIndexes.get(img);
-        const text = messages[idx];
+  img.addEventListener('click', () => {
+    let idx = messageIndexes.get(img);
+    const text = messages[idx];
 
-        idx = (idx + 1) % messages.length;
-        messageIndexes.set(img, idx);
+    idx = (idx + 1) % messages.length;
+    messageIndexes.set(img, idx);
 
-        if(typingIntervals.has(img)){
-            clearTimeout(typingIntervals.get(img));
-            typingIntervals.delete(img);
-        }
+    if(typingIntervals.has(img)){
+      clearTimeout(typingIntervals.get(img));
+      typingIntervals.delete(img);
+    }
 
-        paragraph.textContent = '';
-        paragraph.style.opacity = 1;
+    paragraph.textContent = '';
+    paragraph.style.opacity = 1;
 
-        let i = 0;
-        const typingSpeed = 40;
+    let i = 0;
+    const typingSpeed = 40;
 
-        function type() {
-            if(i < text.length){
-                paragraph.textContent += text.charAt(i);
-                i++;
-                const timeout = setTimeout(type, typingSpeed);
-                typingIntervals.set(img, timeout);
-            } else {
-                typingIntervals.delete(img);
-            }
-        }
-        type();
-    });
+    function type() {
+      if(i < text.length){
+        paragraph.textContent += text.charAt(i);
+        i++;
+        const timeout = setTimeout(type, typingSpeed);
+        typingIntervals.set(img, timeout);
+      } else {
+        typingIntervals.delete(img);
+      }
+    }
+    type();
+  });
 });
 </script>
 
+
+ 
