@@ -250,9 +250,11 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   position: relative;
   z-index: 20;
 
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
+  outline: none;      /* REMOVE o contorno padrão do navegador */
+  -webkit-tap-highlight-color: transparent; /* REMOVE o destaque de toque em celulares */
 }
+
+
 
 /* Popular */
 .plan-popular .buy a {
@@ -372,22 +374,6 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   0% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-5px) rotate(3deg); }
   100% { transform: translateY(0) rotate(-3deg); }
-}
-
-/* ---------- DESTAQUE AUTOMÁTICO DO PLANO NO CELULAR ---------- */
-@media(max-width:768px){
-  .plan.active-plan {
-      transform: scale(1.05);
-      box-shadow: 0 15px 45px rgba(0,191,255,0.5);
-      border: 1px solid rgba(0,191,255,0.4);
-  }
-}
-  
-  /* Destaque automático do plano */
-.plan.active-plan {
-    transform: scale(1.05);
-    box-shadow: 0 15px 45px rgba(0,191,255,0.5);
-    border: 1px solid rgba(0,191,255,0.4);
 }
 
 
@@ -880,133 +866,128 @@ footer a {color:#1e90ff;}
 </footer>
 
 <script>
-// ---------- MENU HAMBÚRGUER ----------
+// Seletores
 const toggle = document.getElementById('menu-toggle');
 const menu = document.getElementById('nav-menu');
 
+// Alterna o menu ao clicar no botão hambúrguer
 toggle.addEventListener('click', (e) => {
-  e.stopPropagation(); 
+  e.stopPropagation(); // impede fechamento imediato
   menu.classList.toggle('active');
 });
 
+// Scroll suave e fechamento do menu ao clicar nos links
 document.querySelectorAll('#nav-menu li a').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault(); 
     const target = document.querySelector(link.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
     menu.classList.remove('active');
   });
 });
 
+// Fecha o menu ao clicar fora dele
 document.addEventListener('click', (e) => {
   const isClickInsideMenu = menu.contains(e.target);
   const isClickToggle = toggle.contains(e.target);
-  if (!isClickInsideMenu && !isClickToggle) menu.classList.remove('active');
+  if (!isClickInsideMenu && !isClickToggle) {
+    menu.classList.remove('active');
+  }
 });
 
-// ---------- FAQ ----------
-document.querySelectorAll('.faq-item h3').forEach(item => {
-  item.addEventListener('click', () => item.parentElement.classList.toggle('active'));
+// FAQ Toggle
+const faqItems = document.querySelectorAll('.faq-item h3');
+faqItems.forEach(item => {
+  item.addEventListener('click', () => {
+    item.parentElement.classList.toggle('active');
+  });
 });
 
-// ---------- HEADER SCROLL ----------
+// Scroll Header
 window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
   if (window.scrollY > 50) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
 });
 
-// ---------- GALERIA ----------
+// Galeria animada sempre que rolar
 const galleryItems = document.querySelectorAll('.gallery-item');
-function checkGalleryVisibility() {
+function checkVisibility() {
   galleryItems.forEach(item => {
     const rect = item.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) item.classList.add('visible');
-    else item.classList.remove('visible');
+    const itemTop = rect.top;
+    const itemBottom = rect.bottom;
+    
+    if (itemTop < window.innerHeight && itemBottom > 0) {
+      item.classList.add('visible');
+    } else {
+      item.classList.remove('visible'); 
+    }
   });
 }
-window.addEventListener('scroll', checkGalleryVisibility);
-window.addEventListener('load', checkGalleryVisibility);
+window.addEventListener('scroll', checkVisibility);
+window.addEventListener('load', checkVisibility);
 
-// ---------- DEPOIMENTOS ----------
+// ===== Scroll animado para os cards com delay =====
 const testimonialCards = document.querySelectorAll('.testimonial-card');
-function checkTestimonialsVisibility() {
-  testimonialCards.forEach((card, index) => {
-    const rect = card.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 50 && rect.bottom > 0){
-      setTimeout(() => card.classList.add('visible'), index * 200);
-    } else card.classList.remove('visible');
-  });
+function checkVisibilityTestimonials() {
+    testimonialCards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 50 && rect.bottom > 0){
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, index * 200); // delay progressivo
+        } else {
+            card.classList.remove('visible'); // remove ao sair da tela
+        }
+    });
 }
-window.addEventListener('scroll', checkTestimonialsVisibility);
-window.addEventListener('load', checkTestimonialsVisibility);
+window.addEventListener('scroll', checkVisibilityTestimonials);
+window.addEventListener('load', checkVisibilityTestimonials);
 
-// ---------- TYPEWRITER ----------
+// ===== Typewriter ao clicar na foto com múltiplas mensagens =====
 let typingIntervals = new Map();
 let messageIndexes = new Map();
 
 testimonialCards.forEach(card => {
-  const img = card.querySelector('img');
-  const paragraph = card.querySelector('p');
-  const messages = JSON.parse(img.dataset.text);
-  messageIndexes.set(img, 0);
+    const img = card.querySelector('img');
+    const paragraph = card.querySelector('p');
+    const messages = JSON.parse(img.dataset.text);
 
-  img.addEventListener('click', () => {
-    let idx = messageIndexes.get(img);
-    const text = messages[idx];
-    idx = (idx + 1) % messages.length;
-    messageIndexes.set(img, idx);
+    messageIndexes.set(img, 0);
 
-    if(typingIntervals.has(img)){
-      clearTimeout(typingIntervals.get(img));
-      typingIntervals.delete(img);
-    }
+    img.addEventListener('click', () => {
+        let idx = messageIndexes.get(img);
+        const text = messages[idx];
 
-    paragraph.textContent = '';
-    paragraph.style.opacity = 1;
+        idx = (idx + 1) % messages.length;
+        messageIndexes.set(img, idx);
 
-    let i = 0;
-    const typingSpeed = 40;
-    function type() {
-      if(i < text.length){
-        paragraph.textContent += text.charAt(i);
-        i++;
-        const timeout = setTimeout(type, typingSpeed);
-        typingIntervals.set(img, timeout);
-      } else typingIntervals.delete(img);
-    }
-    type();
-  });
-});
+        if(typingIntervals.has(img)){
+            clearTimeout(typingIntervals.get(img));
+            typingIntervals.delete(img);
+        }
 
-// Seleciona todos os planos
-const plans = document.querySelectorAll('.plan');
+        paragraph.textContent = '';
+        paragraph.style.opacity = 1;
 
-// Função para destacar planos visíveis
-function highlightPlansOnScroll() {
-  // Só aplica no celular (max-width 768px)
-  if(window.innerWidth <= 768){
-    plans.forEach(plan => {
-      const rect = plan.getBoundingClientRect();
-      if(rect.top < window.innerHeight && rect.bottom > 0){
-        plan.classList.add('active-plan'); // acende o plano
-      } else {
-        plan.classList.remove('active-plan'); // desliga quando sai da tela
-      }
+        let i = 0;
+        const typingSpeed = 40;
+
+        function type() {
+            if(i < text.length){
+                paragraph.textContent += text.charAt(i);
+                i++;
+                const timeout = setTimeout(type, typingSpeed);
+                typingIntervals.set(img, timeout);
+            } else {
+                typingIntervals.delete(img);
+            }
+        }
+        type();
     });
-  } else {
-    // Remove destaque se for desktop/tablet
-    plans.forEach(plan => plan.classList.remove('active-plan'));
-  }
-}
-
-// Dispara ao rolar, carregar e redimensionar
-window.addEventListener('scroll', highlightPlansOnScroll);
-window.addEventListener('load', highlightPlansOnScroll);
-window.addEventListener('resize', highlightPlansOnScroll);
+});
 </script>
 
-
-
-
- 
