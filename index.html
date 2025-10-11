@@ -382,6 +382,14 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
       border: 1px solid rgba(0,191,255,0.4);
   }
 }
+  
+  /* Destaque automático do plano */
+.plan.active-plan {
+    transform: scale(1.05);
+    box-shadow: 0 15px 45px rgba(0,191,255,0.5);
+    border: 1px solid rgba(0,191,255,0.4);
+}
+
 
 
 /* Galeria */
@@ -991,6 +999,26 @@ testimonialCards.forEach(card => {
     type();
   });
 });
+
+// ---------- DESTAQUE AUTOMÁTICO DOS PLANOS NO CELULAR ----------
+function highlightPlansOnScroll() {
+  if (window.innerWidth > 768) return; // só aplica em celular
+
+  const plans = document.querySelectorAll('.plan');
+  plans.forEach(plan => {
+    const rect = plan.getBoundingClientRect();
+    const topVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    if(topVisible){
+      plan.classList.add('active-plan');
+    } else {
+      plan.classList.remove('active-plan');
+    }
+  });
+}
+
+window.addEventListener('scroll', highlightPlansOnScroll);
+window.addEventListener('load', highlightPlansOnScroll);
+window.addEventListener('resize', highlightPlansOnScroll);
 </script>
 
 
