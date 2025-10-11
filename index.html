@@ -418,6 +418,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 
 .testimonial-card {
     position: relative;
+    overflow: hidden; /* corrigido: evita linhas/listras extras no mobile */
     background: linear-gradient(145deg, #111, #1a1a1a);
     padding: 25px;
     border-radius: 20px;
@@ -485,6 +486,10 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
     .testimonials {
         flex-direction: column;
         align-items: center;
+    }
+
+    .testimonial-card .click-indicator {
+        font-size: 10px; /* ajustado para mobile */
     }
 }
 
@@ -820,12 +825,11 @@ toggle.addEventListener('click', (e) => {
 // Scroll suave e fechamento do menu ao clicar nos links
 document.querySelectorAll('#nav-menu li a').forEach(link => {
   link.addEventListener('click', (e) => {
-    e.preventDefault(); // evita jump instantâneo
+    e.preventDefault(); 
     const target = document.querySelector(link.getAttribute('href'));
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
     }
-    // Fecha o menu no mobile
     menu.classList.remove('active');
   });
 });
@@ -856,39 +860,36 @@ window.addEventListener('scroll', () => {
 
 // Galeria animada sempre que rolar
 const galleryItems = document.querySelectorAll('.gallery-item');
-
 function checkVisibility() {
   galleryItems.forEach(item => {
     const rect = item.getBoundingClientRect();
     const itemTop = rect.top;
     const itemBottom = rect.bottom;
     
-    // Se o item está visível na tela
     if (itemTop < window.innerHeight && itemBottom > 0) {
       item.classList.add('visible');
     } else {
-      item.classList.remove('visible'); // remove quando sai da tela
+      item.classList.remove('visible'); 
     }
   });
 }
-
 window.addEventListener('scroll', checkVisibility);
 window.addEventListener('load', checkVisibility);
-  
-  // ===== Scroll animado para os cards com delay =====
-const testimonialCards = document.querySelectorAll('.testimonial-card');
 
+// ===== Scroll animado para os cards com delay =====
+const testimonialCards = document.querySelectorAll('.testimonial-card');
 function checkVisibilityTestimonials() {
     testimonialCards.forEach((card, index) => {
         const rect = card.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 50 && !card.classList.contains('visible')){
+        if(rect.top < window.innerHeight - 50 && rect.bottom > 0){
             setTimeout(() => {
                 card.classList.add('visible');
-            }, index * 200); // delay progressivo: 200ms entre cada card
+            }, index * 200); // delay progressivo
+        } else {
+            card.classList.remove('visible'); // remove ao sair da tela
         }
     });
 }
-
 window.addEventListener('scroll', checkVisibilityTestimonials);
 window.addEventListener('load', checkVisibilityTestimonials);
 
@@ -907,11 +908,9 @@ testimonialCards.forEach(card => {
         let idx = messageIndexes.get(img);
         const text = messages[idx];
 
-        // Atualiza índice para próximo clique
         idx = (idx + 1) % messages.length;
         messageIndexes.set(img, idx);
 
-        // Limpa intervalos anteriores
         if(typingIntervals.has(img)){
             clearTimeout(typingIntervals.get(img));
             typingIntervals.delete(img);
@@ -933,13 +932,10 @@ testimonialCards.forEach(card => {
                 typingIntervals.delete(img);
             }
         }
-
         type();
     });
 });
-
 </script>
-
 
 
 
