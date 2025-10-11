@@ -113,8 +113,8 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 /* ---------- TAGS COLORIDAS (Faixa atrás do nome) ---------- */
 .plan .tag {
   display: inline-block;
-  padding: 8px 1.5em; /* em vez de 400px */
-  max-width: 100%;     /* garante que não ultrapasse a tela */
+  padding: 8px 30.5em; /* proporcional ao texto */
+  max-width: 100%;    /* não deixa ultrapassar a tela */
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.95rem;
@@ -124,11 +124,6 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   overflow: hidden;
 }
 
-@media(max-width:768px){
-  .plan .tag {
-      padding: 6px 1em; /* em vez de 200px no mobile */
-  }
-}
 
 .plan.plan-popular .tag { background: rgba(255,0,0,0.15); color: #ff4d4d; }
 .plan.plan-premium .tag { background: rgba(255,207,59,0.15); color: #ffcf3b; }
