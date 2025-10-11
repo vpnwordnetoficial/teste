@@ -564,87 +564,87 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 
-/* DEPOIMENTOS ESTILO PROFISSIONAL */
+/* ---------- DEPOIMENTOS PREMIUM MEGA ---------- */
 .testimonials {
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 40px;
     justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 60px 20px;
 }
 
 .testimonial-card {
     position: relative;
-    background: linear-gradient(145deg, #111, #1a1a1a);
-    padding: 25px;
-    border-radius: 20px;
+    background: linear-gradient(145deg, #0b0b0b, #1f1f1f);
+    padding: 30px 25px 50px;
+    border-radius: 25px;
     box-shadow: 0 15px 40px rgba(0,191,255,0.2);
+    width: 280px;
     text-align: center;
-    flex: 1 1 280px;
-    max-width: 350px;
+    overflow: hidden;
     cursor: pointer;
+    transform: translateY(50px);
     opacity: 0;
-    transform: translateY(50px) scale(0.95);
-    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transition: transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s;
 }
 
 .testimonial-card.visible {
+    transform: translateY(0);
     opacity: 1;
-    transform: translateY(0) scale(1);
 }
 
 .testimonial-card img {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    border: 3px solid #00bfff;
+    object-fit: cover;
     margin-bottom: 15px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    border: 3px solid rgba(0,191,255,0.5);
+    transition: transform 0.6s, box-shadow 0.6s, border-color 0.6s;
 }
 
 .testimonial-card img:hover {
-    transform: scale(1.15) rotate(-3deg);
-    box-shadow: 0 15px 35px rgba(0,191,255,0.6);
-}
-
-.testimonial-card p {
-    font-style: italic;
-    color: #cfeeff;
-    min-height: 60px;
-    transition: opacity 0.3s;
+    transform: scale(1.2) rotate(-5deg);
+    box-shadow: 0 20px 50px rgba(0,191,255,0.6);
+    border-color: #00ffff;
 }
 
 .testimonial-card h4 {
-    margin-top: 15px;
-    font-weight: bold;
-    color: #1e90ff;
+    color: #00ffff;
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    transition: color 0.3s;
 }
 
-/* Indicador de clique */
-.testimonial-card .click-indicator {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 12px;
-    color: #00bfff;
-    opacity: 0.7;
-    animation: pulse 1.5s infinite;
+/* Nome muda ao hover da imagem */
+.testimonial-card img:hover + h4 {
+    color: #ff00ff;
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 0.7; transform: translateX(-50%) translateY(0); }
-    50% { opacity: 1; transform: translateX(-50%) translateY(-5px); }
+.testimonial-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+    min-height: 60px;
 }
 
-/* Responsividade */
-@media(max-width:768px){
-    .testimonials {
-        flex-direction: column;
-        align-items: center;
-    }
+/* Hover geral no cartão */
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(0,191,255,0.3);
 }
+
+/* Fade in progressivo */
+.testimonial-card:nth-child(1).visible { transition-delay: 0s; }
+.testimonial-card:nth-child(2).visible { transition-delay: 0.15s; }
+.testimonial-card:nth-child(3).visible { transition-delay: 0.3s; }
+.testimonial-card:nth-child(4).visible { transition-delay: 0.45s; }
+.testimonial-card:nth-child(5).visible { transition-delay: 0.6s; }
+
+
 
 /* Tutoriais */
 #tutoriais {padding:100px 20px; background:#0a0a0a;}
@@ -1032,9 +1032,10 @@ function checkVisibilityGallery() {
 window.addEventListener('scroll', checkVisibilityGallery);
 window.addEventListener('load', checkVisibilityGallery);
 
-// ===== DEPOIMENTOS COM DELAY =====
+// ===== DEPOIMENTOS COM ANIMAÇÃO PREMIUM =====
 const testimonialCards = document.querySelectorAll('.testimonial-card');
-function checkVisibilityTestimonials() {
+
+function animateTestimonials() {
   testimonialCards.forEach((card, index) => {
     const rect = card.getBoundingClientRect();
     if(rect.top < window.innerHeight - 50 && rect.bottom > 0){
@@ -1044,8 +1045,8 @@ function checkVisibilityTestimonials() {
     }
   });
 }
-window.addEventListener('scroll', checkVisibilityTestimonials);
-window.addEventListener('load', checkVisibilityTestimonials);
+window.addEventListener('scroll', animateTestimonials);
+window.addEventListener('load', animateTestimonials);
 
 // ===== TYPEWRITER NOS DEPOIMENTOS =====
 let typingIntervals = new Map();
@@ -1088,6 +1089,7 @@ testimonialCards.forEach(card => {
   });
 });
 </script>
+
 
 
 
