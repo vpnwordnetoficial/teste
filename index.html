@@ -406,12 +406,87 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .faq-item p {max-height:0; overflow:hidden; transition:max-height 0.4s ease, margin-top 0.4s;}
 .faq-item.active p {max-height:300px; margin-top:10px;}
 
-/* Depoimentos */
-.testimonials {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px;}
-.testimonial-card {background:#1a1a1a; padding:25px; border-radius:15px; transition:0.4s; box-shadow:0 8px 20px rgba(0,0,0,0.4);}
-.testimonial-card:hover {transform:translateY(-5px); background:#222; box-shadow:0 12px 25px rgba(0,191,255,0.5);}
-.testimonial-card p {font-style:italic; margin-bottom:15px;}
-.testimonial-card h4 {text-align:right; font-weight:bold; color:#1e90ff;}
+/* DEPOIMENTOS ESTILO PROFISSIONAL */
+.testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    position: relative;
+    background: linear-gradient(145deg, #111, #1a1a1a);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,191,255,0.2);
+    text-align: center;
+    flex: 1 1 280px;
+    max-width: 350px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.testimonial-card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.testimonial-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #00bfff;
+    margin-bottom: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.testimonial-card img:hover {
+    transform: scale(1.15) rotate(-3deg);
+    box-shadow: 0 15px 35px rgba(0,191,255,0.6);
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: #cfeeff;
+    min-height: 60px;
+    transition: opacity 0.3s;
+}
+
+.testimonial-card h4 {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #1e90ff;
+}
+
+/* Indicador de clique */
+.testimonial-card .click-indicator {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #00bfff;
+    opacity: 0.7;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 1; transform: translateX(-50%) translateY(-5px); }
+}
+
+/* Responsividade */
+@media(max-width:768px){
+    .testimonials {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
 /* Tutoriais */
 #tutoriais {padding:100px 20px; background:#0a0a0a;}
@@ -641,21 +716,32 @@ footer a {color:#1e90ff;}
     </div>
 </section>
 
-<!-- Depoimentos -->
+<!-- =================== DEPOIMENTOS =================== -->
 <section id="depoimentos">
     <h2>Depoimentos</h2>
     <div class="testimonials">
+        <!-- Depoimento 1 -->
         <div class="testimonial-card">
-            <p>"A melhor VPN que já usei, estável e rápida!"</p>
+            <img src="https://s14.gifyu.com/images/avatar1.png" alt="João S." data-text='["A melhor VPN que já usei, estável e rápida!","Funciona perfeitamente em Smart TV.","Atendimento impecável!"]'>
+            <p></p>
             <h4>— João S.</h4>
+            <span class="click-indicator">Clique na foto</span>
         </div>
+
+        <!-- Depoimento 2 -->
         <div class="testimonial-card">
-            <p>"Perfeita para streaming sem travar em TV Box."</p>
+            <img src="https://s14.gifyu.com/images/avatar2.png" alt="Maria F." data-text='["Perfeita para streaming sem travar em TV Box.","Super fácil de instalar.","Recomendo para toda família!"]'>
+            <p></p>
             <h4>— Maria F.</h4>
+            <span class="click-indicator">Clique na foto</span>
         </div>
+
+        <!-- Depoimento 3 -->
         <div class="testimonial-card">
-            <p>"Suporte rápido e eficiente. Recomendo!"</p>
+            <img src="https://s14.gifyu.com/images/avatar3.png" alt="Carlos P." data-text='["Suporte rápido e eficiente. Recomendo!","Velocidade excelente para jogos online.","Vale cada centavo!"]'>
+            <p></p>
             <h4>— Carlos P.</h4>
+            <span class="click-indicator">Clique na foto</span>
         </div>
     </div>
 </section>
@@ -771,7 +857,71 @@ function checkVisibility() {
 
 window.addEventListener('scroll', checkVisibility);
 window.addEventListener('load', checkVisibility);
+
+// ===== Scroll animado para os cards =====
+const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+function checkVisibilityTestimonials() {
+    testimonialCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 50){
+            card.classList.add('visible');
+        } else {
+            card.classList.remove('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', checkVisibilityTestimonials);
+window.addEventListener('load', checkVisibilityTestimonials);
+
+// ===== Typewriter ao clicar na foto com múltiplas mensagens =====
+let typingIntervals = new Map();
+let messageIndexes = new Map();
+
+testimonialCards.forEach(card => {
+    const img = card.querySelector('img');
+    const paragraph = card.querySelector('p');
+    const messages = JSON.parse(img.dataset.text);
+
+    messageIndexes.set(img, 0);
+
+    img.addEventListener('click', () => {
+        let idx = messageIndexes.get(img);
+        const text = messages[idx];
+
+        // Atualiza índice para próximo clique
+        idx = (idx + 1) % messages.length;
+        messageIndexes.set(img, idx);
+
+        // Limpa intervalos anteriores
+        if(typingIntervals.has(img)){
+            clearTimeout(typingIntervals.get(img));
+            typingIntervals.delete(img);
+        }
+
+        paragraph.textContent = '';
+        paragraph.style.opacity = 1;
+
+        let i = 0;
+        const typingSpeed = 40;
+
+        function type() {
+            if(i < text.length){
+                paragraph.textContent += text.charAt(i);
+                i++;
+                const timeout = setTimeout(type, typingSpeed);
+                typingIntervals.set(img, timeout);
+            } else {
+                typingIntervals.delete(img);
+            }
+        }
+
+        type();
+    });
+});
 </script>
+
 
 
 
