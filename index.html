@@ -697,8 +697,8 @@ footer a {color:#1e90ff;}
 @keyframes fadeIn {0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);}}
   
   
-/* ===== ESTILOS ASSISTENTE ===== */
-#virtual-assistant {
+  /* ===== ESTILO ASSISTENTE VPN ===== */
+#vpn-assistant {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -706,11 +706,11 @@ footer a {color:#1e90ff;}
   font-family: 'Segoe UI', sans-serif;
 }
 
-#assistant-icon {
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
+#vpn-assistant-icon {
   width: 60px;
   height: 60px;
   border-radius: 50%;
+  background: linear-gradient(135deg,#00c6ff,#0072ff);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -719,14 +719,10 @@ footer a {color:#1e90ff;}
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   transition: transform 0.3s, box-shadow 0.3s;
 }
+#vpn-assistant-icon:hover { transform: scale(1.2); box-shadow: 0 12px 25px rgba(0,0,0,0.4); }
 
-#assistant-icon:hover {
-  transform: scale(1.2);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
-}
-
-#assistant-chat {
-  width: 320px;
+#vpn-assistant-chat {
+  width: 340px;
   max-height: 500px;
   background: #111;
   color: #fff;
@@ -737,8 +733,8 @@ footer a {color:#1e90ff;}
   box-shadow: 0 8px 25px rgba(0,0,0,0.5);
 }
 
-#assistant-header {
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
+#vpn-assistant-header {
+  background: linear-gradient(135deg,#00c6ff,#0072ff);
   padding: 15px;
   font-weight: bold;
   display: flex;
@@ -746,7 +742,7 @@ footer a {color:#1e90ff;}
   align-items: center;
 }
 
-#assistant-header button {
+#vpn-assistant-header button {
   background: transparent;
   border: none;
   font-size: 20px;
@@ -754,7 +750,7 @@ footer a {color:#1e90ff;}
   cursor: pointer;
 }
 
-#assistant-messages {
+#vpn-assistant-messages {
   padding: 15px;
   flex: 1;
   overflow-y: auto;
@@ -763,27 +759,32 @@ footer a {color:#1e90ff;}
   gap: 10px;
 }
 
-.assistant-message {
+.vpn-message {
   background: rgba(0,191,255,0.1);
   padding: 10px 15px;
   border-radius: 15px;
   max-width: 80%;
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateX(50px);
   animation: slideIn 0.5s forwards;
 }
 
-.user-message {
+.vpn-user {
   align-self: flex-end;
   background: rgba(0,255,128,0.1);
 }
 
-#assistant-input-area {
+.vpn-typing {
+  font-style: italic;
+  opacity: 0.6;
+}
+
+#vpn-assistant-input-area {
   display: flex;
   border-top: 1px solid #333;
 }
 
-#assistant-input {
+#vpn-assistant-input {
   flex: 1;
   padding: 10px 15px;
   border: none;
@@ -792,29 +793,22 @@ footer a {color:#1e90ff;}
   outline: none;
 }
 
-#assistant-send {
+#vpn-assistant-send {
   padding: 10px 15px;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  background: linear-gradient(135deg,#00c6ff,#0072ff);
   border: none;
   color: #fff;
   cursor: pointer;
   font-weight: bold;
   transition: background 0.3s;
 }
-
-#assistant-send:hover {
-  background: linear-gradient(135deg, #0072ff, #00c6ff);
+#vpn-assistant-send:hover {
+  background: linear-gradient(135deg,#0072ff,#00c6ff);
 }
 
-/* ===== ANIMAÇÕES ===== */ 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateX(100%); }
+  from { opacity: 0; transform: translateX(50px); }
   to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slideOut {
-  from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(100%); }
 }
 
   
@@ -1086,31 +1080,30 @@ footer a {color:#1e90ff;}
     </div>
 </section>
 
-  
 <!-- Suporte -->
 <section id="suporte">
     <h2>Suporte</h2>
     <p style="text-align:center;">Entre em contato via <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a> ou <a href="mailto:support@vpnwordnet.com">email</a>. Nosso time ajuda a configurar todos os dispositivos.</p>
 </section>
-  
-<!-- ===== ASSISTENTE VIRTUAL ===== -->
-<div id="virtual-assistant">
-  <div id="assistant-icon">🤖</div>
-  
-  <div id="assistant-chat">
-    <div id="assistant-header">
-      <span>Assistente Virtual</span>
-      <button id="assistant-close">&times;</button>
+
+  <!-- ===== ASSISTENTE VIRTUAL VPN ===== -->
+<div id="vpn-assistant">
+  <div id="vpn-assistant-icon">🛡️</div>
+
+  <div id="vpn-assistant-chat">
+    <div id="vpn-assistant-header">
+      <span>Assistente VPN</span>
+      <button id="vpn-assistant-close">&times;</button>
     </div>
-    <div id="assistant-messages"></div>
-    <div id="assistant-input-area">
-      <input type="text" id="assistant-input" placeholder="Digite sua mensagem...">
-      <button id="assistant-send">Enviar</button>
+    <div id="vpn-assistant-messages"></div>
+    <div id="vpn-assistant-input-area">
+      <input type="text" id="vpn-assistant-input" placeholder="Digite sua pergunta sobre VPN...">
+      <button id="vpn-assistant-send">Enviar</button>
     </div>
   </div>
 </div>
-
-
+</section>
+  
 <!-- Footer -->
 <footer>
     &copy; 2025 VPN Word Net. Todos os direitos reservados. | <a href="#hero">Voltar ao topo</a>
@@ -1230,62 +1223,88 @@ testimonialCards.forEach(card => {
   });
 });
   
-// ===== ASSISTENTE VIRTUAL =====
-const assistantIcon = document.getElementById('assistant-icon');
-const assistantChat = document.getElementById('assistant-chat');
-const assistantClose = document.getElementById('assistant-close');
-const assistantMessages = document.getElementById('assistant-messages');
-const assistantInput = document.getElementById('assistant-input');
-const assistantSend = document.getElementById('assistant-send');
+  document.addEventListener("DOMContentLoaded", () => {
+  const icon = document.getElementById("vpn-assistant-icon");
+  const chat = document.getElementById("vpn-assistant-chat");
+  const closeBtn = document.getElementById("vpn-assistant-close");
+  const sendBtn = document.getElementById("vpn-assistant-send");
+  const input = document.getElementById("vpn-assistant-input");
+  const messages = document.getElementById("vpn-assistant-messages");
 
-// Função criar mensagem
-function createMessage(text, isUser=false){
-  const msg = document.createElement('div');
-  msg.classList.add(isUser ? 'user-message' : 'assistant-message');
-  msg.textContent = text;
-  assistantMessages.appendChild(msg);
-  assistantMessages.scrollTop = assistantMessages.scrollHeight;
+  // Mostrar mensagem inicial automaticamente
+  setTimeout(() => {
+    const welcome = document.createElement("div");
+    welcome.classList.add("vpn-message");
+    welcome.textContent = "Olá! Sou sua Assistente VPN. Posso te ajudar a escolher e configurar a melhor VPN!";
+    messages.appendChild(welcome);
+    messages.scrollTop = messages.scrollHeight;
 
-  if(!isUser){
-    // animação de saída depois de 4s
+    // desaparece depois de alguns segundos
     setTimeout(() => {
-      msg.style.animation = 'slideOut 0.5s forwards';
-      setTimeout(() => msg.remove(), 500);
+      welcome.style.transition = "opacity 1s";
+      welcome.style.opacity = 0;
+      setTimeout(() => messages.removeChild(welcome), 1000);
     }, 4000);
+  }, 1000);
+
+  // Abrir/fechar chat
+  icon.addEventListener("click", () => {
+    chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+    if(chat.style.display === "flex") input.focus();
+  });
+  closeBtn.addEventListener("click", () => {
+    chat.style.display = "none";
+    input.value = "";
+  });
+
+  // Função de enviar mensagem
+  function sendMessage() {
+    const text = input.value.trim();
+    if(!text) return;
+
+    // Mensagem do usuário
+    const userMsg = document.createElement("div");
+    userMsg.classList.add("vpn-message","vpn-user");
+    userMsg.textContent = text;
+    messages.appendChild(userMsg);
+    input.value = "";
+    messages.scrollTop = messages.scrollHeight;
+
+    // Mensagem digitando
+    const typingMsg = document.createElement("div");
+    typingMsg.classList.add("vpn-message","vpn-typing");
+    typingMsg.textContent = "Assistente digitando...";
+    messages.appendChild(typingMsg);
+    messages.scrollTop = messages.scrollHeight;
+
+    setTimeout(() => {
+      messages.removeChild(typingMsg);
+
+      // Resposta baseada em palavra-chave
+      let reply = "";
+      if(text.toLowerCase().includes("express")) {
+        reply = "ExpressVPN é rápida e segura, ótima para streaming e torrent.";
+      } else if(text.toLowerCase().includes("nord")) {
+        reply = "NordVPN possui alta segurança e servidor em vários países.";
+      } else if(text.toLowerCase().includes("proton")) {
+        reply = "ProtonVPN oferece privacidade máxima e bom plano gratuito.";
+      } else {
+        reply = "Posso te informar sobre ExpressVPN, NordVPN e ProtonVPN. Quer que eu recomende a melhor?";
+      }
+
+      const botMsg = document.createElement("div");
+      botMsg.classList.add("vpn-message");
+      botMsg.innerHTML = reply;
+      messages.appendChild(botMsg);
+      messages.scrollTop = messages.scrollHeight;
+
+    }, 2000);
   }
-}
 
-// Mensagem automática quando a página carrega
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    createMessage("Olá! Sou sua Assistente Virtual 🤖");
-  }, 1500); // aparece 1.5s após carregar
-});
-
-// Abrir/Fechar chat ao clicar no ícone
-assistantIcon.addEventListener('click', () => {
-  assistantChat.style.display = assistantChat.style.display === 'flex' ? 'none' : 'flex';
-});
-
-// Fechar chat
-assistantClose.addEventListener('click', () => assistantChat.style.display = 'none');
-
-// Enviar mensagem
-function sendMessage(){
-  const text = assistantInput.value.trim();
-  if(text === '') return;
-  createMessage(text, true);
-  assistantInput.value = '';
-  
-  // resposta automática simples
-  setTimeout(() => {
-    createMessage("Recebi sua mensagem: " + text);
-  }, 800);
-}
-
-assistantSend.addEventListener('click', sendMessage);
-assistantInput.addEventListener('keydown', (e) => {
-  if(e.key === 'Enter') sendMessage();
+  sendBtn.addEventListener("click", sendMessage);
+  input.addEventListener("keydown", e => {
+    if(e.key === "Enter") sendMessage();
+  });
 });
 
 </script>
