@@ -169,24 +169,14 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   100% { transform: rotate(360deg);}
 }
 
-.plan {
-  position: relative; 
-  overflow: hidden;   
-  border-radius: 15px;
-}
-
+/* ---------- TAGS COLORIDAS (Faixa atrás do nome) ---------- */
 .plan .tag {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 12px 0;
-  text-align: center;
+  display: inline-block;
+  padding: 8px 400px;
+  border-radius: 999px;
   font-weight: 700;
   font-size: 0.95rem;
   text-transform: uppercase;
-  border-radius: 15px 15px 0 0;
-  box-sizing: border-box;
 }
 
 .plan.plan-popular .tag { background: rgba(255,0,0,0.15); color: #ff4d4d; }
@@ -194,32 +184,8 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .plan.plan-familia .tag { background: rgba(0,150,255,0.15); color: #4db8ff; }
 .plan.plan-empreendedor .tag { background: rgba(0,200,0,0.15); color: #4dff4d; }
 
-/* Ajustes para celular */
 @media(max-width:768px){
-  .plan .tag { font-size: 0.85rem; padding: 10px 0; }
-  .plans {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 15px;
-    padding: 10px;
-  }
-  .plan {
-    min-width: 250px;
-    flex-shrink: 0;
-    scroll-snap-align: center;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 0.5;
-    cursor: pointer;
-  }
-  .plan.active {
-    transform: scale(1.05);
-    opacity: 1;
-  }
-}
-
-@media(max-width:480px){
-  .plan .tag { font-size: 0.8rem; padding: 8px 0; }
+  .plan .tag { padding: 6px 200px; font-size: 0.85rem; }
 }
 
 /* ---------- PREÇOS COLORIDOS ---------- */
@@ -267,11 +233,33 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   justify-content: center;
 }
 
-/* ---------- BOTÕES COLORIDOS ---------- */
+/* ---------- BOTÕES COLORIDOS E ARREDONDADOS POR PLANO ---------- */
+.plan-popular .buy a,
+.plan-premium .buy a,
+.plan-familia .buy a,
+.plan-empreendedor .buy a {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  color: #fff;
+  position: relative;
+  z-index: 20;
+
+  outline: none;      /* REMOVE o contorno padrão do navegador */
+  -webkit-tap-highlight-color: transparent; /* REMOVE o destaque de toque em celulares */
+}
+
+
+
+/* Popular */
 .plan-popular .buy a {
   background: linear-gradient(135deg, #ff4d4d, #ff0000);
   box-shadow: 0 6px 25px rgba(255,77,77,0.5);
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 .plan-popular .buy a:hover {
   background: linear-gradient(135deg, #ff0000, #ff4d4d);
@@ -279,6 +267,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   transform: scale(1.05) translateY(-3px);
 }
 
+/* Premium */
 .plan-premium .buy a {
   background: linear-gradient(135deg, #ffcf3b, #ffb347);
   box-shadow: 0 6px 25px rgba(255,207,59,0.5);
@@ -289,6 +278,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   transform: scale(1.05) translateY(-3px);
 }
 
+/* Família */
 .plan-familia .buy a {
   background: linear-gradient(135deg, #4db8ff, #0099ff);
   box-shadow: 0 6px 25px rgba(77,184,255,0.5);
@@ -299,6 +289,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   transform: scale(1.05) translateY(-3px);
 }
 
+/* Empreendedor */
 .plan-empreendedor .buy a {
   background: linear-gradient(135deg, #4dff4d, #00c200);
   box-shadow: 0 6px 25px rgba(77,255,77,0.5);
@@ -313,7 +304,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 @media(max-width:1024px){ .plans {grid-template-columns: repeat(2,1fr);} }
 @media(max-width:768px){ .plans {grid-template-columns: 1fr;} }
 
-/* ---------- FAIXAS PNG ---------- */
+/* ---------- FAIXAS PNG (RIBBONS) ---------- */
 .plan.plan-popular::after {
   content: "";
   position: absolute;
@@ -378,11 +369,13 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   }
 }
 
+/* ---------- Animação leve ---------- */
 @keyframes float {
   0% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-5px) rotate(3deg); }
   100% { transform: translateY(0) rotate(-3deg); }
 }
+
 
 
 /* Galeria */
@@ -996,27 +989,5 @@ testimonialCards.forEach(card => {
         type();
     });
 });
-
-// ===== Efeito “plano aceso ao deslizar” para celular =====
-if (window.innerWidth <= 768) {
-  const planCards = document.querySelectorAll('.plan-card');
-  planCards.forEach(card => card.classList.remove('active')); // reset
-
-  function highlightVisiblePlan() {
-    planCards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      const middleScreen = window.innerHeight / 2;
-      if (rect.top < middleScreen && rect.bottom > middleScreen) {
-        card.classList.add('active'); // acende o plano
-      } else {
-        card.classList.remove('active'); // apaga o plano
-      }
-    });
-  }
-
-  window.addEventListener('scroll', highlightVisiblePlan);
-  window.addEventListener('load', highlightVisiblePlan);
-}
 </script>
-
 
