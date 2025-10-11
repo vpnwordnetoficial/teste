@@ -179,14 +179,28 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   text-transform: uppercase;
 }
 
+/* Cores específicas de cada plano */
 .plan.plan-popular .tag { background: rgba(255,0,0,0.15); color: #ff4d4d; }
 .plan.plan-premium .tag { background: rgba(255,207,59,0.15); color: #ffcf3b; }
 .plan.plan-familia .tag { background: rgba(0,150,255,0.15); color: #4db8ff; }
 .plan.plan-empreendedor .tag { background: rgba(0,200,0,0.15); color: #4dff4d; }
 
+/* Ajuste para tablets e celulares médios */
 @media(max-width:768px){
-  .plan .tag { padding: 6px 200px; font-size: 0.85rem; }
+  .plan .tag {
+    padding: 6px 200px;
+    font-size: 0.85rem;
+  }
 }
+
+/* 🔧 Correção extra para celulares pequenos (evita listra preta) */
+@media(max-width:480px){
+  .plan .tag {
+    padding: 6px 60px;
+    font-size: 0.8rem;
+  }
+}
+
 
 /* ---------- PREÇOS COLORIDOS ---------- */
 .plan.plan-popular .price { color: #ff4d4d; }
