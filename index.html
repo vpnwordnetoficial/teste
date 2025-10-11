@@ -465,16 +465,104 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   }
 }
 
+/* =================== FAQ PREMIUM =================== */
+#faq {
+  background: linear-gradient(135deg, #0d0d0d, #111111);
+  padding: 100px 20px;
+}
+
+#faq h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 60px;
+  color: #00bfff;
+  text-shadow: 0 0 12px rgba(0,191,255,0.4);
+  font-weight: 800;
+}
+
+/* Container FAQ */
+.faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Cada item do FAQ */
+.faq-item {
+  background: rgba(255,255,255,0.02);
+  border: 2px solid rgba(0,191,255,0.5); /* cor e transparência da borda */
+  border-radius: 15px;
+  padding: 20px 25px;
+  box-shadow: 0 8px 25px rgba(0,191,255,0.1);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+  cursor: pointer;
+}
+
+/* Quando o FAQ estiver aberto */
+.faq-item.active {
+  border-color: #00ffff; /* cor da borda ao abrir o FAQ */
+  box-shadow: 0 12px 30px rgba(0,191,255,0.3); /* sombra mais intensa */
+}
 
 
+/* Título do FAQ */
+.faq-item h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 25px;
+  transition: color 0.4s;
+}
 
-/* FAQ */
-.faq-item {margin-bottom:20px; border-bottom:1px solid #333; padding-bottom:20px;}
-.faq-item h3 {cursor:pointer; position:relative; padding-right:25px; transition:0.3s;}
-.faq-item h3::after {content:'+'; position:absolute; right:0; top:0; color:#1e90ff; font-size:1.2rem;}
-.faq-item.active h3::after {content:'-'; color:#00bfff;}
-.faq-item p {max-height:0; overflow:hidden; transition:max-height 0.4s ease, margin-top 0.4s;}
-.faq-item.active p {max-height:300px; margin-top:10px;}
+.faq-item:hover h3 {
+  color: #00bfff;
+}
+
+/* Seta animada */
+.faq-item h3::after {
+  content: '➤';
+  font-size: 1.2rem;
+  color: #1e90ff;
+  transition: transform 0.5s ease, color 0.4s;
+}
+
+.faq-item.active h3::after {
+  transform: rotate(90deg);
+  color: #00bfff;
+}
+
+/* Resposta */
+.faq-item p {
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  color: #cfeeff;
+  font-size: 1rem;
+  line-height: 1.7;
+  transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+  opacity: 0;
+}
+
+.faq-item.active p {
+  max-height: 500px; /* ajuste conforme necessário */
+  margin-top: 15px;
+  opacity: 1;
+}
+
+/* Responsividade */
+@media(max-width:768px){
+  #faq h2 { font-size:2.2rem; margin-bottom:40px; }
+  .faq-item h3 { font-size:1.2rem; }
+  .faq-item p { font-size:0.95rem; }
+}
+
 
 /* DEPOIMENTOS ESTILO PROFISSIONAL */
 .testimonials {
@@ -771,20 +859,31 @@ footer a {color:#1e90ff;}
 
 <!-- FAQ -->
 <section id="faq">
-    <h2>FAQ</h2>
+  <h2>FAQ</h2>
+  <div class="faq-container">
     <div class="faq-item">
-        <h3>Como instalo no celular?</h3>
-        <p>Baixe o aplicativo Word Net, insira seu login e conecte-se.</p>
+      <h3>Como instalo no celular?</h3>
+      <p>Baixe o aplicativo Word Net, insira seu login e conecte-se em segundos, com segurança completa.</p>
     </div>
     <div class="faq-item">
-        <h3>Como configurar TV Box?</h3>
-        <p>Instale via APK, configure o servidor VPN e conecte-se.</p>
+      <h3>Como configurar TV Box?</h3>
+      <p>Instale via APK, configure o servidor VPN e conecte-se sem complicações. Otimizado para streaming sem travamentos.</p>
     </div>
     <div class="faq-item">
-        <h3>Roteadores compatíveis?</h3>
-        <p>OpenVPN ou PPTP funcionam perfeitamente.</p>
+      <h3>Roteadores compatíveis?</h3>
+      <p>Compatível com OpenVPN e PPTP. Proteja todos os dispositivos da sua rede ao mesmo tempo.</p>
     </div>
+    <div class="faq-item">
+      <h3>Quantos dispositivos posso conectar?</h3>
+      <p>Dependendo do plano, conecte de 1 até 10 dispositivos simultaneamente, incluindo TV, celular e PC.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Tem suporte 24/7?</h3>
+      <p>Sim! Nosso suporte está disponível a qualquer hora via WhatsApp ou email.</p>
+    </div>
+  </div>
 </section>
+
 
 <!-- =================== DEPOIMENTOS =================== -->
 <section id="depoimentos">
@@ -877,128 +976,118 @@ footer a {color:#1e90ff;}
 </footer>
 
 <script>
-// Seletores
+// ===== MENU HAMBÚRGUER =====
 const toggle = document.getElementById('menu-toggle');
 const menu = document.getElementById('nav-menu');
 
-// Alterna o menu ao clicar no botão hambúrguer
 toggle.addEventListener('click', (e) => {
-  e.stopPropagation(); // impede fechamento imediato
+  e.stopPropagation();
   menu.classList.toggle('active');
 });
 
-// Scroll suave e fechamento do menu ao clicar nos links
 document.querySelectorAll('#nav-menu li a').forEach(link => {
   link.addEventListener('click', (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     const target = document.querySelector(link.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
     menu.classList.remove('active');
   });
 });
 
-// Fecha o menu ao clicar fora dele
 document.addEventListener('click', (e) => {
-  const isClickInsideMenu = menu.contains(e.target);
-  const isClickToggle = toggle.contains(e.target);
-  if (!isClickInsideMenu && !isClickToggle) {
+  if (!menu.contains(e.target) && !toggle.contains(e.target)) {
     menu.classList.remove('active');
   }
 });
 
-// FAQ Toggle
+// ===== FAQ TOGGLE =====
 const faqItems = document.querySelectorAll('.faq-item h3');
 faqItems.forEach(item => {
   item.addEventListener('click', () => {
+    // estilo acordeão: fecha os outros
+    faqItems.forEach(i => { if(i !== item) i.parentElement.classList.remove('active'); });
     item.parentElement.classList.toggle('active');
   });
 });
 
-// Scroll Header
+// ===== SCROLL HEADER =====
 window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
   if (window.scrollY > 50) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
 });
 
-// Galeria animada sempre que rolar
+// ===== GALERIA ANIMADA =====
 const galleryItems = document.querySelectorAll('.gallery-item');
-function checkVisibility() {
+function checkVisibilityGallery() {
   galleryItems.forEach(item => {
     const rect = item.getBoundingClientRect();
-    const itemTop = rect.top;
-    const itemBottom = rect.bottom;
-    
-    if (itemTop < window.innerHeight && itemBottom > 0) {
+    if(rect.top < window.innerHeight && rect.bottom > 0){
       item.classList.add('visible');
     } else {
-      item.classList.remove('visible'); 
+      item.classList.remove('visible');
     }
   });
 }
-window.addEventListener('scroll', checkVisibility);
-window.addEventListener('load', checkVisibility);
+window.addEventListener('scroll', checkVisibilityGallery);
+window.addEventListener('load', checkVisibilityGallery);
 
-// ===== Scroll animado para os cards com delay =====
+// ===== DEPOIMENTOS COM DELAY =====
 const testimonialCards = document.querySelectorAll('.testimonial-card');
 function checkVisibilityTestimonials() {
-    testimonialCards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 50 && rect.bottom > 0){
-            setTimeout(() => {
-                card.classList.add('visible');
-            }, index * 200); // delay progressivo
-        } else {
-            card.classList.remove('visible'); // remove ao sair da tela
-        }
-    });
+  testimonialCards.forEach((card, index) => {
+    const rect = card.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 50 && rect.bottom > 0){
+      setTimeout(() => { card.classList.add('visible'); }, index * 200);
+    } else {
+      card.classList.remove('visible');
+    }
+  });
 }
 window.addEventListener('scroll', checkVisibilityTestimonials);
 window.addEventListener('load', checkVisibilityTestimonials);
 
-// ===== Typewriter ao clicar na foto com múltiplas mensagens =====
+// ===== TYPEWRITER NOS DEPOIMENTOS =====
 let typingIntervals = new Map();
 let messageIndexes = new Map();
 
 testimonialCards.forEach(card => {
-    const img = card.querySelector('img');
-    const paragraph = card.querySelector('p');
-    const messages = JSON.parse(img.dataset.text);
+  const img = card.querySelector('img');
+  const paragraph = card.querySelector('p');
+  const messages = JSON.parse(img.dataset.text);
+  messageIndexes.set(img, 0);
 
-    messageIndexes.set(img, 0);
+  img.addEventListener('click', () => {
+    let idx = messageIndexes.get(img);
+    const text = messages[idx];
+    idx = (idx + 1) % messages.length;
+    messageIndexes.set(img, idx);
 
-    img.addEventListener('click', () => {
-        let idx = messageIndexes.get(img);
-        const text = messages[idx];
+    if(typingIntervals.has(img)){
+      clearTimeout(typingIntervals.get(img));
+      typingIntervals.delete(img);
+    }
 
-        idx = (idx + 1) % messages.length;
-        messageIndexes.set(img, idx);
+    paragraph.textContent = '';
+    paragraph.style.opacity = 1;
 
-        if(typingIntervals.has(img)){
-            clearTimeout(typingIntervals.get(img));
-            typingIntervals.delete(img);
-        }
+    let i = 0;
+    const typingSpeed = 40;
 
-        paragraph.textContent = '';
-        paragraph.style.opacity = 1;
-
-        let i = 0;
-        const typingSpeed = 40;
-
-        function type() {
-            if(i < text.length){
-                paragraph.textContent += text.charAt(i);
-                i++;
-                const timeout = setTimeout(type, typingSpeed);
-                typingIntervals.set(img, timeout);
-            } else {
-                typingIntervals.delete(img);
-            }
-        }
-        type();
-    });
+    function type() {
+      if(i < text.length){
+        paragraph.textContent += text.charAt(i);
+        i++;
+        const timeout = setTimeout(type, typingSpeed);
+        typingIntervals.set(img, timeout);
+      } else {
+        typingIntervals.delete(img);
+      }
+    }
+    type();
+  });
 });
 </script>
+
+
 
