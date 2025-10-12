@@ -696,157 +696,79 @@ footer a {color:#1e90ff;}
 /* Animações */
 @keyframes fadeIn {0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);}}
   
-/* ===== ASSISTENTE VIRTUAL VPN WORD NET ===== */
-#assistant-container {
+  <!-- Estilos básicos do Assistente -->
+<style>
+#assist-icon {
+  position: fixed;
+  bottom: 25px;
+  right: 70px;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+}
+#assist-close-icon {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  z-index: 9999;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* Ícone flutuante */
-#assistant-icon {
-  width: 65px;
-  height: 65px;
-  background: linear-gradient(135deg, #00b7ff, #0077ff);
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 12px;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-size: 28px;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(0,183,255,0.6);
-  transition: all 0.4s ease;
+  z-index: 1000;
 }
-#assistant-icon:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(0,183,255,0.9);
-}
-
-/* Balão inicial */
-#assistant-bubble {
-  position: absolute;
-  right: 80px;
-  bottom: 10px;
-  background: #1b1b1b;
+#assist-tooltip {
+  position: fixed;
+  bottom: 80px;
+  right: 25px;
+  background: #333;
   color: #fff;
-  padding: 12px 18px;
-  border-radius: 20px;
-  font-size: 0.95rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
   opacity: 0;
-  transform: translateX(50px);
-  animation: showBubble 1.5s ease forwards;
+  transition: opacity 0.3s;
 }
-
-@keyframes showBubble {
-  0% { opacity: 0; transform: translateX(50px); }
-  40% { opacity: 1; transform: translateX(0); }
-  90% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(50px); }
-}
-
-/* Janela do chat */
-#assistant-chat {
-  position: absolute;
-  bottom: 90px;
-  right: 0;
-  width: 340px;
-  background: #0e0e0e;
-  border: 2px solid #00b7ff;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  display: none;
+#assist-tooltip.show { opacity: 1; }
+#assist-box {
+  position: fixed;
+  bottom: 70px;
+  right: 25px;
+  width: 320px;
+  max-width: 90%;
+  background: #121212;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  display: flex;
   flex-direction: column;
-  overflow: hidden;
-  animation: slideUp 0.4s ease;
+  z-index: 1001;
+  font-family: sans-serif;
 }
-
-@keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.assistant-header {
-  background: linear-gradient(135deg, #00b7ff, #0077ff);
-  color: #fff;
-  padding: 10px 15px;
+.assist-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 600;
-}
-.assistant-header button {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.messages {
-  padding: 15px;
-  height: 250px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.message {
-  max-width: 80%;
   padding: 10px 15px;
-  border-radius: 15px;
-  line-height: 1.4;
-  animation: fadeIn 0.4s ease;
+  background: #1f1f1f;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
-.message.bot {
-  background: #0077ff;
-  color: #fff;
-  align-self: flex-start;
-}
-.message.user {
-  background: #1e1e1e;
-  color: #00b7ff;
-  align-self: flex-end;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.assistant-input {
-  display: flex;
-  padding: 10px;
-  border-top: 1px solid #222;
-  background: #111;
-}
-.assistant-input input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  background: #1a1a1a;
-  color: #fff;
-}
-.assistant-input button {
-  background: linear-gradient(135deg, #00b7ff, #0077ff);
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  margin-left: 8px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.assistant-input button:hover {
-  transform: scale(1.05);
-}
-
+.assist-header h4 { margin: 0; font-size: 1rem; color: #fff; }
+.assist-body { max-height: 350px; overflow-y: auto; padding: 10px 15px; }
+.msg { margin-bottom: 12px; padding: 8px; border-radius: 6px; }
+.msg.bot { background: #2c2c2c; color: #fff; }
+.msg.user { background: #0d6efd; color: #fff; text-align: right; }
+.assist-footer { display: flex; padding: 10px 15px; gap: 5px; }
+.assist-footer input { flex: 1; padding: 6px 8px; border-radius: 6px; border: none; }
+.assist-footer button { padding: 6px 10px; border-radius: 6px; border: none; background: #0d6efd; color: #fff; cursor: pointer; }
+.assist-options { display: flex; justify-content: space-around; margin-top: 8px; }
+.assist-options button { padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+.assist-yes { background: #28a745; color: #fff; }
+.assist-no { background: #dc3545; color: #fff; }
   
 </style>
 </head>
@@ -893,27 +815,32 @@ footer a {color:#1e90ff;}
     </div>
 </header>
   
-<!-- ===== ASSISTENTE VIRTUAL VPN WORD NET ===== -->
-<div id="assistant-container">
-  <div id="assistant-icon">🛡️</div>
-  <div id="assistant-bubble">Olá! Sou sua assistente Word Net VPN 💬</div>
+  <!-- Botão de Ativação do Assistente -->
+<div id="assist-icon" aria-label="Abrir Assistente Virtual">💬</div>
+<button id="assist-close-icon" aria-label="Fechar Assistência">✖</button>
+<div id="assist-tooltip">Clique aqui para conversar com nosso assistente!</div>
 
-  <div id="assistant-chat" class="hidden">
-    <div class="assistant-header">
-      <span>Assistente Word Net VPN</span>
-      <button id="assistant-close">✖</button>
-    </div>
-    <div id="assistant-messages" class="messages">
-      <div class="message bot">Olá 👋! Como posso ajudar você hoje?</div>
-    </div>
-    <div class="assistant-input">
-      <input type="text" id="assistant-input" placeholder="Digite sua mensagem..." />
-      <button id="assistant-send">Enviar</button>
-    </div>
+<!-- Janela Assistente Virtual -->
+<div id="assist-box" role="dialog" aria-modal="true" aria-labelledby="assist-title" hidden>
+  <div class="assist-header">
+    <h4 id="assist-title">Assistente Virtual IPTV</h4>
+    <button id="assist-close" aria-label="Fechar Assistência">✖</button>
+  </div>
+  <div class="assist-body" id="assist-messages">
+    <div class="msg bot">
+      Olá! Posso ajudar com esses apps:
+      <ul>
+        <li>📺 VPN WORD NET</li>
+        <li>🎬 NET SEM LIMITE</li>
+      </ul>
+      Pergunte à vontade!
+    </div>     
+  </div>
+  <div class="assist-footer">
+    <input type="text" id="assist-input" placeholder="Digite sua pergunta..." autocomplete="off" />
+    <button id="assist-send" aria-label="Enviar mensagem">Enviar</button>
   </div>
 </div>
-
-
 
 <!-- Hero -->
 <section id="hero" class="hero">
@@ -1178,7 +1105,8 @@ document.addEventListener('click', (e) => {
 const faqItems = document.querySelectorAll('.faq-item h3');
 faqItems.forEach(item => {
   item.addEventListener('click', () => {
-    faqItems.forEach(i => { if (i !== item) i.parentElement.classList.remove('active'); });
+    // estilo acordeão: fecha os outros
+    faqItems.forEach(i => { if(i !== item) i.parentElement.classList.remove('active'); });
     item.parentElement.classList.toggle('active');
   });
 });
@@ -1195,7 +1123,7 @@ const galleryItems = document.querySelectorAll('.gallery-item');
 function checkVisibilityGallery() {
   galleryItems.forEach(item => {
     const rect = item.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
+    if(rect.top < window.innerHeight && rect.bottom > 0){
       item.classList.add('visible');
     } else {
       item.classList.remove('visible');
@@ -1207,10 +1135,11 @@ window.addEventListener('load', checkVisibilityGallery);
 
 // ===== DEPOIMENTOS COM ANIMAÇÃO PREMIUM =====
 const testimonialCards = document.querySelectorAll('.testimonial-card');
+
 function animateTestimonials() {
   testimonialCards.forEach((card, index) => {
     const rect = card.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 50 && rect.bottom > 0) {
+    if(rect.top < window.innerHeight - 50 && rect.bottom > 0){
       setTimeout(() => { card.classList.add('visible'); }, index * 200);
     } else {
       card.classList.remove('visible');
@@ -1223,6 +1152,7 @@ window.addEventListener('load', animateTestimonials);
 // ===== TYPEWRITER NOS DEPOIMENTOS =====
 let typingIntervals = new Map();
 let messageIndexes = new Map();
+
 testimonialCards.forEach(card => {
   const img = card.querySelector('img');
   const paragraph = card.querySelector('p');
@@ -1235,7 +1165,7 @@ testimonialCards.forEach(card => {
     idx = (idx + 1) % messages.length;
     messageIndexes.set(img, idx);
 
-    if (typingIntervals.has(img)) {
+    if(typingIntervals.has(img)){
       clearTimeout(typingIntervals.get(img));
       typingIntervals.delete(img);
     }
@@ -1245,8 +1175,9 @@ testimonialCards.forEach(card => {
 
     let i = 0;
     const typingSpeed = 40;
+
     function type() {
-      if (i < text.length) {
+      if(i < text.length){
         paragraph.textContent += text.charAt(i);
         i++;
         const timeout = setTimeout(type, typingSpeed);
@@ -1258,78 +1189,113 @@ testimonialCards.forEach(card => {
     type();
   });
 });
+  
+  <!-- Script completo do Assistente -->
+<script>
+const assistBtn = document.getElementById("assist-icon");
+const assistCloseIcon = document.getElementById("assist-close-icon");
+const assistTooltip = document.getElementById("assist-tooltip");
+const assistBox = document.getElementById("assist-box");
+const assistClose = document.getElementById("assist-close");
+const assistSend = document.getElementById("assist-send");
+const assistInput = document.getElementById("assist-input");
+const assistMessages = document.getElementById("assist-messages");
 
-// ===== ASSISTENTE VIRTUAL INTERATIVO =====
-document.addEventListener("DOMContentLoaded", () => {
-  const icon = document.getElementById("assistant-icon");
-  const chat = document.getElementById("assistant-chat");
-  const closeBtn = document.getElementById("assistant-close");
-  const sendBtn = document.getElementById("assistant-send");
-  const input = document.getElementById("assistant-input");
-  const messages = document.getElementById("assistant-messages");
+setTimeout(() => assistTooltip.classList.add("show"), 1500);
+setTimeout(() => assistTooltip.classList.remove("show"), 6000);
 
-  // Mostrar bolha de saudação ao carregar
-  const bubble = document.getElementById("assistant-bubble");
-  bubble.style.display = "block";
-  setTimeout(() => {
-    bubble.style.opacity = "0";
-    bubble.style.transition = "opacity 1s ease";
-    setTimeout(() => bubble.style.display = "none", 1000);
-  }, 4000);
+assistBtn.addEventListener("click", () => { assistBox.hidden = !assistBox.hidden; if(!assistBox.hidden) assistInput.focus(); });
+assistClose.addEventListener("click", () => { assistBox.hidden=true; assistInput.value=""; });
+assistCloseIcon.addEventListener("click", () => { assistBox.hidden=true; assistInput.value=""; });
 
-  // Abrir o chat
-  icon.addEventListener("click", () => {
-    chat.style.display = "flex";
-  });
+// Fluxos dos apps
+const fluxos = {
+  vpnwordnet: [
+    { texto:`📡 <strong>VPN WORD NET – App de Revenda</strong><br>Quer continuar?`, botoes:true },
+    { texto:`✅ <strong>Pontos Positivos</strong><br>Interface simples e segura.<br>Quer saber mais?`, botoes:true },
+    { texto:`🧾 <strong>Conclusão</strong><br>App ideal para revenda de internet sem limites.<br>Falar com atendimento?`, botoes:true },
+    { texto:`<a href="https://wa.me/5511999999999?text=Olá, quero saber sobre VPN WORD NET" target="_blank">Falar no WhatsApp</a>`, botoes:false }
+  ],
+  netssemlimite: [
+    { texto:`🎬 <strong>NET SEM LIMITE – App de Revenda</strong><br>Quer continuar?`, botoes:true },
+    { texto:`✅ <strong>Pontos Positivos</strong><br>Compatível com múltiplos dispositivos.<br>Quer saber mais?`, botoes:true },
+    { texto:`🧾 <strong>Conclusão</strong><br>App recomendado para revenda de internet ilimitada.<br>Falar com atendimento?`, botoes:true },
+    { texto:`<a href="https://wa.me/5511999999999?text=Olá, quero saber sobre NET SEM LIMITE" target="_blank">Falar no WhatsApp</a>`, botoes:false }
+  ]
+};
 
-  // Fechar o chat
-  closeBtn.addEventListener("click", () => {
-    chat.style.display = "none";
-  });
+let fluxoAtual = null; let etapaAtual = 0;
 
-  // Enviar mensagem
-  function sendMessage() {
-    const text = input.value.trim();
-    if (!text) return;
-    appendMessage(text, "user");
-    input.value = "";
+function mostrarMensagem(texto, comBotoes=false){
+  const botMsg=document.createElement("div");
+  botMsg.classList.add("msg","bot"); botMsg.innerHTML=texto;
 
-    setTimeout(() => {
-      appendMessage(respostaAutomatica(text), "bot");
-    }, 800);
+  if(comBotoes){
+    const botoesContainer=document.createElement("div");
+    botoesContainer.classList.add("assist-options");
+
+    const yesBtn=document.createElement("button"); yesBtn.classList.add("assist-yes"); yesBtn.textContent="Sim";
+    const noBtn=document.createElement("button"); noBtn.classList.add("assist-no"); noBtn.textContent="Não";
+
+    botoesContainer.appendChild(yesBtn); botoesContainer.appendChild(noBtn);
+    botMsg.appendChild(botoesContainer);
+
+    function disableButtons(){ yesBtn.disabled=true; noBtn.disabled=true; yesBtn.style.opacity="0.6"; noBtn.style.opacity="0.6"; }
+
+    yesBtn.addEventListener("click",()=>{
+      disableButtons();
+      const typingMsg=document.createElement("div"); typingMsg.classList.add("msg","bot","typing"); typingMsg.textContent="Assistente digitando...";
+      assistMessages.appendChild(typingMsg); assistMessages.scrollTop=assistMessages.scrollHeight;
+
+      setTimeout(()=>{
+        assistMessages.removeChild(typingMsg);
+        etapaAtual++; if(etapaAtual>=fluxoAtual.length) etapaAtual=fluxoAtual.length-1;
+        mostrarMensagem(fluxoAtual[etapaAtual].texto, fluxoAtual[etapaAtual].botoes);
+      },2500);
+    });
+
+    noBtn.addEventListener("click",()=>{
+      disableButtons();
+      const typingMsg=document.createElement("div"); typingMsg.classList.add("msg","bot","typing"); typingMsg.textContent="Assistente digitando...";
+      assistMessages.appendChild(typingMsg); assistMessages.scrollTop=assistMessages.scrollHeight;
+
+      setTimeout(()=>{
+        assistMessages.removeChild(typingMsg);
+        const resposta=document.createElement("div"); resposta.classList.add("msg","bot"); resposta.textContent="Ok, obrigado! Estarei aqui sempre que precisar.";
+        assistMessages.appendChild(resposta); assistMessages.scrollTop=assistMessages.scrollHeight;
+        fluxoAtual=null; etapaAtual=0;
+      },2500);
+    });
   }
 
-  sendBtn.addEventListener("click", sendMessage);
-  input.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") sendMessage();
-  });
+  assistMessages.appendChild(botMsg); assistMessages.scrollTop=assistMessages.scrollHeight;
+}
 
-  function appendMessage(text, sender) {
-    const msg = document.createElement("div");
-    msg.classList.add("message", sender);
-    msg.textContent = text;
-    messages.appendChild(msg);
-    messages.scrollTop = messages.scrollHeight;
-  }
+function botResponse(msg){
+  msg=msg.toLowerCase();
+  if(msg.includes("vpn word net")){ fluxoAtual=fluxos.vpnwordnet; etapaAtual=0; return fluxoAtual[etapaAtual].texto; }
+  else if(msg.includes("net sem limite")){ fluxoAtual=fluxos.netssemlimite; etapaAtual=0; return fluxoAtual[etapaAtual].texto; }
+  else{ fluxoAtual=null; etapaAtual=0; return `Desculpe, posso responder apenas sobre VPN WORD NET e NET SEM LIMITE.<br><a href='https://wa.me/5511999999999' target='_blank'>Fale com nosso atendente via WhatsApp</a>`; }
+}
 
-  // Respostas automáticas básicas
-  function respostaAutomatica(text) {
-    text = text.toLowerCase();
-    if (text.includes("plano") || text.includes("preço")) {
-      return "💰 Temos planos a partir de R$5/mês! Deseja ver os detalhes?";
-    } else if (text.includes("vpn") || text.includes("conectar")) {
-      return "🔒 Para conectar, baixe o app Word Net VPN e siga o tutorial na seção de tutoriais.";
-    } else if (text.includes("ajuda") || text.includes("suporte")) {
-      return "📞 Nosso suporte está disponível 24h no WhatsApp. Deseja que eu envie o link?";
-    } else {
-      return "🤖 Desculpe, não entendi. Mas posso te ajudar com planos, suporte ou conexão VPN.";
-    }
-  }
-});
+function sendMessage(){
+  const userText=assistInput.value.trim(); if(!userText) return;
+  const userMsg=document.createElement("div"); userMsg.classList.add("msg","user"); userMsg.textContent=userText;
+  assistMessages.appendChild(userMsg); assistInput.value="";
+  const typingMsg=document.createElement("div"); typingMsg.classList.add("msg","bot","typing"); typingMsg.textContent="Assistente digitando...";
+  assistMessages.appendChild(typingMsg); assistMessages.scrollTop=assistMessages.scrollHeight;
+
+  setTimeout(()=>{
+    assistMessages.removeChild(typingMsg);
+    const response=botResponse(userText);
+    if(fluxoAtual && etapaAtual===0){ mostrarMensagem(response, fluxoAtual[etapaAtual].botoes); }
+    else{ mostrarMensagem(response,false); }
+  },2500);
+}
+
+assistSend.addEventListener("click",sendMessage);
+assistInput.addEventListener("keypress",e=>{ if(e.key==="Enter") sendMessage(); });
 </script>
-
-
-
 
 
 
