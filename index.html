@@ -644,8 +644,6 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .testimonial-card:nth-child(4).visible { transition-delay: 0.45s; }
 .testimonial-card:nth-child(5).visible { transition-delay: 0.6s; }
 
-
-
 /* Tutoriais */
 #tutoriais {padding:100px 20px; background:#0a0a0a;}
 #tutoriais h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text-shadow:0 0 10px rgba(0,191,255,0.4);}
@@ -696,79 +694,139 @@ footer a {color:#1e90ff;}
 /* Animações */
 @keyframes fadeIn {0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);}}
   
-  <!-- Estilos básicos do Assistente -->
-<style>
-#assist-icon {
-  position: fixed;
-  bottom: 25px;
-  right: 70px;
-  background: #1a1a1a;
+/* ===== SUPORTE PREMIUM SIMPLIFICADO ===== */
+.suporte-pro {
+  background: radial-gradient(circle at top, #101010, #050505);
   color: #fff;
-  padding: 12px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 1000;
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
 }
-#assist-close-icon {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: #dc3545;
-  color: #fff;
-  border: none;
-  padding: 10px 12px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 1000;
+
+.suporte-pro::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(transparent, rgba(255,255,255,0.05));
+  animation: pulse 8s infinite alternate;
 }
-#assist-tooltip {
-  position: fixed;
-  bottom: 80px;
-  right: 25px;
-  background: #333;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  opacity: 0;
-  transition: opacity 0.3s;
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.2); opacity: 0.2; }
 }
-#assist-tooltip.show { opacity: 1; }
-#assist-box {
-  position: fixed;
-  bottom: 70px;
-  right: 25px;
-  width: 320px;
-  max-width: 90%;
-  background: #121212;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+
+.suporte-container {
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.suporte-titulo {
+  font-size: 2.4rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00ffaa, #00aaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.suporte-descricao {
+  color: #ccc;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.suporte-blocos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.suporte-bloco {
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 25px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.suporte-bloco:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0,255,170,0.2);
+}
+
+.suporte-bloco h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #00ffaa;
+}
+
+.suporte-itens {
   display: flex;
   flex-direction: column;
-  z-index: 1001;
-  font-family: sans-serif;
+  gap: 15px;
 }
-.assist-header {
+
+.suporte-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  background: #1f1f1f;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(255,255,255,0.03);
+  padding: 15px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
 }
-.assist-header h4 { margin: 0; font-size: 1rem; color: #fff; }
-.assist-body { max-height: 350px; overflow-y: auto; padding: 10px 15px; }
-.msg { margin-bottom: 12px; padding: 8px; border-radius: 6px; }
-.msg.bot { background: #2c2c2c; color: #fff; }
-.msg.user { background: #0d6efd; color: #fff; text-align: right; }
-.assist-footer { display: flex; padding: 10px 15px; gap: 5px; }
-.assist-footer input { flex: 1; padding: 6px 8px; border-radius: 6px; border: none; }
-.assist-footer button { padding: 6px 10px; border-radius: 6px; border: none; background: #0d6efd; color: #fff; cursor: pointer; }
-.assist-options { display: flex; justify-content: space-around; margin-top: 8px; }
-.assist-options button { padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
-.assist-yes { background: #28a745; color: #fff; }
-.assist-no { background: #dc3545; color: #fff; }
+
+.suporte-item i {
+  font-size: 1.4rem;
+  color: #00ffaa;
+  min-width: 25px;
+  margin-top: 3px;
+}
+
+.suporte-item span {
+  font-weight: 600;
+  display: block;
+}
+
+.suporte-item small {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+.suporte-item:hover {
+  background: linear-gradient(90deg, rgba(0,255,170,0.1), rgba(0,170,255,0.15));
+  transform: translateX(5px);
+}
+
+.suporte-msg {
+  background: rgba(255,255,255,0.05);
+  padding: 18px 25px;
+  border-radius: 12px;
+  margin-top: 50px;
+  font-size: 0.95rem;
+  color: #ccc;
+  display: inline-block;
+  backdrop-filter: blur(8px);
+  border-left: 4px solid #00ffaa;
+}
+
+.suporte-msg i {
+  color: #00ffaa;
+  margin-right: 8px;
+}
   
 </style>
 </head>
@@ -814,33 +872,6 @@ footer a {color:#1e90ff;}
         <span></span>
     </div>
 </header>
-  
-  <!-- Botão de Ativação do Assistente -->
-<div id="assist-icon" aria-label="Abrir Assistente Virtual">💬</div>
-<button id="assist-close-icon" aria-label="Fechar Assistência">✖</button>
-<div id="assist-tooltip">Clique aqui para conversar com nosso assistente!</div>
-
-<!-- Janela Assistente Virtual -->
-<div id="assist-box" role="dialog" aria-modal="true" aria-labelledby="assist-title" hidden>
-  <div class="assist-header">
-    <h4 id="assist-title">Assistente Virtual IPTV</h4>
-    <button id="assist-close" aria-label="Fechar Assistência">✖</button>
-  </div>
-  <div class="assist-body" id="assist-messages">
-    <div class="msg bot">
-      Olá! Posso ajudar com esses apps:
-      <ul>
-        <li>📺 VPN WORD NET</li>
-        <li>🎬 NET SEM LIMITE</li>
-      </ul>
-      Pergunte à vontade!
-    </div>     
-  </div>
-  <div class="assist-footer">
-    <input type="text" id="assist-input" placeholder="Digite sua pergunta..." autocomplete="off" />
-    <button id="assist-send" aria-label="Enviar mensagem">Enviar</button>
-  </div>
-</div>
 
 <!-- Hero -->
 <section id="hero" class="hero">
@@ -1065,10 +1096,88 @@ footer a {color:#1e90ff;}
     </div>
 </section>
 
-<!-- Suporte -->
-<section id="suporte">
-    <h2>Suporte</h2>
-    <p style="text-align:center;">Entre em contato via <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a> ou <a href="mailto:support@vpnwordnet.com">email</a>. Nosso time ajuda a configurar todos os dispositivos.</p>
+<!-- ==============================
+     SEÇÃO DE SUPORTE PREMIUM
+============================== -->
+<section id="suporte" class="suporte-section" style="background: linear-gradient(180deg, #0a0a0a, #121212 60%, #0d0d0d); padding:80px 20px; text-align:center;">
+  <h2 class="suporte-title" style="font-size:2.2rem; font-weight:800; background: linear-gradient(90deg, #00ffe0, #007bff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; text-transform:uppercase; letter-spacing:1px;">
+    💬 Central de Suporte & Ajuda
+  </h2>
+  <p class="suporte-subtitle" style="color:#ccc; max-width:650px; margin:0 auto 50px; font-size:1rem;">
+    Precisa de ajuda? Nossa equipe está disponível para te atender em qualquer momento.
+  </p>
+
+  <div class="suporte-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:25px; justify-content:center; align-items:stretch;">
+    
+    <!-- Card WhatsApp -->
+    <div class="suporte-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 20px; transition:all 0.4s ease; box-shadow:0 0 20px rgba(0,0,0,0.3); backdrop-filter:blur(10px);">
+      <div class="suporte-icon" style="font-size:2.5rem; color:#00ffe0; margin-bottom:15px;">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <h3 style="font-size:1.3rem; margin-bottom:10px; color:#fff; font-weight:600;">Atendimento via WhatsApp</h3>
+      <p style="color:#aaa; font-size:0.95rem; line-height:1.5; margin-bottom:18px;">Fale diretamente com um atendente e resolva qualquer dúvida em tempo real.</p>
+      <a href="https://wa.me/5511999999999" target="_blank" class="suporte-btn" style="display:inline-block; background:linear-gradient(90deg,#00ffe0,#007bff); color:#000; font-weight:700; padding:10px 24px; border-radius:50px; text-decoration:none; transition:0.3s;">Abrir WhatsApp</a>
+    </div>
+
+    <!-- Card Telegram -->
+    <div class="suporte-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 20px; transition:all 0.4s ease; box-shadow:0 0 20px rgba(0,0,0,0.3); backdrop-filter:blur(10px);">
+      <div class="suporte-icon" style="font-size:2.5rem; color:#00ffe0; margin-bottom:15px;">
+        <i class="fab fa-telegram-plane"></i>
+      </div>
+      <h3 style="font-size:1.3rem; margin-bottom:10px; color:#fff; font-weight:600;">Canal no Telegram</h3>
+      <p style="color:#aaa; font-size:0.95rem; line-height:1.5; margin-bottom:18px;">Receba atualizações, novos apps e suporte rápido em nosso canal oficial.</p>
+      <a href="https://t.me/seucanalreal" target="_blank" class="suporte-btn" style="display:inline-block; background:linear-gradient(90deg,#00ffe0,#007bff); color:#000; font-weight:700; padding:10px 24px; border-radius:50px; text-decoration:none; transition:0.3s;">Entrar no Canal</a>
+    </div>
+
+    <!-- Card Instagram -->
+    <div class="suporte-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 20px; transition:all 0.4s ease; box-shadow:0 0 20px rgba(0,0,0,0.3); backdrop-filter:blur(10px);">
+      <div class="suporte-icon" style="font-size:2.5rem; color:#00ffe0; margin-bottom:15px;">
+        <i class="fab fa-instagram"></i>
+      </div>
+      <h3 style="font-size:1.3rem; margin-bottom:10px; color:#fff; font-weight:600;">Instagram</h3>
+      <p style="color:#aaa; font-size:0.95rem; line-height:1.5; margin-bottom:18px;">Siga-nos no Instagram para dicas, novidades e suporte rápido.</p>
+      <a href="https://instagram.com/seuinstagram" target="_blank" class="suporte-btn" style="display:inline-block; background:linear-gradient(90deg,#00ffe0,#007bff); color:#000; font-weight:700; padding:10px 24px; border-radius:50px; text-decoration:none; transition:0.3s;">Visitar Instagram</a>
+    </div>
+
+    <!-- Card YouTube -->
+    <div class="suporte-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 20px; transition:all 0.4s ease; box-shadow:0 0 20px rgba(0,0,0,0.3); backdrop-filter:blur(10px);">
+      <div class="suporte-icon" style="font-size:2.5rem; color:#00ffe0; margin-bottom:15px;">
+        <i class="fab fa-youtube"></i>
+      </div>
+      <h3 style="font-size:1.3rem; margin-bottom:10px; color:#fff; font-weight:600;">YouTube</h3>
+      <p style="color:#aaa; font-size:0.95rem; line-height:1.5; margin-bottom:18px;">Assista nossos tutoriais, reviews e novidades diretamente no canal oficial do YouTube.</p>
+      <a href="https://youtube.com/seucanal" target="_blank" class="suporte-btn" style="display:inline-block; background:linear-gradient(90deg,#00ffe0,#007bff); color:#000; font-weight:700; padding:10px 24px; border-radius:50px; text-decoration:none; transition:0.3s;">Visitar YouTube</a>
+    </div>
+
+    <!-- Card E-mail -->
+    <div class="suporte-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 20px; transition:all 0.4s ease; box-shadow:0 0 20px rgba(0,0,0,0.3); backdrop-filter:blur(10px);">
+      <div class="suporte-icon" style="font-size:2.5rem; color:#00ffe0; margin-bottom:15px;">
+        <i class="fas fa-envelope-open-text"></i>
+      </div>
+      <h3 style="font-size:1.3rem; margin-bottom:10px; color:#fff; font-weight:600;">Suporte por E-mail</h3>
+      <p style="color:#aaa; font-size:0.95rem; line-height:1.5; margin-bottom:18px;">Prefere contato formal? Envie uma mensagem e retornaremos em até 24h úteis.</p>
+      <a href="mailto:support@vpnwordnet.com" class="suporte-btn" style="display:inline-block; background:linear-gradient(90deg,#00ffe0,#007bff); color:#000; font-weight:700; padding:10px 24px; border-radius:50px; text-decoration:none; transition:0.3s;">Enviar E-mail</a>
+    </div>
+
+<!-- Card Endereço -->
+<div class="suporte-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 20px; transition:all 0.4s ease; box-shadow:0 0 20px rgba(0,0,0,0.3); backdrop-filter:blur(10px);">
+  <div class="suporte-icon" style="font-size:2.5rem; color:#00ffe0; margin-bottom:15px;">
+    <i class="fas fa-map-marker-alt"></i>
+  </div>
+  <h3 style="font-size:1.3rem; margin-bottom:10px; color:#fff; font-weight:600;">Nosso Endereço</h3>
+  <p style="color:#aaa; font-size:0.95rem; line-height:1.5; margin-bottom:18px;">
+    Rua da Natividade, 1, Cidade Antiga, Belém, Palestina – CEP 00000-000
+  </p>
+  <a href="https://www.google.com/maps?q=Belém,+Palestina" target="_blank" class="suporte-btn" style="display:inline-block; background:linear-gradient(90deg,#00ffe0,#007bff); color:#000; font-weight:700; padding:10px 24px; border-radius:50px; text-decoration:none; transition:0.3s;">Ver no Mapa</a>
+</div>
+
+  </div> <!-- Fim suporte-grid -->
+
+  <div class="suporte-extra" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:18px; padding:25px; margin-top:60px; max-width:700px; margin-left:auto; margin-right:auto; box-shadow:inset 0 0 20px rgba(0,255,200,0.05);">
+    <h3 style="color:#00ffe0; margin-bottom:10px;">💡 Dica rápida</h3>
+    <p style="color:#bbb; font-size:0.95rem; line-height:1.6;">Antes de pedir suporte, confira se o app está atualizado e se sua internet está estável.  
+    A maioria dos problemas é resolvida em segundos!</p>
+  </div>
 </section>
 
 <!-- Footer -->
@@ -1189,112 +1298,7 @@ testimonialCards.forEach(card => {
     type();
   });
 });
-  
-  <!-- Script completo do Assistente -->
-<script>
-const assistBtn = document.getElementById("assist-icon");
-const assistCloseIcon = document.getElementById("assist-close-icon");
-const assistTooltip = document.getElementById("assist-tooltip");
-const assistBox = document.getElementById("assist-box");
-const assistClose = document.getElementById("assist-close");
-const assistSend = document.getElementById("assist-send");
-const assistInput = document.getElementById("assist-input");
-const assistMessages = document.getElementById("assist-messages");
-
-setTimeout(() => assistTooltip.classList.add("show"), 1500);
-setTimeout(() => assistTooltip.classList.remove("show"), 6000);
-
-assistBtn.addEventListener("click", () => { assistBox.hidden = !assistBox.hidden; if(!assistBox.hidden) assistInput.focus(); });
-assistClose.addEventListener("click", () => { assistBox.hidden=true; assistInput.value=""; });
-assistCloseIcon.addEventListener("click", () => { assistBox.hidden=true; assistInput.value=""; });
-
-// Fluxos dos apps
-const fluxos = {
-  vpnwordnet: [
-    { texto:`📡 <strong>VPN WORD NET – App de Revenda</strong><br>Quer continuar?`, botoes:true },
-    { texto:`✅ <strong>Pontos Positivos</strong><br>Interface simples e segura.<br>Quer saber mais?`, botoes:true },
-    { texto:`🧾 <strong>Conclusão</strong><br>App ideal para revenda de internet sem limites.<br>Falar com atendimento?`, botoes:true },
-    { texto:`<a href="https://wa.me/5511999999999?text=Olá, quero saber sobre VPN WORD NET" target="_blank">Falar no WhatsApp</a>`, botoes:false }
-  ],
-  netssemlimite: [
-    { texto:`🎬 <strong>NET SEM LIMITE – App de Revenda</strong><br>Quer continuar?`, botoes:true },
-    { texto:`✅ <strong>Pontos Positivos</strong><br>Compatível com múltiplos dispositivos.<br>Quer saber mais?`, botoes:true },
-    { texto:`🧾 <strong>Conclusão</strong><br>App recomendado para revenda de internet ilimitada.<br>Falar com atendimento?`, botoes:true },
-    { texto:`<a href="https://wa.me/5511999999999?text=Olá, quero saber sobre NET SEM LIMITE" target="_blank">Falar no WhatsApp</a>`, botoes:false }
-  ]
-};
-
-let fluxoAtual = null; let etapaAtual = 0;
-
-function mostrarMensagem(texto, comBotoes=false){
-  const botMsg=document.createElement("div");
-  botMsg.classList.add("msg","bot"); botMsg.innerHTML=texto;
-
-  if(comBotoes){
-    const botoesContainer=document.createElement("div");
-    botoesContainer.classList.add("assist-options");
-
-    const yesBtn=document.createElement("button"); yesBtn.classList.add("assist-yes"); yesBtn.textContent="Sim";
-    const noBtn=document.createElement("button"); noBtn.classList.add("assist-no"); noBtn.textContent="Não";
-
-    botoesContainer.appendChild(yesBtn); botoesContainer.appendChild(noBtn);
-    botMsg.appendChild(botoesContainer);
-
-    function disableButtons(){ yesBtn.disabled=true; noBtn.disabled=true; yesBtn.style.opacity="0.6"; noBtn.style.opacity="0.6"; }
-
-    yesBtn.addEventListener("click",()=>{
-      disableButtons();
-      const typingMsg=document.createElement("div"); typingMsg.classList.add("msg","bot","typing"); typingMsg.textContent="Assistente digitando...";
-      assistMessages.appendChild(typingMsg); assistMessages.scrollTop=assistMessages.scrollHeight;
-
-      setTimeout(()=>{
-        assistMessages.removeChild(typingMsg);
-        etapaAtual++; if(etapaAtual>=fluxoAtual.length) etapaAtual=fluxoAtual.length-1;
-        mostrarMensagem(fluxoAtual[etapaAtual].texto, fluxoAtual[etapaAtual].botoes);
-      },2500);
-    });
-
-    noBtn.addEventListener("click",()=>{
-      disableButtons();
-      const typingMsg=document.createElement("div"); typingMsg.classList.add("msg","bot","typing"); typingMsg.textContent="Assistente digitando...";
-      assistMessages.appendChild(typingMsg); assistMessages.scrollTop=assistMessages.scrollHeight;
-
-      setTimeout(()=>{
-        assistMessages.removeChild(typingMsg);
-        const resposta=document.createElement("div"); resposta.classList.add("msg","bot"); resposta.textContent="Ok, obrigado! Estarei aqui sempre que precisar.";
-        assistMessages.appendChild(resposta); assistMessages.scrollTop=assistMessages.scrollHeight;
-        fluxoAtual=null; etapaAtual=0;
-      },2500);
-    });
-  }
-
-  assistMessages.appendChild(botMsg); assistMessages.scrollTop=assistMessages.scrollHeight;
-}
-
-function botResponse(msg){
-  msg=msg.toLowerCase();
-  if(msg.includes("vpn word net")){ fluxoAtual=fluxos.vpnwordnet; etapaAtual=0; return fluxoAtual[etapaAtual].texto; }
-  else if(msg.includes("net sem limite")){ fluxoAtual=fluxos.netssemlimite; etapaAtual=0; return fluxoAtual[etapaAtual].texto; }
-  else{ fluxoAtual=null; etapaAtual=0; return `Desculpe, posso responder apenas sobre VPN WORD NET e NET SEM LIMITE.<br><a href='https://wa.me/5511999999999' target='_blank'>Fale com nosso atendente via WhatsApp</a>`; }
-}
-
-function sendMessage(){
-  const userText=assistInput.value.trim(); if(!userText) return;
-  const userMsg=document.createElement("div"); userMsg.classList.add("msg","user"); userMsg.textContent=userText;
-  assistMessages.appendChild(userMsg); assistInput.value="";
-  const typingMsg=document.createElement("div"); typingMsg.classList.add("msg","bot","typing"); typingMsg.textContent="Assistente digitando...";
-  assistMessages.appendChild(typingMsg); assistMessages.scrollTop=assistMessages.scrollHeight;
-
-  setTimeout(()=>{
-    assistMessages.removeChild(typingMsg);
-    const response=botResponse(userText);
-    if(fluxoAtual && etapaAtual===0){ mostrarMensagem(response, fluxoAtual[etapaAtual].botoes); }
-    else{ mostrarMensagem(response,false); }
-  },2500);
-}
-
-assistSend.addEventListener("click",sendMessage);
-assistInput.addEventListener("keypress",e=>{ if(e.key==="Enter") sendMessage(); });
+ 
 </script>
 
 
