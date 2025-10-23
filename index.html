@@ -1593,8 +1593,14 @@ testimonialCards.forEach(card => {
   const messages = JSON.parse(img.dataset.text || '[""]');
   messageIndexes.set(img, 0);
 
+  // Remove cursor pointer do card inteiro
+  card.style.cursor = 'default';
+
+  // Só a imagem é clicável
+  img.style.cursor = 'pointer';
+
   img.addEventListener('click', (e) => {
-    e.stopPropagation(); // evita que o click "suba" para o card
+    e.stopPropagation(); // impede que o card inteiro seja afetado
     let idx = messageIndexes.get(img);
     const text = messages[idx];
     idx = (idx + 1) % messages.length;
@@ -1652,14 +1658,3 @@ document.querySelectorAll('.tutorial-card').forEach(card => {
   });
 });
 </script>
-
-
-
-
-
-
-
-
-
-
-
