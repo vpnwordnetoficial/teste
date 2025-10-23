@@ -75,18 +75,40 @@ header nav ul li a.active {
   font-weight: bold;
 }
 
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
+.menu-toggle { 
+  display: none; 
+  flex-direction: column; 
+  cursor: pointer; 
+} 
 
-.menu-toggle span {
-  height: 3px;
-  width: 28px;
-  background: #fff;
-  margin-bottom: 5px;
-  border-radius: 3px;
+.menu-toggle span { 
+  height: 3px; 
+  width: 28px; 
+  background: #fff; 
+  margin-bottom: 5px; 
+  border-radius: 3px; 
+} 
+
+@media screen and (max-width: 768px) { 
+  .menu-toggle { 
+    display: flex; 
+  } 
+
+  header nav { 
+    display: none; /* esconde o menu normal */ 
+    flex-direction: column; 
+    background: rgba(0,0,0,0.95); 
+    position: absolute; 
+    top: 65px; /* abaixo do header */ 
+    right: 0; 
+    width: 200px; 
+    padding: 20px; 
+    border-radius: 8px; 
+  } 
+
+  header nav.active { 
+    display: flex; /* mostra quando ativo */ 
+  } 
 }
 
 /* Hero */
@@ -1624,6 +1646,13 @@ document.querySelectorAll('.tutorial-card').forEach(card => {
   });
 });
 
+  const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('header nav');
+
+menuToggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+  
 </script>
 
 
