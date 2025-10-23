@@ -1561,7 +1561,7 @@ window.addEventListener('scroll', checkVisibilityGallery);
 window.addEventListener('load', checkVisibilityGallery);
 
 // ==============================
-// DEPOIMENTOS COM ANIMAÇÃO (aparece rolando para qualquer direção)
+// DEPOIMENTOS COM ANIMAÇÃO (fade in escalonado)
 // ==============================
 const testimonialCards = document.querySelectorAll('.testimonial-card');
 
@@ -1569,7 +1569,6 @@ function animateTestimonials() {
   testimonialCards.forEach((card, index) => {
     const rect = card.getBoundingClientRect();
     if (rect.top < window.innerHeight - 50 && rect.bottom > 0) {
-      // Delay escalonado
       card.style.transitionDelay = `${index * 0.15}s`;
       card.classList.add('visible');
     } else {
@@ -1581,7 +1580,7 @@ window.addEventListener('scroll', animateTestimonials);
 window.addEventListener('load', animateTestimonials);
 
 // ==============================
-// EFEITO TYPEWRITER NOS DEPOIMENTOS
+// EFEITO TYPEWRITER AO CLICAR NA IMAGEM
 // ==============================
 let typingIntervals = new Map();
 let messageIndexes = new Map();
@@ -1589,10 +1588,11 @@ let messageIndexes = new Map();
 testimonialCards.forEach(card => {
   const img = card.querySelector('img');
   const paragraph = card.querySelector('p');
-  const messages = JSON.parse(img.dataset.text);
+  const messages = JSON.parse(img.dataset.text || '[""]');
   messageIndexes.set(img, 0);
 
-  img.addEventListener('click', () => {
+  img.addEventListener('click', (e) => {
+    e.stopPropagation(); // evita interferir no card
     let idx = messageIndexes.get(img);
     const text = messages[idx];
     idx = (idx + 1) % messages.length;
@@ -1624,7 +1624,7 @@ testimonialCards.forEach(card => {
 });
 
 // ==============================
-// ABA DE TABS (seções Apps, FAQ etc.)
+// ABA DE TABS (Apps, FAQ etc.)
 // ==============================
 const tabs = document.querySelectorAll('.tab-btn');
 const panels = document.querySelectorAll('.tab-panel');
@@ -1639,7 +1639,9 @@ tabs.forEach(tab => {
   });
 });
 
-// ===== TUTORIAIS ESCRITOS EXPANSÍVEIS =====
+// ==============================
+// TUTORIAIS EXPANSÍVEIS
+// ==============================
 document.querySelectorAll('.tutorial-card').forEach(card => {
   card.addEventListener('click', () => {
     const isOpen = card.classList.contains('open');
@@ -1648,6 +1650,7 @@ document.querySelectorAll('.tutorial-card').forEach(card => {
   });
 });
 </script>
+
 
 
 
