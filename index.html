@@ -626,8 +626,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 
-/* DEPOIMENTO PREMIUM */
-
+/* ---------- DEPOIMENTOS PREMIUM MEGA ---------- */
 .testimonials {
     display: flex;
     flex-wrap: wrap;
@@ -682,6 +681,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
     transition: color 0.3s;
 }
 
+/* Nome muda ao hover da imagem */
 .testimonial-card img:hover + h4 {
     color: #ff00ff;
 }
@@ -693,6 +693,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
     min-height: 60px;
 }
 
+/* Hover geral no cartão */
 .testimonial-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 25px 60px rgba(0,191,255,0.3);
@@ -704,7 +705,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .testimonial-card:nth-child(3).visible { transition-delay: 0.3s; }
 .testimonial-card:nth-child(4).visible { transition-delay: 0.45s; }
 .testimonial-card:nth-child(5).visible { transition-delay: 0.6s; }
-  
+
 /* Tutoriais */
 #tutoriais {padding:100px 20px; background:#0a0a0a;}
 #tutoriais h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text-shadow:0 0 10px rgba(0,191,255,0.4);}
@@ -1561,7 +1562,7 @@ window.addEventListener('scroll', checkVisibilityGallery);
 window.addEventListener('load', checkVisibilityGallery);
 
 // ==============================
-// DEPOIMENTOS COM ANIMAÇÃO (fade in escalonado)
+// DEPOIMENTOS COM ANIMAÇÃO
 // ==============================
 const testimonialCards = document.querySelectorAll('.testimonial-card');
 
@@ -1569,8 +1570,7 @@ function animateTestimonials() {
   testimonialCards.forEach((card, index) => {
     const rect = card.getBoundingClientRect();
     if (rect.top < window.innerHeight - 50 && rect.bottom > 0) {
-      card.style.transitionDelay = `${index * 0.15}s`;
-      card.classList.add('visible');
+      setTimeout(() => { card.classList.add('visible'); }, index * 200);
     } else {
       card.classList.remove('visible');
     }
@@ -1580,7 +1580,7 @@ window.addEventListener('scroll', animateTestimonials);
 window.addEventListener('load', animateTestimonials);
 
 // ==============================
-// EFEITO TYPEWRITER AO CLICAR NA IMAGEM
+// EFEITO TYPEWRITER NOS DEPOIMENTOS
 // ==============================
 let typingIntervals = new Map();
 let messageIndexes = new Map();
@@ -1588,11 +1588,10 @@ let messageIndexes = new Map();
 testimonialCards.forEach(card => {
   const img = card.querySelector('img');
   const paragraph = card.querySelector('p');
-  const messages = JSON.parse(img.dataset.text || '[""]');
+  const messages = JSON.parse(img.dataset.text);
   messageIndexes.set(img, 0);
 
-  img.addEventListener('click', (e) => {
-    e.stopPropagation(); // evita interferir no card
+  img.addEventListener('click', () => {
     let idx = messageIndexes.get(img);
     const text = messages[idx];
     idx = (idx + 1) % messages.length;
@@ -1624,7 +1623,7 @@ testimonialCards.forEach(card => {
 });
 
 // ==============================
-// ABA DE TABS (Apps, FAQ etc.)
+// ABA DE TABS (seções Apps, FAQ etc.)
 // ==============================
 const tabs = document.querySelectorAll('.tab-btn');
 const panels = document.querySelectorAll('.tab-panel');
@@ -1639,9 +1638,7 @@ tabs.forEach(tab => {
   });
 });
 
-// ==============================
-// TUTORIAIS EXPANSÍVEIS
-// ==============================
+// ===== TUTORIAIS ESCRITOS EXPANSÍVEIS =====
 document.querySelectorAll('.tutorial-card').forEach(card => {
   card.addEventListener('click', () => {
     const isOpen = card.classList.contains('open');
@@ -1649,8 +1646,8 @@ document.querySelectorAll('.tutorial-card').forEach(card => {
     if (!isOpen) card.classList.add('open');
   });
 });
-</script>
 
+</script>
 
 
 
