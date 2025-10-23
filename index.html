@@ -75,19 +75,19 @@ header nav ul li a.active {
   font-weight: bold;
 }
 
-.menu-toggle { 
-  display: none; 
-  flex-direction: column; 
-  cursor: pointer; 
-} 
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
 
-.menu-toggle span { 
-  height: 3px; 
-  width: 28px; 
-  background: #fff; 
-  margin-bottom: 5px; 
-  border-radius: 3px; 
-} 
+.menu-toggle span {
+  height: 3px;
+  width: 28px;
+  background: #fff;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
 
 /* Hero */
 .hero {
@@ -730,10 +730,24 @@ footer a {color:#1e90ff;}
 /* Responsividade Geral */
 @media(max-width:1024px){.hero h1 {font-size:2.5rem;} .hero p {font-size:1.2rem;}}
 
-/* Ícones sociais MOBILE */
+/* Ícones sociais MOBILE + menu com rolagem */
 @media(max-width:768px){
   .menu-toggle {display:flex;}
-  header nav ul {position:fixed; top:0; left:-250px; width:250px; height:100%; flex-direction:column; background:#111; padding:60px 20px; gap:20px; transition:0.4s; z-index:999; box-shadow:5px 0 20px rgba(0,0,0,0.5);}
+  header nav ul {
+    position:fixed;
+    top:0;
+    left:-250px;
+    width:250px;
+    height:100%;
+    flex-direction:column;
+    background:#111;
+    padding:60px 20px;
+    gap:20px;
+    transition:0.4s;
+    z-index:999;
+    box-shadow:5px 0 20px rgba(0,0,0,0.5);
+    overflow-y: auto; /* <-- adicionada rolagem vertical */
+  }
   header nav ul.active {left:0;}
   .hero h1 {font-size:2rem;} .hero p {font-size:1.1rem;} .hero {height:100vh; min-height:100vh;}
   .social-icons {display:flex; flex-direction:column; gap:15px; margin-top:20px;}
@@ -751,10 +765,19 @@ footer a {color:#1e90ff;}
   .social-icons a.facebook:hover { box-shadow:0 8px 20px rgba(24,119,242,0.5); transform:translateY(-3px) scale(1.05);}
 }
 @media(min-width:769px){.social-icons {display:none !important;}}
-@media(max-width:480px){.hero {padding:0 15px;} .hero h1 {font-size:1.8rem;} .hero p {font-size:1rem;} .hero-buttons {flex-direction:column; gap:12px;} .gallery {grid-template-columns:1fr;} .testimonials {grid-template-columns:1fr;} .plan-card a {padding:12px 25px; font-size:1rem;}}
+@media(max-width:480px){
+  .hero {padding:0 15px;} 
+  .hero h1 {font-size:1.8rem;} 
+  .hero p {font-size:1rem;} 
+  .hero-buttons {flex-direction:column; gap:12px;} 
+  .gallery {grid-template-columns:1fr;} 
+  .testimonials {grid-template-columns:1fr;} 
+  .plan-card a {padding:12px 25px; font-size:1rem;}
+}
 
 /* Animações */
 @keyframes fadeIn {0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);}}
+
   
 /* ===== SUPORTE PREMIUM SIMPLIFICADO ===== */
 .suporte-pro {
@@ -1625,6 +1648,7 @@ document.querySelectorAll('.tutorial-card').forEach(card => {
 });
 
 </script>
+
 
 
 
