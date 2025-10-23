@@ -197,8 +197,6 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   }
 }
 
-
-
 /* ---------- PREÇOS COLORIDOS ---------- */
 .plan.plan-popular .price { color: #ff4d4d; }
 .plan.plan-premium .price { color: #ffcf3b; }
@@ -387,6 +385,70 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   100% { transform: translateY(0) rotate(-3deg); }
 }
 
+
+  /* Grid de Apps */
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* menor largura mínima */
+  gap: 25px;
+  justify-items: center;
+}
+
+/* Cards */
+.app-card {
+  width: 220px; /* card menor */
+  border-radius: 20px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.app-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.app-card img {
+  width: 70px; /* menor imagem */
+  margin-bottom: 15px;
+}
+
+.app-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.app-card p {
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  min-height: 60px; /* garante alinhamento dos botões */
+}
+
+/* Botão Baixar */
+.btn-download {
+  display: inline-block;
+  padding: 10px 25px;
+  background: #fff;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.btn-download:hover {
+  opacity: 0.85;
+}
+
+/* Responsivo */
+@media(max-width:768px){
+  .app-grid { grid-template-columns: 1fr; }
+}
 
 
 /* Galeria */
@@ -954,7 +1016,52 @@ footer a {color:#1e90ff;}
 
   </div>
 </section>
+  
+<!-- ==============================
+     SEÇÃO DE APLICATIVOS COLORIDA
+============================== -->
+<section id="apps" style="padding: 80px 20px; background: #121212; font-family: 'Segoe UI', sans-serif;">
+  <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 3em; margin-bottom: 20px; color:#fff;">Nossos Aplicativos</h2>
+    <p style="margin-bottom: 50px; font-size: 1.2em; color: #ccc;">Escolha o aplicativo que deseja e baixe com facilidade.</p>
 
+    <div class="app-grid">
+
+      <!-- CARD VPN WORD NET -->
+      <div class="app-card" style="background: linear-gradient(135deg, #ff4e50, #f9d423);">
+        <img src="icone_vpn_word_net.png" alt="VPN Word Net">
+        <h3>VPN Word Net</h3>
+        <p>Navegue com segurança e internet ilimitada, protegendo sua conexão em qualquer lugar.</p>
+        <a href="link_do_app_vpn_word_net.apk" class="btn-download" style="color:#ff4e50;">Baixar App</a>
+      </div>
+
+      <!-- CARD REVENDA NET -->
+      <div class="app-card" style="background: linear-gradient(135deg, #6a11cb, #2575fc);">
+        <img src="icone_revenda_net.png" alt="Revenda Net">
+        <h3>Revenda Net Sem Limite</h3>
+        <p>Gerencie suas revendas de internet sem limites, de forma prática e rápida.</p>
+        <a href="link_do_app_revenda_net.apk" class="btn-download" style="color:#6a11cb;">Baixar App</a>
+      </div>
+
+      <!-- CARD VPN WORD NET TV -->
+      <div class="app-card" style="background: linear-gradient(135deg, #ff416c, #ff4b2b);">
+        <img src="icone_vpn_word_net_tv.png" alt="VPN Word Net TV">
+        <h3>VPN Word Net TV</h3>
+        <p>Assista TV e streaming com VPN integrado e conexão segura em qualquer dispositivo.</p>
+        <a href="link_do_app_vpn_word_net_tv.apk" class="btn-download" style="color:#ff416c;">Baixar App</a>
+      </div>
+
+      <!-- CARD COMPARTILHAR NET -->
+      <div class="app-card" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
+        <img src="icone_compartilhar_net.png" alt="Compartilhar Net">
+        <h3>Compartilhar Net</h3>
+        <p>Compartilhe sua conexão de internet com amigos e familiares de forma fácil e rápida.</p>
+        <a href="link_do_app_compartilhar_net.apk" class="btn-download" style="color:#00c6ff;">Baixar App</a>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- Galeria -->
 <section id="galeria">
@@ -987,7 +1094,6 @@ footer a {color:#1e90ff;}
 
   </div>
 </section>
-
 
 <!-- FAQ -->
 <section id="faq">
@@ -1062,7 +1168,6 @@ footer a {color:#1e90ff;}
         </div>
     </div>
 </section>
-
   
   <!-- Tutoriais -->
 <section id="tutoriais">
@@ -1323,11 +1428,18 @@ testimonialCards.forEach(card => {
     type();
   });
 });
+  
+const tabs = document.querySelectorAll('.tab-btn');
+const panels = document.querySelectorAll('.tab-panel');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    panels.forEach(panel => panel.classList.remove('active'));
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
  
 </script>
-
-
-
-
-
-
