@@ -653,6 +653,16 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
     transition: transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s;
 }
 
+/* Remove efeito de seleção em imagens e cards */
+.testimonial-card, 
+.testimonial-card img {
+    -webkit-tap-highlight-color: transparent; /* Chrome, Safari, Edge, Opera */
+    -webkit-user-select: none; /* Evita seleção do conteúdo no toque */
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .testimonial-card.visible {
     transform: translateY(0);
     opacity: 1;
@@ -705,7 +715,6 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .testimonial-card:nth-child(3).visible { transition-delay: 0.3s; }
 .testimonial-card:nth-child(4).visible { transition-delay: 0.45s; }
 .testimonial-card:nth-child(5).visible { transition-delay: 0.6s; }
-
   
 /* Tutoriais */
 #tutoriais {padding:100px 20px; background:#0a0a0a;}
