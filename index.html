@@ -626,7 +626,8 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 
-/* ---------- DEPOIMENTOS PREMIUM MEGA ---------- */
+/* DEPOIMENTO PREMIUM */
+
 .testimonials {
     display: flex;
     flex-wrap: wrap;
@@ -681,7 +682,6 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
     transition: color 0.3s;
 }
 
-/* Nome muda ao hover da imagem */
 .testimonial-card img:hover + h4 {
     color: #ff00ff;
 }
@@ -693,7 +693,6 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
     min-height: 60px;
 }
 
-/* Hover geral no cartão */
 .testimonial-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 25px 60px rgba(0,191,255,0.3);
@@ -705,7 +704,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .testimonial-card:nth-child(3).visible { transition-delay: 0.3s; }
 .testimonial-card:nth-child(4).visible { transition-delay: 0.45s; }
 .testimonial-card:nth-child(5).visible { transition-delay: 0.6s; }
-
+  
 /* Tutoriais */
 #tutoriais {padding:100px 20px; background:#0a0a0a;}
 #tutoriais h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text-shadow:0 0 10px rgba(0,191,255,0.4);}
@@ -1562,7 +1561,7 @@ window.addEventListener('scroll', checkVisibilityGallery);
 window.addEventListener('load', checkVisibilityGallery);
 
 // ==============================
-// DEPOIMENTOS COM ANIMAÇÃO
+// DEPOIMENTOS COM ANIMAÇÃO (aparece rolando para qualquer direção)
 // ==============================
 const testimonialCards = document.querySelectorAll('.testimonial-card');
 
@@ -1570,7 +1569,9 @@ function animateTestimonials() {
   testimonialCards.forEach((card, index) => {
     const rect = card.getBoundingClientRect();
     if (rect.top < window.innerHeight - 50 && rect.bottom > 0) {
-      setTimeout(() => { card.classList.add('visible'); }, index * 200);
+      // Delay escalonado
+      card.style.transitionDelay = `${index * 0.15}s`;
+      card.classList.add('visible');
     } else {
       card.classList.remove('visible');
     }
@@ -1646,8 +1647,8 @@ document.querySelectorAll('.tutorial-card').forEach(card => {
     if (!isOpen) card.classList.add('open');
   });
 });
-
 </script>
+
 
 
 
