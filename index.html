@@ -313,14 +313,14 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 @media(max-width:1024px){ .plans {grid-template-columns: repeat(2,1fr);} }
 @media(max-width:768px){ .plans {grid-template-columns: 1fr;} }
 
-/* ---------- FAIXAS PNG (RIBBONS) ---------- */
+/* ---------- FAIXAS PNG (RIBBONS) - PC ---------- */
 .plan.plan-popular::after {
   content: "";
   position: absolute;
   top: 0;
   right: 0;
-  width: 180px;
-  height: 180px;
+  width: 160px;   /* tamanho reduzido para PC */
+  height: 160px;  /* tamanho reduzido para PC */
   background: url('https://s14.gifyu.com/images/bwa9D.png') no-repeat center/contain;
   z-index: 10;
   pointer-events: none;
@@ -332,8 +332,8 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   position: absolute;
   top: 0;
   right: 0;
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   background: url('https://s14.gifyu.com/images/bwaHx.png') no-repeat center/contain;
   z-index: 10;
   pointer-events: none;
@@ -345,8 +345,8 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   position: absolute;
   top: 0;
   right: 0;
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   background: url('https://s14.gifyu.com/images/bwrzU.png') no-repeat center/contain;
   z-index: 10;
   pointer-events: none;
@@ -358,21 +358,22 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   position: absolute;
   top: 0;
   right: 0;
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   background: url('https://s14.gifyu.com/images/bwaKl.png') no-repeat center/contain;
   z-index: 10;
   pointer-events: none;
   animation: float 2s ease-in-out infinite alternate;
 }
 
+/* ---------- FAIXAS PNG (RIBBONS) - Mobile ---------- */
 @media(max-width:768px){
   .plan.plan-popular::after,
   .plan.plan-premium::after,
   .plan.plan-familia::after,
   .plan.plan-empreendedor::after {
-    width: 100px;
-    height: 100px;
+    width: 100px;   /* tamanho menor para celular */
+    height: 100px;  /* tamanho menor para celular */
     top: 5px;
     right: 0;
   }
