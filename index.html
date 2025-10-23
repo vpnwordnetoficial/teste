@@ -75,19 +75,19 @@ header nav ul li a.active {
   font-weight: bold;
 }
 
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
+.menu-toggle { 
+  display: none; 
+  flex-direction: column; 
+  cursor: pointer; 
+} 
 
-.menu-toggle span {
-  height: 3px;
-  width: 28px;
-  background: #fff;
-  margin-bottom: 5px;
-  border-radius: 3px;
-}
+.menu-toggle span { 
+  height: 3px; 
+  width: 28px; 
+  background: #fff; 
+  margin-bottom: 5px; 
+  border-radius: 3px; 
+} 
 
 /* Hero */
 .hero {
@@ -890,10 +890,114 @@ footer a {color:#1e90ff;}
   margin-right: 8px;
 }
   
+ /* ==============================
+   SEÇÃO DE TUTORIAIS EM ESCRITA
+============================== */
+.tutorials-section {
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #0d0d0d, #111111, #0a0a0a);
+  color: #fff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #00f5ff, #007bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  color: #aaa;
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
+
+.tutorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+.tutorial-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 25px;
+  text-align: left;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.tutorial-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(0,255,255,0.2), transparent);
+  transform: skewX(-25deg);
+  transition: 0.7s;
+}
+
+.tutorial-card:hover::before {
+  left: 125%;
+}
+
+.tutorial-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.3);
+}
+
+.tc-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.tc-header i {
+  font-size: 1.8rem;
+  color: #00f5ff;
+  transition: transform 0.3s ease;
+}
+
+.tutorial-card:hover .tc-header i {
+  transform: rotate(10deg) scale(1.1);
+}
+
+.tc-body {
+  margin-top: 15px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.tutorial-card.open .tc-body {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.tc-body p {
+  line-height: 1.6;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+  
 </style>
 </head>
 <body>
-
 
 <!-- Header -->
 <header>
@@ -906,8 +1010,10 @@ footer a {color:#1e90ff;}
             <li><a href="#galeria">Galeria</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#depoimentos">Depoimentos</a></li>
-            <li><a href="#tutoriais">Tutoriais</a></li>
+            <li><a href="#tutoriais">Tutoriais video</a></li>
+            <li><a href="#tutoriais-escritos">Tutoriais Escritos</a></li>
             <li><a href="#suporte">Suporte</a></li>
+
 
             <!-- Ícones sociais MOBILE -->
             <li class="social-icons">
@@ -1213,6 +1319,58 @@ footer a {color:#1e90ff;}
         <!-- Você pode adicionar quantos vídeos quiser seguindo o mesmo modelo -->
     </div>
 </section>
+  
+<!-- ==============================
+     SEÇÃO DE TUTORIAIS EM ESCRITA
+============================== -->
+<section id="tutoriais-escritos" class="tutorials-section">
+  <h2 class="section-title">Tutoriais em Escrita</h2>
+  <p class="section-subtitle">Passo a passo detalhado para configurar e aproveitar ao máximo nossos serviços.</p>
+
+  <div class="tutorial-grid">
+
+    <div class="tutorial-card">
+      <div class="tc-header">
+        <i class="fas fa-wifi"></i>
+        <h3>Como conectar na VPN Word Net</h3>
+      </div>
+      <div class="tc-body">
+        <p>1️⃣ Abra o aplicativo.<br>
+        2️⃣ Escolha um servidor próximo.<br>
+        3️⃣ Toque em "Conectar" e aguarde a mensagem de sucesso.<br>
+        💡 Dica: se a conexão cair, altere o protocolo nas configurações.</p>
+      </div>
+    </div>
+
+    <div class="tutorial-card">
+      <div class="tc-header">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Instalando o app em Smart TVs</h3>
+      </div>
+      <div class="tc-body">
+        <p>1️⃣ Baixe o APK em um pen drive.<br>
+        2️⃣ Insira na TV e abra o gerenciador de arquivos.<br>
+        3️⃣ Instale e conceda as permissões necessárias.<br>
+        🔧 Pronto! O app aparecerá no menu principal.</p>
+      </div>
+    </div>
+
+    <div class="tutorial-card">
+      <div class="tc-header">
+        <i class="fas fa-cogs"></i>
+        <h3>Corrigindo erros de conexão</h3>
+      </div>
+      <div class="tc-body">
+        <p>1️⃣ Feche o app completamente.<br>
+        2️⃣ Limpe o cache em Configurações > Aplicativos.<br>
+        3️⃣ Reabra o app e selecione outro servidor.<br>
+        💡 Se persistir, reinicie o roteador.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
 <!-- ==============================
      SEÇÃO DE SUPORTE PREMIUM
@@ -1317,7 +1475,9 @@ footer a {color:#1e90ff;}
 </footer>
 
 <script>
-// ===== MENU HAMBÚRGUER =====
+// ==============================
+// MENU HAMBÚRGUER
+// ==============================
 const toggle = document.getElementById('menu-toggle');
 const menu = document.getElementById('nav-menu');
 
@@ -1341,29 +1501,34 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// ===== FAQ TOGGLE =====
+// ==============================
+// FAQ INTERATIVO
+// ==============================
 const faqItems = document.querySelectorAll('.faq-item h3');
 faqItems.forEach(item => {
   item.addEventListener('click', () => {
-    // estilo acordeão: fecha os outros
-    faqItems.forEach(i => { if(i !== item) i.parentElement.classList.remove('active'); });
+    faqItems.forEach(i => { if (i !== item) i.parentElement.classList.remove('active'); });
     item.parentElement.classList.toggle('active');
   });
 });
 
-// ===== SCROLL HEADER =====
+// ==============================
+// HEADER AO ROLAR
+// ==============================
 window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
   if (window.scrollY > 50) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
 });
 
-// ===== GALERIA ANIMADA =====
+// ==============================
+// GALERIA ANIMADA
+// ==============================
 const galleryItems = document.querySelectorAll('.gallery-item');
 function checkVisibilityGallery() {
   galleryItems.forEach(item => {
     const rect = item.getBoundingClientRect();
-    if(rect.top < window.innerHeight && rect.bottom > 0){
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
       item.classList.add('visible');
     } else {
       item.classList.remove('visible');
@@ -1373,13 +1538,15 @@ function checkVisibilityGallery() {
 window.addEventListener('scroll', checkVisibilityGallery);
 window.addEventListener('load', checkVisibilityGallery);
 
-// ===== DEPOIMENTOS COM ANIMAÇÃO PREMIUM =====
+// ==============================
+// DEPOIMENTOS COM ANIMAÇÃO
+// ==============================
 const testimonialCards = document.querySelectorAll('.testimonial-card');
 
 function animateTestimonials() {
   testimonialCards.forEach((card, index) => {
     const rect = card.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 50 && rect.bottom > 0){
+    if (rect.top < window.innerHeight - 50 && rect.bottom > 0) {
       setTimeout(() => { card.classList.add('visible'); }, index * 200);
     } else {
       card.classList.remove('visible');
@@ -1389,7 +1556,9 @@ function animateTestimonials() {
 window.addEventListener('scroll', animateTestimonials);
 window.addEventListener('load', animateTestimonials);
 
-// ===== TYPEWRITER NOS DEPOIMENTOS =====
+// ==============================
+// EFEITO TYPEWRITER NOS DEPOIMENTOS
+// ==============================
 let typingIntervals = new Map();
 let messageIndexes = new Map();
 
@@ -1405,7 +1574,7 @@ testimonialCards.forEach(card => {
     idx = (idx + 1) % messages.length;
     messageIndexes.set(img, idx);
 
-    if(typingIntervals.has(img)){
+    if (typingIntervals.has(img)) {
       clearTimeout(typingIntervals.get(img));
       typingIntervals.delete(img);
     }
@@ -1417,7 +1586,7 @@ testimonialCards.forEach(card => {
     const typingSpeed = 40;
 
     function type() {
-      if(i < text.length){
+      if (i < text.length) {
         paragraph.textContent += text.charAt(i);
         i++;
         const timeout = setTimeout(type, typingSpeed);
@@ -1429,7 +1598,10 @@ testimonialCards.forEach(card => {
     type();
   });
 });
-  
+
+// ==============================
+// ABA DE TABS (seções Apps, FAQ etc.)
+// ==============================
 const tabs = document.querySelectorAll('.tab-btn');
 const panels = document.querySelectorAll('.tab-panel');
 
@@ -1442,8 +1614,18 @@ tabs.forEach(tab => {
     document.getElementById(tab.dataset.tab).classList.add('active');
   });
 });
- 
+
+// ===== TUTORIAIS ESCRITOS EXPANSÍVEIS =====
+document.querySelectorAll('.tutorial-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.tutorial-card.open').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  });
+});
+
 </script>
+
 
 
 
