@@ -386,13 +386,12 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   100% { transform: translateY(0) rotate(-3deg); }
 }
 
-
 /* ==============================
    GRID DE APPS
 ============================= */
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* sempre 3 colunas no PC */
   gap: 25px;
   justify-items: center;
 }
@@ -449,7 +448,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   opacity: 0.85;
 }
 
-/* RESPONSIVO */
+/* RESPONSIVO PARA CELULAR */
 @media (max-width: 768px) {
   .app-grid {
     grid-template-columns: 1fr; /* 1 card por linha no celular */
@@ -468,6 +467,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
     min-height: auto;
   }
 }
+
 
 
 /* ==============================
