@@ -387,41 +387,22 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 
-/* ==============================
-   GRADE DOS APPS (GRID)
-============================== */
+/* Grid de Apps */
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* cards maiores e uniformes */
+  gap: 25px;
   justify-items: center;
-  align-items: start;
 }
 
-/* Responsivo para tablets */
-@media (max-width: 1024px) {
-  .app-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Responsivo para celular */
-@media (max-width: 700px) {
-  .app-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ==============================
-   CARDS
-============================== */
+/* Cards */
 .app-card {
-  width: 220px; /* card menor */
+  width: 300px; /* card maior e igual para todos */
   border-radius: 20px;
-  padding: 20px;
+  padding: 25px;
   color: #fff;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -430,29 +411,29 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 
 .app-card:hover {
   transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
 
 .app-card img {
-  width: 70px; /* menor imagem */
-  margin-bottom: 15px;
+  width: 100px; /* imagem maior e proporcional */
+  margin-bottom: 20px;
 }
 
 .app-card h3 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+  font-size: 1.5em;
+  margin-bottom: 15px;
 }
 
 .app-card p {
-  font-size: 0.9em;
-  margin-bottom: 20px;
-  min-height: 60px; /* garante alinhamento dos botões */
+  font-size: 1em;
+  margin-bottom: 25px;
+  min-height: 80px; /* garante alinhamento dos botões */
 }
 
 /* Botão Baixar */
 .btn-download {
   display: inline-block;
-  padding: 10px 25px;
+  padding: 12px 30px;
   background: #fff;
   border-radius: 30px;
   font-weight: 600;
@@ -464,6 +445,16 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .btn-download:hover {
   opacity: 0.85;
 }
+
+/* Responsivo */
+@media(max-width:1024px){
+  .app-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media(max-width:768px){
+  .app-grid { grid-template-columns: 1fr; }
+}
+
 
 /* ==============================
    GALERIA
@@ -1300,8 +1291,8 @@ footer a {color:#1e90ff;}
       <div class="app-card" style="background: linear-gradient(135deg, #ff1493, #ff85c0); padding: 20px; border-radius: 15px;">
         <img src="https://s12.gifyu.com/images/b37Kd.png" alt="NPV iPhone">
         <h3>NPV IPHONE</h3>
-        <p>Tenha internet ilimitada no seu iPhone! Navegue seguro, rápido e sem limites, aproveitando todos os recursos do nosso app.</p>
-        <a href="https://apps.apple.com/br/app/npv-tunnel/id1629465476" class="btn-download" style="color:#ff1493;" target="_blank">Baixar App</a>
+        <p>Tenha internet ilimitada no seu iPhone! Navegue com segurança, rapidez e sem limites, aproveitando todos os recursos deste app. Você pode baixá-lo diretamente na App Store. (Este aplicativo não é de nossa autoria).</p>
+        <a href="https://s12.gifyu.com/images/b3dHO.png" class="btn-download" style="color:#ff1493;" target="_blank">Baixar App</a>
       </div>
 
       <!-- CARD WORD PROXY -->
@@ -1314,9 +1305,9 @@ footer a {color:#1e90ff;}
 
       <!-- CARD PDANET PREMIUM -->
       <div class="app-card" style="background: linear-gradient(135deg, #00c6ff, #0072ff); padding: 20px; border-radius: 15px;">
-        <img src="https://s12.gifyu.com/images/b37z5.png" alt="Compartilhar Net">
+        <img src="https://s12.gifyu.com/images/b3dKw.png" alt="Compartilhar Net">
         <h3>PDANET PREMIUM</h3>
-        <p>Não é só no celular! Compartilhe sua conexão via USB, Bluetooth e muito mais em vários dispositivos: PC, notebook e outros.</p>
+        <p>Esse eu uso bastante! Não é só no celular — use sua internet em qualquer lugar: compartilhe via USB, Bluetooth e muito mais para PC, notebook e outros dispositivos. Lembrando: esse app não é nosso!</p>
         <div class="download-buttons" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
           <a href="https://download1474.mediafire.com/qmnzlhhvmshguHgwuZOgPd-tVx_oNXFTRf17VpPOY-bM1eXxZ_18bRX6_fgCu5YcElgpTICfo70fTUowc8axO2pRielVJF_WumRTgl4wyxUBYUs_Nv8fwTSfx3hjdruXUzA9FXkGSo4ny9gySuS55DTzcyB6V42DBeUhT6vsx_b3TWI/okln728bkdx99o7/PDANET+PREMIUM+APP.apk" class="btn-download" style="color:#00c6ff;" target="_blank">App Premium</a>
           <a href="https://pdanet.co/install" class="btn-download" style="color:#00c6ff;" target="_blank">Site Oficial</a>
@@ -1839,6 +1830,7 @@ document.querySelectorAll('.tutorial-card').forEach(card => {
   });
 });
 </script>
+
 
 
 
