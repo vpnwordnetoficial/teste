@@ -1125,6 +1125,84 @@ footer a {color:#1e90ff;}
   color: #ccc;
   font-size: 0.95rem;
 }
+  
+  <!-- ==============================
+     ESTILO TERMOS DE USO
+============================== -->
+<style>
+.terms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.term-item {
+  background: linear-gradient(135deg, #1f1f1f, #222);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.term-item:hover {
+  transform: translateY(-5px);
+}
+
+.term-header {
+  width: 100%;
+  text-align: left;
+  padding: 20px 25px;
+  background: #1a1a1a;
+  border: none;
+  outline: none;
+  color: #00bfff;
+  font-size: 1.2em;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.term-header:hover {
+  background: #0d0d0d;
+}
+
+.term-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+  padding: 0 25px;
+  background: #111;
+  color: #ccc;
+}
+
+.term-content p {
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+/* Toggle ativo */
+.term-item.active .term-content {
+  max-height: 500px; /* ajuste conforme texto */
+  padding: 15px 25px;
+}
+
+.toggle-icon {
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.term-item.active .toggle-icon {
+  transform: rotate(45deg);
+}
+
+/* Responsivo */
+@media(max-width:768px){
+  .term-header { font-size: 1.1em; padding: 15px 20px; }
+  .term-content { padding: 0 20px; }
+  .term-content p { font-size: 0.95em; }
+}
 
 </style>
 </head>
@@ -1137,13 +1215,14 @@ footer a {color:#1e90ff;}
         <ul id="nav-menu">
             <li><a href="#hero" class="active">Início</a></li>
             <li><a href="#planos">Planos</a></li>
-            <li><a href="#apps">Apps</a></li> <!-- AQUI ESTÁ A ABA DE APPS -->
+            <li><a href="#apps">Apps</a></li>
             <li><a href="#galeria">Galeria</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#depoimentos">Depoimentos</a></li>
-            <li><a href="#tutoriais">Tutoriais video</a></li>
+            <li><a href="#tutoriais">Tutoriais Video</a></li>
             <li><a href="#tutoriais-escritos">Tutoriais Escritos</a></li>
             <li><a href="#suporte">Suporte</a></li>
+            <li><a href="#termos">Termos</a></li>
 
 
             <!-- Ícones sociais MOBILE -->
@@ -1372,7 +1451,11 @@ footer a {color:#1e90ff;}
   </p>
   <div class="faq-container">
 
-
+<div class="faq-item">
+  <h3>Posso pedir reembolso?</h3>
+  <p>Não é possível solicitar reembolso. Conforme consta nos termos de uso, não oferecemos devoluções. Nosso trabalho é manter o servidor ativo, seguro e com desbloqueios atualizados.</p>
+</div>
+    
       <div class="faq-item">
   <h3>Como instalo no celular?</h3>
   <p>Baixe o aplicativo diretamente do nosso site. Antes da instalação, habilite a opção "Fontes desconhecidas" nas configurações do seu celular. Depois, insira seu login e conecte-se em segundos. Seguro e rápido!</p>
@@ -1676,6 +1759,58 @@ footer a {color:#1e90ff;}
     A maioria dos problemas é resolvida em segundos!</p>
   </div>
 </section>
+  
+  <!-- ==============================
+     SEÇÃO DE TERMOS DE USO
+============================== -->
+<section id="termos" style="padding: 80px 20px; background: #111; color: #fff; font-family: 'Segoe UI', sans-serif;">
+  <div class="container" style="max-width: 1000px; margin: 0 auto;">
+    <h2 style="font-size: 3em; margin-bottom: 20px; color:#00bfff; text-align: center; text-shadow: 0 0 10px rgba(0,191,255,0.4);">Termos de Uso</h2>
+    <p style="margin-bottom: 50px; font-size: 1.2em; color: #ccc; text-align: center;">Leia atentamente os termos abaixo. É importante que você esteja ciente das regras e responsabilidades ao utilizar nossos serviços.</p>
+
+    <div class="terms-container">
+      <!-- Termo 1 -->
+      <div class="term-item">
+        <button class="term-header">Uso do Serviço <span class="toggle-icon">+</span></button>
+        <div class="term-content">
+          <p>Você concorda em usar nossos serviços de forma responsável. Não é permitido compartilhar acessos indevidos ou violar qualquer lei vigente.</p>
+        </div>
+      </div>
+
+      <!-- Termo 2 -->
+      <div class="term-item">
+        <button class="term-header">Limitação de Responsabilidade <span class="toggle-icon">+</span></button>
+        <div class="term-content">
+          <p>O serviço é fornecido “no estado em que se encontra”. Não nos responsabilizamos por interrupções externas, falhas de conexão ou uso indevido dos aplicativos.</p>
+        </div>
+      </div>
+
+      <!-- Termo 3 -->
+      <div class="term-item">
+        <button class="term-header">Atualizações e Alterações <span class="toggle-icon">+</span></button>
+        <div class="term-content">
+          <p>Podemos atualizar os serviços e termos a qualquer momento. É responsabilidade do usuário acompanhar alterações publicadas nesta seção.</p>
+        </div>
+      </div>
+
+      <!-- Termo 4 -->
+      <div class="term-item">
+        <button class="term-header">Reembolso <span class="toggle-icon">+</span></button>
+        <div class="term-content">
+          <p>Não oferecemos reembolso. Todos os pagamentos são finais. Nosso trabalho é manter o servidor ativo e o acesso atualizado para todos os usuários.</p>
+        </div>
+      </div>
+
+      <!-- Termo 5 -->
+      <div class="term-item">
+        <button class="term-header">Privacidade <span class="toggle-icon">+</span></button>
+        <div class="term-content">
+          <p>Respeitamos sua privacidade e não compartilhamos dados com terceiros, exceto quando exigido por lei. Nenhum dado sensível é armazenado sem consentimento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <!-- Footer -->
@@ -1840,6 +1975,14 @@ document.querySelectorAll('.tutorial-card').forEach(card => {
     const isOpen = card.classList.contains('open');
     document.querySelectorAll('.tutorial-card.open').forEach(c => c.classList.remove('open'));
     if (!isOpen) card.classList.add('open');
+  });
+});
+  
+  const termHeaders = document.querySelectorAll('.term-header');
+termHeaders.forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    item.classList.toggle('active');
   });
 });
 </script>
