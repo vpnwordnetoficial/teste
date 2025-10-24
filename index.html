@@ -390,14 +390,15 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 /* Grid de Apps */
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* cards maiores e uniformes */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* flexível e adaptativo */
   gap: 25px;
   justify-items: center;
 }
 
 /* Cards */
 .app-card {
-  width: 300px; /* card maior e igual para todos */
+  width: 100%; /* agora ocupa todo o espaço da coluna */
+  max-width: 300px; /* limita o tamanho máximo */
   border-radius: 20px;
   padding: 25px;
   color: #fff;
@@ -415,7 +416,8 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 .app-card img {
-  width: 100px; /* imagem maior e proporcional */
+  width: 100px; 
+  max-width: 60%; /* garante que a imagem diminua no celular */
   margin-bottom: 20px;
 }
 
@@ -427,7 +429,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 .app-card p {
   font-size: 1em;
   margin-bottom: 25px;
-  min-height: 80px; /* garante alinhamento dos botões */
+  min-height: 80px; 
 }
 
 /* Botão Baixar */
@@ -446,13 +448,17 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   opacity: 0.85;
 }
 
-/* Responsivo */
+/* Responsivo para tablets */
 @media(max-width:1024px){
   .app-grid { grid-template-columns: repeat(2, 1fr); }
+  .app-card img { max-width: 50%; }
 }
 
+/* Responsivo para celular */
 @media(max-width:768px){
   .app-grid { grid-template-columns: 1fr; }
+  .app-card { max-width: 100%; padding: 20px; }
+  .app-card img { max-width: 70%; }
 }
 
 
