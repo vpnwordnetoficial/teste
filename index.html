@@ -389,17 +389,15 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 
 /* ==============================
    GRID DE APPS
-============================== */
+============================= */
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* cards flexíveis */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 25px;
   justify-items: center;
 }
 
-/* ==============================
-   CARDS
-============================== */
+/* CARDS */
 .app-card {
   width: 100%;
   max-width: 300px;
@@ -410,7 +408,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* botão sempre embaixo */
+  justify-content: space-between;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -421,26 +419,24 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 
 .app-card img {
   width: 80px;
-  margin: 0 auto 20px;
+  margin: 0 auto 15px;
 }
 
 .app-card h3 {
-  font-size: 1.3em;
+  font-size: 1.2em;
   margin-bottom: 10px;
 }
 
 .app-card p {
-  font-size: 1em;
+  font-size: 0.9em;
   margin-bottom: 20px;
-  flex-grow: 1; /* garante que o botão fique sempre embaixo */
+  min-height: 60px;
 }
 
-/* ==============================
-   BOTÃO BAIXAR
-============================== */
+/* BOTÃO BAIXAR */
 .btn-download {
   display: inline-block;
-  padding: 12px 30px;
+  padding: 10px 25px;
   background: #fff;
   border-radius: 30px;
   font-weight: 600;
@@ -453,18 +449,10 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   opacity: 0.85;
 }
 
-/* ==============================
-   RESPONSIVIDADE
-============================== */
-@media (max-width: 1024px) {
-  .app-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 cards por linha tablet */
-  }
-}
-
+/* RESPONSIVO */
 @media (max-width: 768px) {
   .app-grid {
-    grid-template-columns: 1fr; /* 1 card por linha celular */
+    grid-template-columns: 1fr; /* 1 card por linha no celular */
   }
 
   .app-card {
@@ -475,12 +463,9 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
     width: 100px;
   }
 
-  .app-card h3 {
-    font-size: 1.4em;
-  }
-
   .app-card p {
     font-size: 1em;
+    min-height: auto;
   }
 }
 
@@ -1290,10 +1275,9 @@ footer a {color:#1e90ff;}
     <h2 style="font-size: 3em; margin-bottom: 20px; color:#fff;">VOCÊ ESTÁ NO LUGAR CERTO! BAIXE SEU APP.</h2>
     <p style="margin-bottom: 50px; font-size: 1.2em; color: #ccc;">Escolha o aplicativo que deseja e baixe com facilidade. Aplicativos de internet ilimitada, revenda e compartilhamento.</p>
 
-    <div class="app-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
-
+    <div class="app-grid">
       <!-- CARD VPN WORD NET -->
-      <div class="app-card" style="background: linear-gradient(135deg, #ff4e50, #f9d423); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #ff4e50, #f9d423);">
         <img src="https://s12.gifyu.com/images/b37zB.png" alt="VPN Word Net">
         <h3>VPN WORD NET</h3>
         <p>Navegue com segurança com nosso aplicativo de internet ilimitada! Use e abuse que não acaba. O que está esperando? Não perca tempo, todos estão usando!</p>
@@ -1301,7 +1285,7 @@ footer a {color:#1e90ff;}
       </div>
 
       <!-- CARD REVENDA NET -->
-      <div class="app-card" style="background: linear-gradient(135deg, #6a11cb, #2575fc); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #6a11cb, #2575fc);">
         <img src="https://s12.gifyu.com/images/b37zZ.png" alt="Revenda Net">
         <h3>NET SEM LIMITE 'revenda'</h3>
         <p>Venha revender nosso Net sem limite! Lucre deitado e aumente seus ganhos de forma simples e rápida.</p>
@@ -1309,7 +1293,7 @@ footer a {color:#1e90ff;}
       </div>
 
       <!-- CARD VPN WORD TV -->
-      <div class="app-card" style="background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #ff416c, #ff4b2b);">
         <img src="https://s12.gifyu.com/images/b372q.png" alt="VPN Word Net TV">
         <h3>VPN WORD TV</h3>
         <p>No nosso aplicativo VPN Word TV, navegue sem limites e assista TV e streaming etc com VPN integrado SMART TV! O que está esperando?</p>
@@ -1317,7 +1301,7 @@ footer a {color:#1e90ff;}
       </div>
 
       <!-- CARD NPV IPHONE -->
-      <div class="app-card" style="background: linear-gradient(135deg, #ff1493, #ff85c0); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #ff1493, #ff85c0);">
         <img src="https://s12.gifyu.com/images/b37Kd.png" alt="NPV iPhone">
         <h3>NPV IPHONE</h3>
         <p>Tenha internet ilimitada no seu iPhone! Navegue seguro, rápido e sem limites, aproveitando todos os recursos do nosso app.</p>
@@ -1325,7 +1309,7 @@ footer a {color:#1e90ff;}
       </div>
 
       <!-- CARD WORD PROXY -->
-      <div class="app-card" style="background: linear-gradient(135deg, #43cea2, #185a9d); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #43cea2, #185a9d);">
         <img src="https://s12.gifyu.com/images/b37xU.png" alt="Word Proxy">
         <h3>WORD PROXY</h3>
         <p>Proteja sua conexão e navegue com segurança em qualquer rede! Word Proxy garante privacidade e internet rápida em todos os dispositivos.</p>
@@ -1333,7 +1317,7 @@ footer a {color:#1e90ff;}
       </div>
 
       <!-- CARD PDANET PREMIUM -->
-      <div class="app-card" style="background: linear-gradient(135deg, #00c6ff, #0072ff); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
         <img src="https://s12.gifyu.com/images/b37z5.png" alt="Compartilhar Net">
         <h3>PDANET PREMIUM</h3>
         <p>Não é só no celular! Compartilhe sua conexão via USB, Bluetooth e muito mais em vários dispositivos: PC, notebook e outros.</p>
@@ -1346,6 +1330,7 @@ footer a {color:#1e90ff;}
     </div>
   </div>
 </section>
+
   
 <!-- Galeria -->
 <section id="galeria">
