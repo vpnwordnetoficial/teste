@@ -1126,10 +1126,9 @@ footer a {color:#1e90ff;}
   font-size: 0.95rem;
 }
   
-  <!-- ==============================
-     ESTILO TERMOS DE USO
-============================== -->
-<style>
+ /* ==============================
+   SEÇÃO DE TERMOS
+============================== */
 .terms-container {
   display: flex;
   flex-direction: column;
@@ -1155,7 +1154,7 @@ footer a {color:#1e90ff;}
   background: #1a1a1a;
   border: none;
   outline: none;
-  color: #00bfff;
+  color: #ff7f00;
   font-size: 1.2em;
   cursor: pointer;
   position: relative;
@@ -1570,8 +1569,11 @@ footer a {color:#1e90ff;}
   
   <!-- Tutoriais -->
 <section id="tutoriais">
-    <h2>Tutoriais</h2>
+    <h2 style="color: #ff4c4c; text-align: center; text-shadow: 0 0 10px rgba(255,76,76,0.5); font-size: 3em; margin-bottom: 20px;">
+        Tutoriais
+    </h2>
     <div class="tutorial-videos">
+
         <!-- Tutorial 1 -->
         <div class="video-card">
             <iframe 
@@ -1616,10 +1618,13 @@ footer a {color:#1e90ff;}
      SEÇÃO DE TUTORIAIS EM ESCRITA
 ============================== -->
 <section id="tutoriais-escritos" class="tutorials-section">
-  <h2 class="section-title">Tutoriais em Escrita</h2>
+  <h2 class="section-title" style="color: #cda4ff; text-align: center; font-size: 3em; margin-bottom: 20px;">
+  Tutoriais em Escrita
+</h2>
   <p class="section-subtitle">Passo a passo detalhado para configurar e aproveitar ao máximo nossos serviços.</p>
 
   <div class="tutorial-grid">
+
 
     <div class="tutorial-card">
       <div class="tc-header">
@@ -1765,7 +1770,9 @@ footer a {color:#1e90ff;}
 ============================== -->
 <section id="termos" style="padding: 80px 20px; background: #111; color: #fff; font-family: 'Segoe UI', sans-serif;">
   <div class="container" style="max-width: 1000px; margin: 0 auto;">
-    <h2 style="font-size: 3em; margin-bottom: 20px; color:#00bfff; text-align: center; text-shadow: 0 0 10px rgba(0,191,255,0.4);">Termos de Uso</h2>
+    <h2 style="font-size: 3em; margin-bottom: 20px; color:#ff7f00; text-align: center; text-shadow: 0 0 10px rgba(255,127,0,0.4);">
+  Termos de Uso
+</h2>
     <p style="margin-bottom: 50px; font-size: 1.2em; color: #ccc; text-align: center;">Leia atentamente os termos abaixo. É importante que você esteja ciente das regras e responsabilidades ao utilizar nossos serviços.</p>
 
     <div class="terms-container">
@@ -1781,8 +1788,12 @@ footer a {color:#1e90ff;}
       <div class="term-item">
         <button class="term-header">Limitação de Responsabilidade <span class="toggle-icon">+</span></button>
         <div class="term-content">
-          <p>O serviço é fornecido “no estado em que se encontra”. Não nos responsabilizamos por interrupções externas, falhas de conexão ou uso indevido dos aplicativos.</p>
-        </div>
+          <div class="term-content">
+  <p>O serviço é fornecido “no estado em que se encontra”. Não nos responsabilizamos por interrupções externas, falhas de conexão ou uso indevido dos aplicativos.</p>
+  <p>Se a operadora bloquear algum desbloqueio ou o serviço parar de funcionar, isso não depende de nós.</p>
+  <p>Evite compartilhar seu acesso para não correr o risco de ficar sem ele.</p>
+  <p>Um desbloqueio pode funcionar para uma pessoa e não para outra, dependendo da região.</p>
+</div>
       </div>
 
       <!-- Termo 3 -->
@@ -1796,17 +1807,21 @@ footer a {color:#1e90ff;}
       <!-- Termo 4 -->
       <div class="term-item">
         <button class="term-header">Reembolso <span class="toggle-icon">+</span></button>
-        <div class="term-content">
-          <p>Não oferecemos reembolso. Todos os pagamentos são finais. Nosso trabalho é manter o servidor ativo e o acesso atualizado para todos os usuários.</p>
-        </div>
+       <div class="term-content">
+  <p>Não oferecemos reembolso. Todos os pagamentos são finais. A partir de <strong>06/07/23</strong>, decidimos não aceitar devoluções.</p>
+  <p>Atenção: só compre se souber como funciona este mundo de internet “gambiarra”. Teste bem antes de comprar.</p>
+  <p>Observação: meu trabalho é manter o servidor ativo e os desbloqueios das operadoras sempre atualizados.</p>
+</div>
       </div>
 
       <!-- Termo 5 -->
       <div class="term-item">
         <button class="term-header">Privacidade <span class="toggle-icon">+</span></button>
         <div class="term-content">
-          <p>Respeitamos sua privacidade e não compartilhamos dados com terceiros, exceto quando exigido por lei. Nenhum dado sensível é armazenado sem consentimento.</p>
-        </div>
+  <p>Respeitamos sua privacidade e não coletamos dados, exceto quando exigido por lei.</p>
+  <p>Nenhum dado sensível é armazenado. Não use nosso serviço para cometer crimes virtuais.</p>
+  <p>Seguimos as leis como qualquer outro serviço.</p>
+</div>
       </div>
     </div>
   </div>
@@ -1986,6 +2001,7 @@ termHeaders.forEach(header => {
   });
 });
 </script>
+
 
 
 
