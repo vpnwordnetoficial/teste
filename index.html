@@ -387,23 +387,27 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 
-/* Grid de Apps */
+/* ==============================
+   GRID DE APPS
+============================== */
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* flexível e adaptativo */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
   justify-items: center;
 }
 
-/* Cards */
+/* ==============================
+   CARDS
+============================== */
 .app-card {
-  width: 100%; /* agora ocupa todo o espaço da coluna */
-  max-width: 300px; /* limita o tamanho máximo */
+  width: 100%;
+  max-width: 300px; /* limite bonito pro PC */
   border-radius: 20px;
   padding: 25px;
   color: #fff;
   text-align: center;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -412,30 +416,31 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 
 .app-card:hover {
   transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
 .app-card img {
-  width: 100px; 
-  max-width: 60%; /* garante que a imagem diminua no celular */
-  margin-bottom: 20px;
+  width: 80px;
+  margin: 0 auto 15px;
 }
 
 .app-card h3 {
-  font-size: 1.5em;
-  margin-bottom: 15px;
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }
 
 .app-card p {
-  font-size: 1em;
-  margin-bottom: 25px;
-  min-height: 80px; 
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  min-height: 60px;
 }
 
-/* Botão Baixar */
+/* ==============================
+   BOTÃO BAIXAR
+============================== */
 .btn-download {
   display: inline-block;
-  padding: 12px 30px;
+  padding: 10px 25px;
   background: #fff;
   border-radius: 30px;
   font-weight: 600;
@@ -448,17 +453,26 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   opacity: 0.85;
 }
 
-/* Responsivo para tablets */
-@media(max-width:1024px){
-  .app-grid { grid-template-columns: repeat(2, 1fr); }
-  .app-card img { max-width: 50%; }
-}
+/* ==============================
+   RESPONSIVIDADE
+============================== */
+@media (max-width: 768px) {
+  .app-grid {
+    grid-template-columns: 1fr; /* UM CARD POR LINHA */
+  }
 
-/* Responsivo para celular */
-@media(max-width:768px){
-  .app-grid { grid-template-columns: 1fr; }
-  .app-card { max-width: 100%; padding: 20px; }
-  .app-card img { max-width: 70%; }
+  .app-card {
+    max-width: 90%; /* ocupa quase toda a tela no celular */
+  }
+
+  .app-card img {
+    width: 100px;
+  }
+
+  .app-card p {
+    font-size: 1em;
+    min-height: auto;
+  }
 }
 
 
