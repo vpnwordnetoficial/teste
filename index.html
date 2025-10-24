@@ -387,19 +387,15 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 
-/* ==============================
-   GRID DE APPS
-============================== */
+/* GRID DE APPS */
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards por linha no PC */
-  gap: 25px;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas no PC */
+  gap: 30px;
   justify-items: center;
 }
 
-/* ==============================
-   CARDS
-============================== */
+/* CARDS */
 .app-card {
   width: 100%;
   max-width: 300px;
@@ -435,9 +431,7 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   min-height: 60px;
 }
 
-/* ==============================
-   BOTÃO BAIXAR
-============================== */
+/* BOTÃO BAIXAR */
 .btn-download {
   display: inline-block;
   padding: 10px 25px;
@@ -453,12 +447,10 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   opacity: 0.85;
 }
 
-/* ==============================
-   RESPONSIVIDADE PARA MOBILE
-============================== */
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
   .app-grid {
-    grid-template-columns: 1fr; /* UM CARD POR LINHA no celular */
+    grid-template-columns: 1fr; /* 1 card por linha no celular */
   }
 
   .app-card {
@@ -474,7 +466,6 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
     min-height: auto;
   }
 }
-
 
 
 /* ==============================
@@ -1280,58 +1271,60 @@ footer a {color:#1e90ff;}
 <section id="apps" style="padding: 80px 20px; background: #121212; font-family: 'Segoe UI', sans-serif;">
   <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
     <h2 style="font-size: 3em; margin-bottom: 20px; color:#fff;">VOCÊ ESTÁ NO LUGAR CERTO! BAIXE SEU APP.</h2>
-    <p style="margin-bottom: 50px; font-size: 1.2em; color: #ccc;">Escolha o aplicativo que deseja e baixe com facilidade. Aplicativos de internet ilimitada, revenda e compartilhamento.</p>
+    <p style="margin-bottom: 50px; font-size: 1.2em; color: #ccc;">
+      Escolha o aplicativo que deseja e baixe com facilidade. Aplicativos de internet ilimitada, revenda e compartilhamento.
+    </p>
 
-    <div class="app-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+    <div class="app-grid">
 
       <!-- CARD VPN WORD NET -->
-      <div class="app-card" style="background: linear-gradient(135deg, #ff4e50, #f9d423); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #ff4e50, #f9d423);">
         <img src="https://s12.gifyu.com/images/b37zB.png" alt="VPN Word Net">
         <h3>VPN WORD NET</h3>
         <p>Navegue com segurança com nosso aplicativo de internet ilimitada! Use e abuse que não acaba. O que está esperando? Não perca tempo, todos estão usando!</p>
-        <a href="https://download1326.mediafire.com/1qnx5oghoncgIy6wB30zibL9raQ_8bnLDheer0OIUjVmD8zjA0vmYwE_dqg8DeonOr5yPpl3KkYWqHDB6wfVYS58xqsCIfeCbi03yPKlX4V4i_vjdH7CNsB99lREkG-6Jslf8CVMQgjky-xqDldMDrU6TVaB_jAWOOHHFumDWqRnUKg/q00fd4kukompcel/VPN+WORD+NET+pro.apk" class="btn-download" style="color:#ff4e50;" target="_blank">Baixar App</a>
+        <a href="https://download1326.mediafire.com/1qnx5oghoncgIy6wB30zibL9raQ_8bnLDheer0OIUjVmD8zjA0vmYwE_dqg8DeonOr5yPpl3KkYWqHDB6wfVYS58xqsCIfeCbi03yPKlX4V4i_vjdH7CNsB99lREkG-6Jslf8CVMQgjky-xqDldMDrU6TVaB_jAWOOHHFumDWqRnUKg/q00fd4kukompcel/VPN+WORD+NET+pro.apk" class="btn-download" target="_blank">Baixar App</a>
       </div>
 
       <!-- CARD REVENDA NET -->
-      <div class="app-card" style="background: linear-gradient(135deg, #6a11cb, #2575fc); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #6a11cb, #2575fc);">
         <img src="https://s12.gifyu.com/images/b37zZ.png" alt="Revenda Net">
         <h3>NET SEM LIMITE 'revenda'</h3>
         <p>Venha revender nosso Net sem limite! Lucre deitado e aumente seus ganhos de forma simples e rápida.</p>
-        <a href="https://download1075.mediafire.com/lptwahgcz3vg6gKgXoUAJPZIG0ckDGbLV2yQVR8S8_hOosGPilYKdgxKKJc7DrwVzAsyVVl0k5mZNl2J-c-pFRUjvIfzDSYjjvrzZ7NFIFO64aIQjNAfgBi2wx2y0KmUEuhMwneGcWdcGZOxMe6aAT1MLaMJt6xa8k4b2FirVKvji94/dh7bdzd64ueb8n7/NET+SEM+LIMITE+pro.apk" class="btn-download" style="color:#6a11cb;" target="_blank">Baixar App</a>
+        <a href="https://download1075.mediafire.com/lptwahgcz3vg6gKgXoUAJPZIG0ckDGbLV2yQVR8S8_hOosGPilYKdgxKKJc7DrwVzAsyVVl0k5mZNl2J-c-pFRUjvIfzDSYjjvrzZ7NFIFO64aIQjNAfgBi2wx2y0KmUEuhMwneGcWdcGZOxMe6aAT1MLaMJt6xa8k4b2FirVKvji94/dh7bdzd64ueb8n7/NET+SEM+LIMITE+pro.apk" class="btn-download" target="_blank">Baixar App</a>
       </div>
 
       <!-- CARD VPN WORD TV -->
-      <div class="app-card" style="background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #ff416c, #ff4b2b);">
         <img src="https://s12.gifyu.com/images/b372q.png" alt="VPN Word Net TV">
         <h3>VPN WORD TV</h3>
         <p>No nosso aplicativo VPN Word TV, navegue sem limites e assista TV e streaming etc com VPN integrado SMART TV! O que está esperando?</p>
-        <a href="https://download1584.mediafire.com/s3axktkqfmagBUfq1tY1V_NXir4LiyqT6dj4SPwZdZAbzBb-D3shxcqVtIrO59cYPyLwomzcTNI7bPDxtfhVwTzcVEL51XDCpbXQmeVmmh5wBfnXl8N0zWX_KCInKpmE6a0VeKbegiUtMPudr9fbE6m7oSl7H57AyNlzdEmt1NOn4rk/u89nypa09xw7j6z/VPN+WORD+TV.apk" class="btn-download" style="color:#ff416c;" target="_blank">Baixar App</a>
+        <a href="https://download1584.mediafire.com/s3axktkqfmagBUfq1tY1V_NXir4LiyqT6dj4SPwZdZAbzBb-D3shxcqVtIrO59cYPyLwomzcTNI7bPDxtfhVwTzcVEL51XDCpbXQmeVmmh5wBfnXl8N0zWX_KCInKpmE6a0VeKbegiUtMPudr9fbE6m7oSl7H57AyNlzdEmt1NOn4rk/u89nypa09xw7j6z/VPN+WORD+TV.apk" class="btn-download" target="_blank">Baixar App</a>
       </div>
 
       <!-- CARD NPV IPHONE -->
-      <div class="app-card" style="background: linear-gradient(135deg, #ff1493, #ff85c0); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #ff1493, #ff85c0);">
         <img src="https://s12.gifyu.com/images/b37Kd.png" alt="NPV iPhone">
         <h3>NPV IPHONE</h3>
         <p>Tenha internet ilimitada no seu iPhone! Navegue com segurança, rapidez e sem limites, aproveitando todos os recursos deste app. Você pode baixá-lo diretamente na App Store. (Este aplicativo não é de nossa autoria).</p>
-        <a href="https://s12.gifyu.com/images/b3dHO.png" class="btn-download" style="color:#ff1493;" target="_blank">Baixar App</a>
+        <a href="https://apps.apple.com/br/app/npv-tunnel/id1629465476" class="btn-download" target="_blank">Baixar App</a>
       </div>
 
       <!-- CARD WORD PROXY -->
-      <div class="app-card" style="background: linear-gradient(135deg, #43cea2, #185a9d); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #43cea2, #185a9d);">
         <img src="https://s12.gifyu.com/images/b37xU.png" alt="Word Proxy">
         <h3>WORD PROXY</h3>
         <p>Proteja sua conexão e navegue com segurança em qualquer rede! Word Proxy garante privacidade e internet rápida em todos os dispositivos.</p>
-        <a href="https://download844.mediafire.com/3gn17kup46lgFFtmm5S0VBB8MpVisGMKaZ94CzjhseJMe8p1vyboARCCygNahdIcv6tRAUAt8dLLpV1DiPlmeC2471EwHPnxnmIM0V9Kh2HsTArgd405v4PxqBVb85jjyxu5SZle9HeNTaC1-mUJTPFGNVwbgmPJh8XdKl-SKGzOYTA/mqyd14jpyu2or4o/WORD+NET+PROXY.apk" class="btn-download" style="color:#43cea2;" target="_blank">Baixar App</a>
+        <a href="https://download844.mediafire.com/3gn17kup46lgFFtmm5S0VBB8MpVisGMKaZ94CzjhseJMe8p1vyboARCCygNahdIcv6tRAUAt8dLLpV1DiPlmeC2471EwHPnxnmIM0V9Kh2HsTArgd405v4PxqBVb85jjyxu5SZle9HeNTaC1-mUJTPFGNVwbgmPJh8XdKl-SKGzOYTA/mqyd14jpyu2or4o/WORD+NET+PROXY.apk" class="btn-download" target="_blank">Baixar App</a>
       </div>
 
       <!-- CARD PDANET PREMIUM -->
-      <div class="app-card" style="background: linear-gradient(135deg, #00c6ff, #0072ff); padding: 20px; border-radius: 15px;">
+      <div class="app-card" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
         <img src="https://s12.gifyu.com/images/b3dKw.png" alt="Compartilhar Net">
         <h3>PDANET PREMIUM</h3>
         <p>Esse eu uso bastante! Não é só no celular — use sua internet em qualquer lugar: compartilhe via USB, Bluetooth e muito mais para PC, notebook e outros dispositivos. Lembrando: esse app não é nosso!</p>
         <div class="download-buttons" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-          <a href="https://download1474.mediafire.com/qmnzlhhvmshguHgwuZOgPd-tVx_oNXFTRf17VpPOY-bM1eXxZ_18bRX6_fgCu5YcElgpTICfo70fTUowc8axO2pRielVJF_WumRTgl4wyxUBYUs_Nv8fwTSfx3hjdruXUzA9FXkGSo4ny9gySuS55DTzcyB6V42DBeUhT6vsx_b3TWI/okln728bkdx99o7/PDANET+PREMIUM+APP.apk" class="btn-download" style="color:#00c6ff;" target="_blank">App Premium</a>
-          <a href="https://pdanet.co/install" class="btn-download" style="color:#00c6ff;" target="_blank">Site Oficial</a>
+          <a href="https://download1474.mediafire.com/qmnzlhhvmshguHgwuZOgPd-tVx_oNXFTRf17VpPOY-bM1eXxZ_18bRX6_fgCu5YcElgpTICfo70fTUowc8axO2pRielVJF_WumRTgl4wyxUBYUs_Nv8fwTSfx3hjdruXUzA9FXkGSo4ny9gySuS55DTzcyB6V42DBeUhT6vsx_b3TWI/okln728bkdx99o7/PDANET+PREMIUM+APP.apk" class="btn-download" target="_blank">App Premium</a>
+          <a href="https://pdanet.co/install" class="btn-download" target="_blank">Site Oficial</a>
         </div>
       </div>
 
