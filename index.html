@@ -387,15 +387,34 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
 }
 
 
-  /* Grid de Apps */
+/* ==============================
+   GRADE DOS APPS (GRID)
+============================== */
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* menor largura mínima */
-  gap: 25px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
   justify-items: center;
+  align-items: start;
 }
 
-/* Cards */
+/* Responsivo para tablets */
+@media (max-width: 1024px) {
+  .app-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsivo para celular */
+@media (max-width: 700px) {
+  .app-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==============================
+   CARDS
+============================== */
 .app-card {
   width: 220px; /* card menor */
   border-radius: 20px;
@@ -446,11 +465,85 @@ h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#00bfff; text
   opacity: 0.85;
 }
 
-/* Responsivo */
-@media(max-width:768px){
-  .app-grid { grid-template-columns: 1fr; }
+/* ==============================
+   GALERIA
+============================== */
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+.gallery-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 2.0s ease-out; /* efeito mais lento */
+}
+
+.gallery-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.gallery-item img {
+  width: 50%;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* Texto da galeria - novo efeito */
+.gallery-text {
+  width: 50%;
+  opacity: 0;
+  transform: translateX(-50px); /* vem da esquerda */
+  transition: all 2.0s ease-out; /* efeito mais lento */
+}
+
+/* Se for reverse, o texto aparece da direita */
+.gallery-item.reverse .gallery-text {
+  transform: translateX(50px);
+}
+
+.gallery-text h3 {
+  font-size: 1.8rem;
+  color: #00bfff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(0,191,255,0.4);
+}
+
+.gallery-text p {
+  font-size: 1rem;
+  color: #cfeeff;
+  line-height: 1.6;
+}
+
+/* Classe ativa para animação quando aparece */
+.gallery-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Quando visível, anima também o texto */
+.gallery-item.visible .gallery-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsividade */
+@media(max-width:768px) {
+  .gallery-item,
+  .gallery-item.reverse {
+    flex-direction: column;
+  }
+  .gallery-item img,
+  .gallery-text {
+    width: 100%;
+  }
+}
 
 /* Galeria */
 .gallery-container {
